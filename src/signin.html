@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In | GGI Nippon Life</title>
+  </head>
+
+  <body
+    x-data="{ page: 'signin', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-init="
+          darkMode = JSON.parse(localStorage.getItem('darkMode'));
+          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
+  >
+    <!-- ===== Preloader Start ===== -->
+    <include src="./partials/preloader.html"></include>
+    <!-- ===== Preloader End ===== -->
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <main>
+      <div
+        class="flex min-h-screen items-center justify-center bg-gray-100 p-4 dark:bg-gray-900 md:p-6 2xl:p-10"
+      >
+        <div
+          class="w-full max-w-lg rounded-lg border border-stroke bg-white shadow-lg dark:border-strokedark dark:bg-boxdark"
+        >
+          <div
+            class="flex flex-col items-center justify-center py-10 px-6 sm:px-12 lg:px-16"
+          >
+            <!-- Logo -->
+            <a href="index.html" class="mb-6">
+              <img src="./images/logo/logo.png" alt="Logo" />
+            </a>
+
+            <!-- Title -->
+            <h2
+              class="mb-8 text-center text-xl font-bold text-primary dark:text-white"
+            >
+              Sign In Form
+            </h2>
+
+            <!-- Sign-In Form -->
+            <form class="w-full">
+              <!-- Phone Input -->
+              <div class="mb-6">
+                <label
+                  class="mb-2.5 block text-sm font-semibold text-gray-700 dark:text-gray-300"
+                >
+                  Phone
+                </label>
+                <div class="relative">
+                  <input
+                    type="tel"
+                    placeholder="Enter your phone"
+                    class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-gray-700 outline-none focus:border-primary focus:ring-primary dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                  />
+                  <span class="absolute right-4 top-4 text-gray-400">
+                    <!-- Phone Icon -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 28.314 28.323"
+                      class="h-6 w-6 fill-current"
+                    >
+                      <path
+                        d="M27.728,20.384l-4.242-4.242c-0.377-0.378-0.879-0.586-1.413-0.586c0,0-0.001,0-0.002,0c-0.534,0-1.036,0.209-1.413,0.586  l-2.828,2.828l-8.485-8.485l2.828-2.828c0.78-0.78,0.78-2.05-0.001-2.83L7.929,0.585C7.552,0.208,7.05,0,6.516,0H6.515  C5.98,0,5.478,0.209,5.101,0.587L0.858,4.83C0.729,4.958-0.389,6.168,0.142,8.827c0.626,3.129,3.246,7.019,7.787,11.56  c6.499,6.499,10.598,7.937,12.953,7.937c1.63,0,2.426-0.689,2.604-0.867l4.242-4.242c0.378-0.378,0.587-0.881,0.586-1.416  C28.314,21.265,28.106,20.762,27.728,20.384z M22.072,26.042c-0.028,0.028-3.409,2.249-12.729-7.07  C-0.178,9.452,2.276,6.243,2.272,6.244L6.515,2l4.243,4.244L7.223,9.779c-0.391,0.391-0.391,1.023,0,1.414l9.899,9.899  c0.391,0.391,1.023,0.391,1.414,0l3.535-3.536l4.243,4.244L22.072,26.042z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Password Input -->
+              <div class="mb-8">
+                <label
+                  class="mb-2.5 block text-sm font-semibold text-gray-700 dark:text-gray-300"
+                >
+                  Password
+                </label>
+                <div class="relative">
+                  <input
+                    type="password"
+                    placeholder="Enter your password"
+                    class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-gray-700 outline-none focus:border-primary focus:ring-primary dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                  />
+                  <span class="absolute right-4 top-4 text-gray-400">
+                    <!-- Lock Icon -->
+                    <svg
+                      class="h-6 w-6 fill-current"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 22 22"
+                    >
+                      <g opacity="0.5">
+                        <path
+                          d="M16.1547 6.80626V5.91251C16.1547 3.16251 14.0922 0.825009 11.4797 0.618759C10.0359 0.481259 8.59219 0.996884 7.52656 1.95938C6.46094 2.92188 5.84219 4.29688 5.84219 5.70626V6.80626C3.84844 7.18438 2.33594 8.93751 2.33594 11.0688V17.2906C2.33594 19.5594 4.19219 21.3813 6.42656 21.3813H15.5016C17.7703 21.3813 19.6266 19.525 19.6266 17.2563V11C19.6609 8.93751 18.1484 7.21876 16.1547 6.80626ZM8.55781 3.09376C9.31406 2.40626 10.3109 2.06251 11.3422 2.16563C13.1641 2.33751 14.6078 3.98751 14.6078 5.91251V6.70313H7.38906V5.67188C7.38906 4.70938 7.80156 3.78126 8.55781 3.09376ZM18.1141 17.2906C18.1141 18.7 16.9453 19.8688 15.5359 19.8688H6.46094C5.05156 19.8688 3.91719 18.7344 3.91719 17.325V11.0688C3.91719 9.52189 5.15469 8.28438 6.70156 8.28438H15.2953C16.8422 8.28438 18.1141 9.52188 18.1141 11V17.2906Z"
+                        />
+                        <path
+                          d="M10.9977 11.8594C10.5852 11.8594 10.207 12.2031 10.207 12.65V16.2594C10.207 16.6719 10.5508 17.05 10.9977 17.05C11.4102 17.05 11.7883 16.7063 11.7883 16.2594V12.6156C11.7883 12.2031 11.4102 11.8594 10.9977 11.8594Z"
+                        />
+                      </g>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+              <div class="mb-6 flex items-center justify-between">
+                <div class="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="remember-me"
+                    class="mr-2 h-4 w-4 rounded border-stroke text-primary focus:ring-primary dark:border-form-strokedark dark:bg-form-input"
+                  />
+                  <label
+                    for="remember-me"
+                    class="text-sm text-gray-600 dark:text-gray-300"
+                  >
+                    Remember Me
+                  </label>
+                </div>
+                <a href="#" class="text-sm text-primary hover:underline"
+                  >Forgot Password?</a
+                >
+              </div>
+
+              <!-- Submit Button -->
+              <div class="mb-4">
+                <input
+                  type="submit"
+                  value="Sign In"
+                  class="hover:bg-primary-dark w-full cursor-pointer rounded-lg bg-primary py-4 font-medium text-white transition-all"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ===== Page Wrapper End ===== -->
+  </body>
+</html>
