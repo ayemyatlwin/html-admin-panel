@@ -188,6 +188,226 @@
             </div>
             <!-- Dropdown Menu End -->
           </li>
+          <li>
+            <a
+              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              href="#"
+              @click.prevent="selected = (selected === 'News' ? '':'News')"
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'News') || (page === 'create-news' || page === 'news-list') }"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="svg-icon"
+                style="
+                  width: 1em;
+                  height: 1em;
+                  vertical-align: middle;
+                  fill: currentColor;
+                  overflow: hidden;
+                "
+                viewBox="0 0 1024 1024"
+                version="1.1"
+              >
+                <path
+                  d="M867.2 160 160 160C105.6 160 64 204.8 64 256l0 512c0 54.4 41.6 96 96 96l707.2 0c54.4 0 96-41.6 96-96L963.2 256C963.2 204.8 921.6 160 867.2 160zM899.2 768c0 19.2-12.8 32-32 32L160 800c-19.2 0-32-12.8-32-32L128 256c0-19.2 12.8-32 32-32l707.2 0c19.2 0 32 12.8 32 32L899.2 768z"
+                />
+                <path
+                  d="M227.2 544 416 544c19.2 0 32-12.8 32-32l0-188.8c0-19.2-12.8-32-32-32L227.2 291.2c-19.2 0-32 12.8-32 32L195.2 512C195.2 531.2 208 544 227.2 544zM259.2 355.2 384 355.2 384 480 259.2 480 259.2 355.2z"
+                />
+                <path
+                  d="M800 288l-256 0c-19.2 0-32 12.8-32 32s12.8 32 32 32l256 0c19.2 0 32-12.8 32-32S819.2 288 800 288z"
+                />
+                <path
+                  d="M672 480c19.2 0 32-12.8 32-32s-12.8-32-32-32l-128 0c-19.2 0-32 12.8-32 32s12.8 32 32 32L672 480z"
+                />
+                <path
+                  d="M800 672 224 672c-19.2 0-32 12.8-32 32s12.8 32 32 32l576 0c19.2 0 32-12.8 32-32S819.2 672 800 672z"
+                />
+              </svg>
+
+              News
+              <svg
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                :class="{ 'rotate-180': (selected === 'News') }"
+                width="1em"
+                height="1em"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
+                  fill=""
+                />
+              </svg>
+            </a>
+
+            <!-- Dropdown Menu Start -->
+            <div
+              class="translate transform overflow-hidden"
+              :class="(selected === 'News') ? 'block' :'hidden'"
+            >
+              <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
+                <li>
+                  <a
+                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    href="create-news.html"
+                    :class="page === 'create-news' && '!text-secondary'"
+                    >Create News</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    href="news-list.html"
+                    :class="page === 'news-list' && '!text-secondary'"
+                    >News List</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- Dropdown Menu End -->
+          </li>
+          <li>
+            <a
+              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              href="#"
+              @click.prevent="selected = (selected === 'Announcements' ? '':'Announcements')"
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Announcements') || (page === 'create-announcement' || page === 'announcement-list') }"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="svg-icon"
+                style="
+                  width: 1em;
+                  height: 1em;
+                  vertical-align: middle;
+                  fill: currentColor;
+                  overflow: hidden;
+                "
+                viewBox="0 0 1024 1024"
+                version="1.1"
+              >
+                <path
+                  d="M888.514259 742.334969 888.514259 742.334969c-12.409634 12.409634-32.715099 12.409634-45.124733 0l-90.248444-90.248444c-12.409634-12.409634-12.409634-32.715099 0-45.124733l0 0c12.409634-12.409634 32.715099-12.409634 45.124733 0l90.249467 90.248444C900.92287 709.61987 900.92287 729.925335 888.514259 742.334969zM935.280376 481.368352 935.280376 481.368352c0 17.549701-14.358009 31.907711-31.907711 31.907711L775.741823 513.276063c-17.549701 0-31.907711-14.358009-31.907711-31.907711l0 0c0-17.549701 14.358009-31.907711 31.907711-31.907711l127.630842 0C920.922367 449.460642 935.280376 463.818651 935.280376 481.368352zM753.141082 373.944737 753.141082 373.944737c12.409634 12.409634 32.715099 12.409634 45.124733 0l90.249467-90.248444c12.409634-12.409634 12.409634-32.715099 0-45.124733l0 0c-12.409634-12.409634-32.715099-12.409634-45.124733 0l-90.248444 90.248444C740.731448 341.229638 740.731448 361.535103 753.141082 373.944737zM623.036909 951.717743c-11.110035 0-22.583344-4.448312-32.720216-13.024641l-246.657726-208.682833c-13.453407-11.382235-15.132652-31.515784-3.750417-44.968168 11.382235-13.452383 31.515784-15.132652 44.968168-3.750417l216.285998 182.987614L601.162716 160.03281 407.043576 325.567937c-17.97335 15.326057-48.161906 26.450419-71.78186 26.450419L152.535045 352.018356l0 321.972039 87.490633 0c17.622356 0 31.907711 14.285355 31.907711 31.907711s-14.285355 31.907711-31.907711 31.907711l-90.391706 0c-33.589003 0-60.915371-27.325345-60.915371-60.914348L88.718601 349.117282c0-33.589003 27.326369-60.915371 60.915371-60.915371l185.626721 0c8.382924 0 23.99653-5.753027 30.375821-11.1919L590.295204 85.432765c15.430434-13.155624 33.994232-16.695241 49.662073-9.464559 15.666818 7.230682 25.02086 23.652699 25.02086 43.929512L664.978137 904.063397c0 20.249183-9.340739 36.671201-24.987091 43.928488C634.604362 950.489776 628.870778 951.717743 623.036909 951.717743z"
+                />
+              </svg>
+              Announcements
+              <svg
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                :class="{ 'rotate-180': (selected === 'Announcements') }"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
+                  fill=""
+                />
+              </svg>
+            </a>
+
+            <!-- Dropdown Menu Start -->
+            <div
+              class="translate transform overflow-hidden"
+              :class="(selected === 'Announcements') ? 'block' :'hidden'"
+            >
+              <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
+                <li>
+                  <a
+                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    href="create-announcement.html"
+                    :class="page === 'create-announcement' && '!text-secondary'"
+                    >Create Announcements</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    href="announcement-list.html"
+                    :class="page === 'announcement-list.html' && '!text-secondary'"
+                    >Announcements List</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- Dropdown Menu End -->
+          </li>
+          <li>
+            <a
+              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              href="#"
+              @click.prevent="selected = (selected === 'Faqs' ? '':'Faqs')"
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Faqs') || (page === 'create-faq' || page === 'faq-list') }"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="svg-icon"
+                style="
+                  width: 1em;
+                  height: 1em;
+                  vertical-align: middle;
+                  fill: currentColor;
+                  overflow: hidden;
+                "
+                viewBox="0 0 1024 1024"
+                version="1.1"
+              >
+                <path
+                  d="M512 981.333333C252.8 981.333333 42.666667 771.2 42.666667 512S252.8 42.666667 512 42.666667s469.333333 210.133333 469.333333 469.333333-210.133333 469.333333-469.333333 469.333333z m0-85.333333a384 384 0 1 0 0-768 384 384 0 0 0 0 768z m8.106667-640c48.469333 0 87.978667 12.586667 117.802666 39.253333 29.866667 25.941333 44.757333 61.482667 44.757334 106.666667 0 37.034667-9.685333 67.413333-27.605334 91.093333-6.698667 7.424-28.330667 27.434667-64.085333 58.538667-13.44 11.093333-23.125333 23.68-29.866667 37.034667-3.498667 6.997333-6.4 17.152-8.704 30.421333a21.333333 21.333333 0 0 1-21.034666 17.706667h-46.122667a21.333333 21.333333 0 0 1-21.333333-22.101334c0.768-21.589333 4.906667-38.570667 12.458666-50.944 9.685333-20.010667 41.514667-50.645333 89.984-93.610666l8.96-10.368c13.397333-16.298667 20.096-34.048 20.096-52.565334 0-24.448-7.424-43.733333-20.864-57.813333-14.165333-14.08-34.304-20.736-59.648-20.736-32.810667 0-55.893333 9.642667-70.101333 30.378667-10.709333 14.421333-18.133333 25.045333-18.773333 46.378666a36.437333 36.437333 0 0 1-36.48 35.285334h-5.888a37.376 37.376 0 0 1-37.290667-40.192c0.469333-6.016 0.725333-11.52 0.725333-16.426667 0-21.333333 12.586667-52.906667 42.538667-81.322667C421.717333 271.530667 464.938667 256 520.106667 256z m-9.514667 420.053333c18.005333 0 33.578667 5.845333 45.866667 17.536 11.434667 11.690667 18.005333 26.709333 18.005333 45.098667 0 18.346667-6.570667 34.218667-18.858667 45.909333-12.245333 11.690667-27.008 17.536-45.013333 17.536a63.146667 63.146667 0 0 1-45.013333-18.346666c-12.288-11.690667-18.048-26.752-18.048-45.098667 0-18.346667 5.76-33.408 18.048-45.098667 12.245333-11.690667 27.008-17.493333 45.013333-17.493333z"
+                />
+              </svg>
+              Faqs
+              <svg
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                :class="{ 'rotate-180': (selected === 'Faqs') }"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
+                  fill=""
+                />
+              </svg>
+            </a>
+
+            <!-- Dropdown Menu Start -->
+            <div
+              class="translate transform overflow-hidden"
+              :class="(selected === 'Faqs') ? 'block' :'hidden'"
+            >
+              <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
+                <li>
+                  <a
+                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    href="create-faq.html"
+                    :class="page === 'create-faq' && '!text-secondary'"
+                    >Create Faq</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    href="faq-list.html"
+                    :class="page === 'faq-list.html' && '!text-secondary'"
+                    >Faq List</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- Dropdown Menu End -->
+          </li>
           <!-- Menu Item Users -->
         </ul>
       </div>
