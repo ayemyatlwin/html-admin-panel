@@ -123,7 +123,7 @@
               class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
               @click.prevent="selected = (selected === 'Users' ? '':'Users')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Users') || (page === 'createuser' || page === 'user-list') }"
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Users') || (page === 'createUser' || page === 'user-list') }"
             >
               <svg
                 class="fill-current"
@@ -171,8 +171,8 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
-                    href="createuser.html"
-                    :class="page === 'createuser' && '!text-secondary'"
+                    href="createUser.html"
+                    :class="page === 'createUser' && '!text-secondary'"
                     >Create User</a
                   >
                 </li>
@@ -193,7 +193,7 @@
               class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
               @click.prevent="selected = (selected === 'News' ? '':'News')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'News') || (page === 'create-news' || page === 'news-list') }"
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'News') || (page === 'createNews' || page === 'news-list') }"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -229,8 +229,8 @@
               <svg
                 class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 :class="{ 'rotate-180': (selected === 'News') }"
-                width="1em"
-                height="1em"
+                width="20"
+                height="20"
                 viewBox="0 0 20 20"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -253,8 +253,8 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
-                    href="create-news.html"
-                    :class="page === 'create-news' && '!text-secondary'"
+                    href="createNews.html"
+                    :class="page === 'createNews' && '!text-secondary'"
                     >Create News</a
                   >
                 </li>
@@ -275,7 +275,7 @@
               class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
               @click.prevent="selected = (selected === 'Announcements' ? '':'Announcements')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Announcements') || (page === 'create-announcement' || page === 'announcement-list') }"
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Announcements') || (page === 'createAnnouncement' || page === 'announcement-list') }"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -322,8 +322,8 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
-                    href="create-announcement.html"
-                    :class="page === 'create-announcement' && '!text-secondary'"
+                    href="createAnnouncement.html"
+                    :class="page === 'createAnnouncement' && '!text-secondary'"
                     >Create Announcements</a
                   >
                 </li>
@@ -331,7 +331,7 @@
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="announcement-list.html"
-                    :class="page === 'announcement-list.html' && '!text-secondary'"
+                    :class="page === 'announcement-list' && '!text-secondary'"
                     >Announcements List</a
                   >
                 </li>
@@ -344,7 +344,7 @@
               class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
               @click.prevent="selected = (selected === 'Faqs' ? '':'Faqs')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Faqs') || (page === 'create-faq' || page === 'faq-list') }"
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Faqs') || (page === 'createFaq' || page === 'faq-list') }"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -391,8 +391,8 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
-                    href="create-faq.html"
-                    :class="page === 'create-faq' && '!text-secondary'"
+                    href="createFaq.html"
+                    :class="page === 'createFaq' && '!text-secondary'"
                     >Create Faq</a
                   >
                 </li>
@@ -400,7 +400,7 @@
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="faq-list.html"
-                    :class="page === 'faq-list.html' && '!text-secondary'"
+                    :class="page === 'faq-list' && '!text-secondary'"
                     >Faq List</a
                   >
                 </li>
