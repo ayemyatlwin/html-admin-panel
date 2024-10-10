@@ -1,10 +1,10 @@
 <aside
   :class="sidebarToggle ? 'translate-x-0' : '-translate-x-full'"
-  class="absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-white drop-shadow-lg duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0"
+  class="absolute left-0 top-0 z-9999 flex h-screen w-65 flex-col overflow-y-hidden bg-white drop-shadow-lg duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0"
   @click.outside="sidebarToggle = false"
 >
   <!-- SIDEBAR HEADER -->
-  <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
+  <div class="flex items-center justify-between gap-2 px-4 py-5.5 lg:py-6.5">
     <a href="index.html">
       <img src="./images/logo/logo.png" alt="Logo" />
     </a>
@@ -35,7 +35,7 @@
   >
     <!-- Sidebar Menu -->
     <nav
-      class="mt-5 px-4 py-4 lg:mt-9 lg:px-6"
+      class="mt-5 px-2 py-2 lg:mt-9 lg:px-4"
       x-data="{selected: $persist('Dashboard')}"
     >
       <!-- Menu Group -->
@@ -47,7 +47,7 @@
 
           <li>
             <a
-              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-[#f5f5f5] dark:hover:bg-meta-4"
+              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-[#f5f5f5] dark:hover:bg-meta-4"
               href="#"
               @click.prevent="selected = (selected === 'Dashboard' ? '':'Dashboard')"
               :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Dashboard') || (page === 'ecommerce' || page === 'analytics' || page === 'stocks') }"
@@ -120,7 +120,7 @@
           <!-- Menu Item Users -->
           <li>
             <a
-              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
               @click.prevent="selected = (selected === 'Users' ? '':'Users')"
               :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Users') || (page === 'createUser' || page === 'user-list') }"
@@ -190,7 +190,7 @@
           </li>
           <li>
             <a
-              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
               @click.prevent="selected = (selected === 'News' ? '':'News')"
               :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'News') || (page === 'createNews' || page === 'news-list') }"
@@ -272,7 +272,7 @@
           </li>
           <li>
             <a
-              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
               @click.prevent="selected = (selected === 'Announcements' ? '':'Announcements')"
               :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Announcements') || (page === 'createAnnouncement' || page === 'announcement-list') }"
@@ -341,7 +341,7 @@
           </li>
           <li>
             <a
-              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
               @click.prevent="selected = (selected === 'Faqs' ? '':'Faqs')"
               :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Faqs') || (page === 'createFaq' || page === 'faq-list') }"
