@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Core System Integration| GGI Nippon Life</title>
+  </head>
+
+  <body
+    x-data="{ page: 'core-system-integration', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-init="
+          darkMode = JSON.parse(localStorage.getItem('darkMode'));
+          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
+  >
+    <!-- ===== Preloader Start ===== -->
+    <include src="./partials/preloader.html"></include>
+    <!-- ===== Preloader End ===== -->
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <include src="./partials/sidebar.html"></include>
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div
+        class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
+      >
+        <!-- ===== Header Start ===== -->
+        <include src="./partials/header.html" />
+        <!-- ===== Header End ===== -->
+
+        <!-- ===== Main Content Start ===== -->
+        <main>
+          <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+            <div class="mx-auto max-w-270">
+              <!-- Breadcrumb Start -->
+              <div
+                class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <h2
+                  class="text-title-md2 font-bold text-primary dark:text-white"
+                >
+                  Core System Integration Page
+                </h2>
+              </div>
+              <!-- Breadcrumb End -->
+
+              <!-- ====== Settings Section Start -->
+              <div class="grid">
+                <div class="col-span-5 xl:col-span-3">
+                  <div
+                    class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
+                  >
+                    <div class="p-7">
+                      <form action="#">
+                        <div class="py-4">
+                          <h3
+                            class="text-lg font-bold text-primary dark:text-white"
+                          >
+                            Old Core System
+                          </h3>
+                        </div>
+                        <div class="mb-5.5">
+                          <label
+                            class="mb-2.5 block font-medium text-primary dark:text-white"
+                            for="api-secret-key"
+                            >API Secret Key</label
+                          >
+                          <input
+                            class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            type="text"
+                            name="api-secret-key"
+                            id="api-secret-key"
+                            placeholder="API Secret Key"
+                          />
+                        </div>
+
+                        <div class="mb-5.5">
+                          <label
+                            class="mb-2.5 block font-medium text-primary dark:text-white"
+                            for="api-domain"
+                            >API Domain</label
+                          >
+                          <div class="relative">
+                            <input
+                              class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                              type="text"
+                              name="api-domain"
+                              id="api-domain"
+                              placeholder="Enter API Domain"
+                            />
+                          </div>
+                        </div>
+                        <div class="py-4">
+                          <h3
+                            class="text-lg font-bold text-primary dark:text-white"
+                          >
+                            New Core System
+                          </h3>
+                        </div>
+
+                        <div class="mb-5.5">
+                          <label
+                            class="mb-2.5 block font-medium text-primary dark:text-white"
+                            for="api-secret-key"
+                            >API Secret Key</label
+                          >
+                          <input
+                            class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            type="text"
+                            name="api-secret-key"
+                            id="api-secret-key"
+                            placeholder="API Secret Key"
+                          />
+                        </div>
+
+                        <div class="mb-5.5">
+                          <label
+                            class="mb-2.5 block font-medium text-primary dark:text-white"
+                            for="api-domain"
+                            >API Domain</label
+                          >
+                          <div class="relative">
+                            <input
+                              class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                              type="text"
+                              name="api-domain"
+                              id="api-domain"
+                              placeholder="Enter API Domain"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="flex justify-end gap-4.5">
+                          <!-- <button
+                            class="flex justify-center rounded border border-stroke px-6 py-2 font-medium text-black hover:shadow-1 dark:border-strokedark dark:text-white"
+                            type="submit"
+                          >
+                            Cancel
+                          </button> -->
+                          <button
+                            class="flex justify-center rounded bg-primary px-6 py-2 font-medium text-gray hover:bg-opacity-90"
+                            type="submit"
+                          >
+                            Save
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ====== Settings Section End -->
+            </div>
+          </div>
+        </main>
+        <!-- ===== Main Content End ===== -->
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  </body>
+</html>
