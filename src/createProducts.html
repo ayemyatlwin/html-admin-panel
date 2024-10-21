@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Products | GGI Nippon Life</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      function iconFileUpload(event) {
+        // Handle product icon upload
+        console.log("Icon file selected:", event.target.files[0]);
+      }
+
+      function imageFileUpload(event) {
+        // Handle product image upload preview
+        const imagePreviewContainer = document.getElementById("image-preview");
+        imagePreviewContainer.innerHTML = "";
+
+        const files = event.target.files;
+        console.log("Product Image selected:", files);
+
+        if (files.length > 0) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const imgWrapper = document.createElement("div");
+            imgWrapper.classList.add("preview-image-wrapper");
+
+            const imgElement = document.createElement("img");
+            imgElement.src = e.target.result;
+            imgElement.classList.add("preview-image");
+
+            imgWrapper.appendChild(imgElement);
+            imagePreviewContainer.appendChild(imgWrapper);
+          };
+          reader.readAsDataURL(files[0]);
+        }
+      }
+
+      function brochuresFileUpload(event) {
+        // Handle brochures file upload
+        const files = event.target.files;
+        console.log("Brochures selected:", files);
+      }
+    </script>
+
+    <style>
+      .preview-image-wrapper {
+        position: relative;
+        display: inline-block;
+        margin: 10px;
+      }
+
+      .preview-image {
+        max-width: 150px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .close-button {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        font-size: 18px;
+        line-height: 20px;
+        cursor: pointer;
+      }
+
+      .close-button:hover {
+        background-color: rgba(255, 0, 0, 0.7);
+      }
+    </style>
+  </head>
+
+  <body
+    x-data="{ page: 'createProducts', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-init="
+          darkMode = JSON.parse(localStorage.getItem('darkMode'));
+          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
+  >
+    <!-- ===== Preloader Start ===== -->
+    <include src="./partials/preloader.html"></include>
+    <!-- ===== Preloader End ===== -->
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <include src="./partials/sidebar.html" />
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div
+        class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
+      >
+        <!-- ===== Header Start ===== -->
+        <include src="./partials/header.html" />
+        <!-- ===== Header End ===== -->
+
+        <!-- ===== Main Content Start ===== -->
+        <main>
+          <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+            <!-- ====== Forms Section Start ===== -->
+            <div
+              class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
+            >
+              <div class="flex flex-wrap items-center">
+                <div class="w-full border-stroke dark:border-strokedark">
+                  <div class="w-full p-5 sm:p-9 xl:p-10">
+                    <h2
+                      class="text-2xl font-bold text-primary dark:text-white sm:text-title-xl2"
+                    >
+                      Create Products
+                    </h2>
+                    <div
+                      class="mt-4 mb-6 rounded-lg bg-red-500 p-4 text-sm text-white"
+                    >
+                      <span class="font-bold">Error : </span>
+                      Something is wrong !
+                    </div>
+
+                    <form enctype="multipart/form-data" action="">
+                      <!-- Product Icon -->
+                      <div class="mb-4">
+                        <label
+                          class="mb-2.5 block font-medium text-primary dark:text-white"
+                        >
+                          Product Icon
+                        </label>
+                        <div class="relative">
+                          <input
+                            type="file"
+                            accept="image/*"
+                            required
+                            class="w-full cursor-pointer rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            id="productIcon"
+                            onchange="iconFileUpload(event)"
+                          />
+                        </div>
+                      </div>
+
+                      <!-- Product Image -->
+                      <div class="mb-4">
+                        <label
+                          class="mb-2.5 block font-medium text-primary dark:text-white"
+                        >
+                          Product Image
+                        </label>
+                        <div class="relative">
+                          <input
+                            type="file"
+                            accept="image/*"
+                            required
+                            class="w-full cursor-pointer rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            id="productImage"
+                            onchange="imageFileUpload(event)"
+                          />
+                        </div>
+                      </div>
+
+                      <!-- Title -->
+                      <div class="mb-4 flex flex-1 gap-2">
+                        <div class="flex-[0.5]">
+                          <label
+                            class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >
+                            Title</label
+                          >
+                          <div class="relative">
+                            <input
+                              type="text"
+                              placeholder="Enter the title  "
+                              required
+                              class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            />
+                          </div>
+                        </div>
+                        <div class="flex-[0.5]">
+                          <label
+                            class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >
+                            ခေါင်းစဉ်
+                          </label>
+                          <div class="relative">
+                            <input
+                              type="text"
+                              placeholder="ခေါင်းစဉ်ကိုရိုက်ထည့်ပါ။"
+                              required
+                              class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Description -->
+                      <div class="mb-4 flex flex-1 gap-2">
+                        <div class="flex-[0.5]">
+                          <label
+                            class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >
+                            Description
+                          </label>
+                          <textarea
+                            placeholder="Enter product description"
+                            required
+                            class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                          ></textarea>
+                        </div>
+                        <div class="flex-[0.5]">
+                          <label
+                            class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >
+                            ဖော်ပြချက်
+                          </label>
+                          <div class="relative">
+                            <textarea
+                              placeholder="ထုတ်ကုန်ဖော်ပြချက်ကိုရိုက်ထည့်ပါ"
+                              required
+                              class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            ></textarea>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Feature -->
+                      <div class="mb-4 flex flex-1 gap-2">
+                        <div class="flex-[0.5]">
+                          <label
+                            class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >
+                            Feature
+                          </label>
+                          <textarea
+                            placeholder="Enter product features"
+                            required
+                            class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                          ></textarea>
+                        </div>
+                        <div class="flex-[0.5]">
+                          <label
+                            class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >
+                            ထူးခြားချက်
+                          </label>
+                          <div class="relative">
+                            <textarea
+                              placeholder="ထုတ်ကုန်ထူးခြားချက်ကိုရိုက်ထည့်ပါ"
+                              required
+                              class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            ></textarea>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Benefits -->
+                      <div class="mb-4 flex flex-1 gap-2">
+                        <div class="flex-[0.5]">
+                          <label
+                            class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >
+                            Benefits
+                          </label>
+                          <textarea
+                            placeholder="Enter product benefits"
+                            required
+                            class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                          ></textarea>
+                        </div>
+                        <div class="flex-[0.5]">
+                          <label
+                            class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >
+                            အကျိုးကျေးဇူးများ
+                          </label>
+                          <div class="relative">
+                            <textarea
+                              placeholder="ထုတ်ကုန်အကျိုးကျေးဇူးများကိုရိုက်ထည့်ပါ"
+                              required
+                              class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            ></textarea>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Knowledge -->
+                      <div class="mb-4 flex flex-1 gap-2">
+                        <div class="flex-[0.5]">
+                          <label
+                            class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >
+                            Knowledge
+                          </label>
+                          <textarea
+                            placeholder="Enter product knowledge"
+                            required
+                            class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                          ></textarea>
+                        </div>
+                        <div class="flex-[0.5]">
+                          <label
+                            class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >
+                            ဗဟုသုတများ
+                          </label>
+                          <div class="relative">
+                            <textarea
+                              placeholder="ထုတ်ကုန်ဗဟုသုတများကိုရိုက်ထည့်ပါ"
+                              required
+                              class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            ></textarea>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Brochures Upload -->
+                      <div class="mb-4">
+                        <label
+                          class="mb-2.5 block font-medium text-primary dark:text-white"
+                        >
+                          Upload Brochures
+                        </label>
+                        <div class="relative">
+                          <input
+                            type="file"
+                            accept=".pdf,.doc,.docx"
+                            multiple
+                            required
+                            class="w-full cursor-pointer rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            id="brochuresUpload"
+                            onchange="brochuresFileUpload(event)"
+                          />
+                        </div>
+                        <small
+                          class="mt-2 block text-xs text-gray-500 dark:text-gray-400"
+                        >
+                          Max file size: 5MB per file. Supported formats: PDF,
+                          DOC, DOCX.
+                        </small>
+                      </div>
+
+                      <!-- Image Previews -->
+                      <div id="image-preview" class="flex flex-wrap"></div>
+
+                      <!-- Submit Button -->
+                      <div class="mb-4">
+                        <input
+                          type="submit"
+                          value="Create"
+                          class="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 font-medium text-white transition hover:bg-opacity-90"
+                        />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- ====== Forms Section End ===== -->
+          </div>
+        </main>
+        <!-- ===== Main Content End ===== -->
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  </body>
+</html>
