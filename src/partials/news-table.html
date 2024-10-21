@@ -20,20 +20,32 @@
       >
         <span>
           <svg
-            class="fill-current"
-            width="18"
-            height="18"
-            viewBox="0 0 18 18"
-            fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            class="svg-icon"
+            style="
+              width: 1em;
+              height: 1em;
+              vertical-align: middle;
+              fill: currentColor;
+              overflow: hidden;
+            "
+            viewBox="0 0 1024 1024"
+            version="1.1"
           >
             <path
-              d="M9.0002 7.79065C11.0814 7.79065 12.7689 6.1594 12.7689 4.1344C12.7689 2.1094 11.0814 0.478149 9.0002 0.478149C6.91895 0.478149 5.23145 2.1094 5.23145 4.1344C5.23145 6.1594 6.91895 7.79065 9.0002 7.79065ZM9.0002 1.7719C10.3783 1.7719 11.5033 2.84065 11.5033 4.16252C11.5033 5.4844 10.3783 6.55315 9.0002 6.55315C7.62207 6.55315 6.49707 5.4844 6.49707 4.16252C6.49707 2.84065 7.62207 1.7719 9.0002 1.7719Z"
-              fill=""
+              d="M867.2 160 160 160C105.6 160 64 204.8 64 256l0 512c0 54.4 41.6 96 96 96l707.2 0c54.4 0 96-41.6 96-96L963.2 256C963.2 204.8 921.6 160 867.2 160zM899.2 768c0 19.2-12.8 32-32 32L160 800c-19.2 0-32-12.8-32-32L128 256c0-19.2 12.8-32 32-32l707.2 0c19.2 0 32 12.8 32 32L899.2 768z"
             />
             <path
-              d="M10.8283 9.05627H7.17207C4.16269 9.05627 1.71582 11.5313 1.71582 14.5406V16.875C1.71582 17.2125 1.99707 17.5219 2.3627 17.5219C2.72832 17.5219 3.00957 17.2407 3.00957 16.875V14.5406C3.00957 12.2344 4.89394 10.3219 7.22832 10.3219H10.8564C13.1627 10.3219 15.0752 12.2063 15.0752 14.5406V16.875C15.0752 17.2125 15.3564 17.5219 15.7221 17.5219C16.0877 17.5219 16.3689 17.2407 16.3689 16.875V14.5406C16.2846 11.5313 13.8377 9.05627 10.8283 9.05627Z"
-              fill=""
+              d="M227.2 544 416 544c19.2 0 32-12.8 32-32l0-188.8c0-19.2-12.8-32-32-32L227.2 291.2c-19.2 0-32 12.8-32 32L195.2 512C195.2 531.2 208 544 227.2 544zM259.2 355.2 384 355.2 384 480 259.2 480 259.2 355.2z"
+            />
+            <path
+              d="M800 288l-256 0c-19.2 0-32 12.8-32 32s12.8 32 32 32l256 0c19.2 0 32-12.8 32-32S819.2 288 800 288z"
+            />
+            <path
+              d="M672 480c19.2 0 32-12.8 32-32s-12.8-32-32-32l-128 0c-19.2 0-32 12.8-32 32s12.8 32 32 32L672 480z"
+            />
+            <path
+              d="M800 672 224 672c-19.2 0-32 12.8-32 32s12.8 32 32 32l576 0c19.2 0 32-12.8 32-32S819.2 672 800 672z"
             />
           </svg>
         </span>
@@ -44,23 +56,19 @@
       <thead>
         <tr class="bg-gray-2 text-left dark:bg-meta-4">
           <th
-            class="min-w-[100px] px-4 py-4 font-medium text-black dark:text-white xl:pl-11"
+            class="w-[2%] px-2 py-4 font-medium text-black dark:text-white xl:pl-11"
           >
             No.
           </th>
           <th
-            class="min-w-[220px] px-4 py-4 font-medium text-black dark:text-white xl:pl-11"
+            class="w-[33%] px-4 py-4 font-medium text-black dark:text-white xl:pl-11"
           >
             Image
           </th>
-          <th
-            class="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white"
-          >
+          <th class="w-[30%] px-4 py-4 font-medium text-black dark:text-white">
             Title
           </th>
-          <th
-            class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white"
-          >
+          <th class="w-[30%] px-4 py-4 font-medium text-black dark:text-white">
             Content
           </th>
           <th class="px-4 py-4 font-medium text-black dark:text-white">
@@ -71,14 +79,1994 @@
       <tbody>
         <tr>
           <td
-            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+            class="border-b border-[#eee] px-2 py-5 pl-9 dark:border-strokedark xl:pl-11"
           >
             <h5 class="font-medium text-black dark:text-white">1</h5>
           </td>
           <td
             class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
           >
-            <h5 class="font-medium text-black dark:text-white">Image</h5>
+            <div class="h-15 w-25">
+              <img
+                src="./images/cards/cards-02.png"
+                alt="User"
+                class="h-auto w-full object-cover"
+              />
+            </div>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">September News</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Rising Rates</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <div class="flex items-center space-x-3.5">
+              <button class="hover:text-primary" title="edit">
+                <a href="editNews.html">
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 12.5v3h3l8.74-8.74-3-3L2 12.5Zm13.71-8.79a1 1 0 0 0 0-1.42l-1.5-1.5a1 1 0 0 0-1.42 0l-1.71 1.71 3 3 1.63-1.63Z"
+                      fill=""
+                    />
+                  </svg>
+                </a>
+              </button>
+              <div class="mt-2" x-data="{ open: false }">
+                <button
+                  @click="open = true"
+                  class="hover:text-primary"
+                  title="trash"
+                  type="button"
+                >
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2V1h6v1h4v2H2V2h4Zm2 10v-5h2v5H8Zm6-9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3h10Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+                <!-- Modal -->
+                <div
+                  x-show="open"
+                  x-cloak
+                  class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+                >
+                  <div class="relative max-h-full w-full max-w-md p-4">
+                    <div
+                      class="relative rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <!-- Close Modal Button -->
+                      <button
+                        @click="open = false"
+                        type="button"
+                        class="ms-auto absolute top-3 right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <svg
+                          class="h-3 w-3"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 14 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                          />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                      </button>
+
+                      <!-- Modal Content -->
+                      <div class="p-4 text-center md:p-5">
+                        <svg
+                          class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        <h3
+                          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+                        >
+                          Are you sure want to delete this news?
+                        </h3>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="inline-flex items-center rounded-lg bg-primaryRed px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-b border-[#eee] px-2 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <h5 class="font-medium text-black dark:text-white">2</h5>
+          </td>
+          <td
+            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <div class="h-15 w-25">
+              <img
+                src="./images/cards/cards-01.png"
+                alt="User"
+                class="h-auto w-full object-cover"
+              />
+            </div>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">October News</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Rising Rates</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <div class="flex items-center space-x-3.5">
+              <button class="hover:text-primary" title="edit">
+                <a href="editNews.html">
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 12.5v3h3l8.74-8.74-3-3L2 12.5Zm13.71-8.79a1 1 0 0 0 0-1.42l-1.5-1.5a1 1 0 0 0-1.42 0l-1.71 1.71 3 3 1.63-1.63Z"
+                      fill=""
+                    />
+                  </svg>
+                </a>
+              </button>
+              <div class="mt-2" x-data="{ open: false }">
+                <button
+                  @click="open = true"
+                  class="hover:text-primary"
+                  title="trash"
+                  type="button"
+                >
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2V1h6v1h4v2H2V2h4Zm2 10v-5h2v5H8Zm6-9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3h10Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+                <!-- Modal -->
+                <div
+                  x-show="open"
+                  x-cloak
+                  class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+                >
+                  <div class="relative max-h-full w-full max-w-md p-4">
+                    <div
+                      class="relative rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <!-- Close Modal Button -->
+                      <button
+                        @click="open = false"
+                        type="button"
+                        class="ms-auto absolute top-3 right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <svg
+                          class="h-3 w-3"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 14 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                          />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                      </button>
+
+                      <!-- Modal Content -->
+                      <div class="p-4 text-center md:p-5">
+                        <svg
+                          class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        <h3
+                          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+                        >
+                          Are you sure want to delete this news?
+                        </h3>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="inline-flex items-center rounded-lg bg-primaryRed px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-b border-[#eee] px-2 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <h5 class="font-medium text-black dark:text-white">3</h5>
+          </td>
+          <td
+            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <div class="h-15 w-25">
+              <img
+                src="./images/cards/cards-03.png"
+                alt="User"
+                class="h-auto w-full object-cover"
+              />
+            </div>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">December News</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Rising Rates</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <div class="flex items-center space-x-3.5">
+              <button class="hover:text-primary" title="edit">
+                <a href="editNews.html">
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 12.5v3h3l8.74-8.74-3-3L2 12.5Zm13.71-8.79a1 1 0 0 0 0-1.42l-1.5-1.5a1 1 0 0 0-1.42 0l-1.71 1.71 3 3 1.63-1.63Z"
+                      fill=""
+                    />
+                  </svg>
+                </a>
+              </button>
+              <div class="mt-2" x-data="{ open: false }">
+                <button
+                  @click="open = true"
+                  class="hover:text-primary"
+                  title="trash"
+                  type="button"
+                >
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2V1h6v1h4v2H2V2h4Zm2 10v-5h2v5H8Zm6-9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3h10Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+                <!-- Modal -->
+                <div
+                  x-show="open"
+                  x-cloak
+                  class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+                >
+                  <div class="relative max-h-full w-full max-w-md p-4">
+                    <div
+                      class="relative rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <!-- Close Modal Button -->
+                      <button
+                        @click="open = false"
+                        type="button"
+                        class="ms-auto absolute top-3 right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <svg
+                          class="h-3 w-3"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 14 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                          />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                      </button>
+
+                      <!-- Modal Content -->
+                      <div class="p-4 text-center md:p-5">
+                        <svg
+                          class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        <h3
+                          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+                        >
+                          Are you sure want to delete this news?
+                        </h3>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="inline-flex items-center rounded-lg bg-primaryRed px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-b border-[#eee] px-2 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <h5 class="font-medium text-black dark:text-white">4</h5>
+          </td>
+          <td
+            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <div class="h-15 w-25">
+              <img
+                src="./images/cards/cards-04.png"
+                alt="User"
+                class="h-auto w-full object-cover"
+              />
+            </div>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Latest News</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Exploring Rates</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <div class="flex items-center space-x-3.5">
+              <button class="hover:text-primary" title="edit">
+                <a href="editNews.html">
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 12.5v3h3l8.74-8.74-3-3L2 12.5Zm13.71-8.79a1 1 0 0 0 0-1.42l-1.5-1.5a1 1 0 0 0-1.42 0l-1.71 1.71 3 3 1.63-1.63Z"
+                      fill=""
+                    />
+                  </svg>
+                </a>
+              </button>
+              <div class="mt-2" x-data="{ open: false }">
+                <button
+                  @click="open = true"
+                  class="hover:text-primary"
+                  title="trash"
+                  type="button"
+                >
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2V1h6v1h4v2H2V2h4Zm2 10v-5h2v5H8Zm6-9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3h10Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+                <!-- Modal -->
+                <div
+                  x-show="open"
+                  x-cloak
+                  class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+                >
+                  <div class="relative max-h-full w-full max-w-md p-4">
+                    <div
+                      class="relative rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <!-- Close Modal Button -->
+                      <button
+                        @click="open = false"
+                        type="button"
+                        class="ms-auto absolute top-3 right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <svg
+                          class="h-3 w-3"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 14 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                          />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                      </button>
+
+                      <!-- Modal Content -->
+                      <div class="p-4 text-center md:p-5">
+                        <svg
+                          class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        <h3
+                          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+                        >
+                          Are you sure want to delete this news?
+                        </h3>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="inline-flex items-center rounded-lg bg-primaryRed px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-b border-[#eee] px-2 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <h5 class="font-medium text-black dark:text-white">5</h5>
+          </td>
+          <td
+            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <div class="h-15 w-25">
+              <img
+                src="./images/cards/cards-05.png"
+                alt="User"
+                class="h-auto w-full object-cover"
+              />
+            </div>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Update News</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Pending Rates</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <div class="flex items-center space-x-3.5">
+              <button class="hover:text-primary" title="edit">
+                <a href="editNews.html">
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 12.5v3h3l8.74-8.74-3-3L2 12.5Zm13.71-8.79a1 1 0 0 0 0-1.42l-1.5-1.5a1 1 0 0 0-1.42 0l-1.71 1.71 3 3 1.63-1.63Z"
+                      fill=""
+                    />
+                  </svg>
+                </a>
+              </button>
+              <div class="mt-2" x-data="{ open: false }">
+                <button
+                  @click="open = true"
+                  class="hover:text-primary"
+                  title="trash"
+                  type="button"
+                >
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2V1h6v1h4v2H2V2h4Zm2 10v-5h2v5H8Zm6-9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3h10Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+                <!-- Modal -->
+                <div
+                  x-show="open"
+                  x-cloak
+                  class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+                >
+                  <div class="relative max-h-full w-full max-w-md p-4">
+                    <div
+                      class="relative rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <!-- Close Modal Button -->
+                      <button
+                        @click="open = false"
+                        type="button"
+                        class="ms-auto absolute top-3 right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <svg
+                          class="h-3 w-3"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 14 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                          />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                      </button>
+
+                      <!-- Modal Content -->
+                      <div class="p-4 text-center md:p-5">
+                        <svg
+                          class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        <h3
+                          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+                        >
+                          Are you sure want to delete this news?
+                        </h3>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="inline-flex items-center rounded-lg bg-primaryRed px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-b border-[#eee] px-2 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <h5 class="font-medium text-black dark:text-white">6</h5>
+          </td>
+          <td
+            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <div class="h-15 w-25">
+              <img
+                src="./images/cards/cards-01.png"
+                alt="User"
+                class="h-auto w-full object-cover"
+              />
+            </div>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">General News</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Normal Rates</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <div class="flex items-center space-x-3.5">
+              <button class="hover:text-primary" title="edit">
+                <a href="editNews.html">
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 12.5v3h3l8.74-8.74-3-3L2 12.5Zm13.71-8.79a1 1 0 0 0 0-1.42l-1.5-1.5a1 1 0 0 0-1.42 0l-1.71 1.71 3 3 1.63-1.63Z"
+                      fill=""
+                    />
+                  </svg>
+                </a>
+              </button>
+              <div class="mt-2" x-data="{ open: false }">
+                <button
+                  @click="open = true"
+                  class="hover:text-primary"
+                  title="trash"
+                  type="button"
+                >
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2V1h6v1h4v2H2V2h4Zm2 10v-5h2v5H8Zm6-9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3h10Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+                <!-- Modal -->
+                <div
+                  x-show="open"
+                  x-cloak
+                  class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+                >
+                  <div class="relative max-h-full w-full max-w-md p-4">
+                    <div
+                      class="relative rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <!-- Close Modal Button -->
+                      <button
+                        @click="open = false"
+                        type="button"
+                        class="ms-auto absolute top-3 right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <svg
+                          class="h-3 w-3"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 14 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                          />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                      </button>
+
+                      <!-- Modal Content -->
+                      <div class="p-4 text-center md:p-5">
+                        <svg
+                          class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        <h3
+                          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+                        >
+                          Are you sure want to delete this news?
+                        </h3>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="inline-flex items-center rounded-lg bg-primaryRed px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-b border-[#eee] px-2 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <h5 class="font-medium text-black dark:text-white">7</h5>
+          </td>
+          <td
+            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <div class="h-15 w-25">
+              <img
+                src="./images/cards/cards-02.png"
+                alt="User"
+                class="h-auto w-full object-cover"
+              />
+            </div>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">September News</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Rising Rates</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <div class="flex items-center space-x-3.5">
+              <button class="hover:text-primary" title="edit">
+                <a href="editNews.html">
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 12.5v3h3l8.74-8.74-3-3L2 12.5Zm13.71-8.79a1 1 0 0 0 0-1.42l-1.5-1.5a1 1 0 0 0-1.42 0l-1.71 1.71 3 3 1.63-1.63Z"
+                      fill=""
+                    />
+                  </svg>
+                </a>
+              </button>
+              <div class="mt-2" x-data="{ open: false }">
+                <button
+                  @click="open = true"
+                  class="hover:text-primary"
+                  title="trash"
+                  type="button"
+                >
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2V1h6v1h4v2H2V2h4Zm2 10v-5h2v5H8Zm6-9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3h10Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+                <!-- Modal -->
+                <div
+                  x-show="open"
+                  x-cloak
+                  class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+                >
+                  <div class="relative max-h-full w-full max-w-md p-4">
+                    <div
+                      class="relative rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <!-- Close Modal Button -->
+                      <button
+                        @click="open = false"
+                        type="button"
+                        class="ms-auto absolute top-3 right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <svg
+                          class="h-3 w-3"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 14 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                          />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                      </button>
+
+                      <!-- Modal Content -->
+                      <div class="p-4 text-center md:p-5">
+                        <svg
+                          class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        <h3
+                          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+                        >
+                          Are you sure want to delete this news?
+                        </h3>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="inline-flex items-center rounded-lg bg-primaryRed px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-b border-[#eee] px-2 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <h5 class="font-medium text-black dark:text-white">8</h5>
+          </td>
+          <td
+            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <div class="h-15 w-25">
+              <img
+                src="./images/cards/cards-03.png"
+                alt="User"
+                class="h-auto w-full object-cover"
+              />
+            </div>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">September News</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Rising Rates</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <div class="flex items-center space-x-3.5">
+              <button class="hover:text-primary" title="edit">
+                <a href="editNews.html">
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 12.5v3h3l8.74-8.74-3-3L2 12.5Zm13.71-8.79a1 1 0 0 0 0-1.42l-1.5-1.5a1 1 0 0 0-1.42 0l-1.71 1.71 3 3 1.63-1.63Z"
+                      fill=""
+                    />
+                  </svg>
+                </a>
+              </button>
+              <div class="mt-2" x-data="{ open: false }">
+                <button
+                  @click="open = true"
+                  class="hover:text-primary"
+                  title="trash"
+                  type="button"
+                >
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2V1h6v1h4v2H2V2h4Zm2 10v-5h2v5H8Zm6-9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3h10Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+                <!-- Modal -->
+                <div
+                  x-show="open"
+                  x-cloak
+                  class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+                >
+                  <div class="relative max-h-full w-full max-w-md p-4">
+                    <div
+                      class="relative rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <!-- Close Modal Button -->
+                      <button
+                        @click="open = false"
+                        type="button"
+                        class="ms-auto absolute top-3 right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <svg
+                          class="h-3 w-3"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 14 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                          />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                      </button>
+
+                      <!-- Modal Content -->
+                      <div class="p-4 text-center md:p-5">
+                        <svg
+                          class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        <h3
+                          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+                        >
+                          Are you sure want to delete this news?
+                        </h3>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="inline-flex items-center rounded-lg bg-primaryRed px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-b border-[#eee] px-2 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <h5 class="font-medium text-black dark:text-white">9</h5>
+          </td>
+          <td
+            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <div class="h-15 w-25">
+              <img
+                src="./images/cards/cards-04.png"
+                alt="User"
+                class="h-auto w-full object-cover"
+              />
+            </div>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">September News</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Rising Rates</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <div class="flex items-center space-x-3.5">
+              <button class="hover:text-primary" title="edit">
+                <a href="editNews.html">
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 12.5v3h3l8.74-8.74-3-3L2 12.5Zm13.71-8.79a1 1 0 0 0 0-1.42l-1.5-1.5a1 1 0 0 0-1.42 0l-1.71 1.71 3 3 1.63-1.63Z"
+                      fill=""
+                    />
+                  </svg>
+                </a>
+              </button>
+              <div class="mt-2" x-data="{ open: false }">
+                <button
+                  @click="open = true"
+                  class="hover:text-primary"
+                  title="trash"
+                  type="button"
+                >
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2V1h6v1h4v2H2V2h4Zm2 10v-5h2v5H8Zm6-9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3h10Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+                <!-- Modal -->
+                <div
+                  x-show="open"
+                  x-cloak
+                  class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+                >
+                  <div class="relative max-h-full w-full max-w-md p-4">
+                    <div
+                      class="relative rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <!-- Close Modal Button -->
+                      <button
+                        @click="open = false"
+                        type="button"
+                        class="ms-auto absolute top-3 right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <svg
+                          class="h-3 w-3"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 14 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                          />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                      </button>
+
+                      <!-- Modal Content -->
+                      <div class="p-4 text-center md:p-5">
+                        <svg
+                          class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        <h3
+                          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+                        >
+                          Are you sure want to delete this news?
+                        </h3>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="inline-flex items-center rounded-lg bg-primaryRed px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-b border-[#eee] px-2 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <h5 class="font-medium text-black dark:text-white">10</h5>
+          </td>
+          <td
+            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <div class="h-15 w-25">
+              <img
+                src="./images/cards/cards-05.png"
+                alt="User"
+                class="h-auto w-full object-cover"
+              />
+            </div>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">September News</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Rising Rates</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <div class="flex items-center space-x-3.5">
+              <button class="hover:text-primary" title="edit">
+                <a href="editNews.html">
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 12.5v3h3l8.74-8.74-3-3L2 12.5Zm13.71-8.79a1 1 0 0 0 0-1.42l-1.5-1.5a1 1 0 0 0-1.42 0l-1.71 1.71 3 3 1.63-1.63Z"
+                      fill=""
+                    />
+                  </svg>
+                </a>
+              </button>
+              <div class="mt-2" x-data="{ open: false }">
+                <button
+                  @click="open = true"
+                  class="hover:text-primary"
+                  title="trash"
+                  type="button"
+                >
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2V1h6v1h4v2H2V2h4Zm2 10v-5h2v5H8Zm6-9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3h10Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+                <!-- Modal -->
+                <div
+                  x-show="open"
+                  x-cloak
+                  class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+                >
+                  <div class="relative max-h-full w-full max-w-md p-4">
+                    <div
+                      class="relative rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <!-- Close Modal Button -->
+                      <button
+                        @click="open = false"
+                        type="button"
+                        class="ms-auto absolute top-3 right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <svg
+                          class="h-3 w-3"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 14 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                          />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                      </button>
+
+                      <!-- Modal Content -->
+                      <div class="p-4 text-center md:p-5">
+                        <svg
+                          class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        <h3
+                          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+                        >
+                          Are you sure want to delete this news?
+                        </h3>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="inline-flex items-center rounded-lg bg-primaryRed px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-b border-[#eee] px-2 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <h5 class="font-medium text-black dark:text-white">11</h5>
+          </td>
+          <td
+            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <div class="h-15 w-25">
+              <img
+                src="./images/cards/cards-01.png"
+                alt="User"
+                class="h-auto w-full object-cover"
+              />
+            </div>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">September News</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Rising Rates</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <div class="flex items-center space-x-3.5">
+              <button class="hover:text-primary" title="edit">
+                <a href="editNews.html">
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 12.5v3h3l8.74-8.74-3-3L2 12.5Zm13.71-8.79a1 1 0 0 0 0-1.42l-1.5-1.5a1 1 0 0 0-1.42 0l-1.71 1.71 3 3 1.63-1.63Z"
+                      fill=""
+                    />
+                  </svg>
+                </a>
+              </button>
+              <div class="mt-2" x-data="{ open: false }">
+                <button
+                  @click="open = true"
+                  class="hover:text-primary"
+                  title="trash"
+                  type="button"
+                >
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2V1h6v1h4v2H2V2h4Zm2 10v-5h2v5H8Zm6-9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3h10Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+                <!-- Modal -->
+                <div
+                  x-show="open"
+                  x-cloak
+                  class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+                >
+                  <div class="relative max-h-full w-full max-w-md p-4">
+                    <div
+                      class="relative rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <!-- Close Modal Button -->
+                      <button
+                        @click="open = false"
+                        type="button"
+                        class="ms-auto absolute top-3 right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <svg
+                          class="h-3 w-3"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 14 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                          />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                      </button>
+
+                      <!-- Modal Content -->
+                      <div class="p-4 text-center md:p-5">
+                        <svg
+                          class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        <h3
+                          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+                        >
+                          Are you sure want to delete this news?
+                        </h3>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="inline-flex items-center rounded-lg bg-primaryRed px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-b border-[#eee] px-2 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <h5 class="font-medium text-black dark:text-white">12</h5>
+          </td>
+          <td
+            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <div class="h-15 w-25">
+              <img
+                src="./images/cards/cards-01.png"
+                alt="User"
+                class="h-auto w-full object-cover"
+              />
+            </div>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">September News</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Rising Rates</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <div class="flex items-center space-x-3.5">
+              <button class="hover:text-primary" title="edit">
+                <a href="editNews.html">
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 12.5v3h3l8.74-8.74-3-3L2 12.5Zm13.71-8.79a1 1 0 0 0 0-1.42l-1.5-1.5a1 1 0 0 0-1.42 0l-1.71 1.71 3 3 1.63-1.63Z"
+                      fill=""
+                    />
+                  </svg>
+                </a>
+              </button>
+              <div class="mt-2" x-data="{ open: false }">
+                <button
+                  @click="open = true"
+                  class="hover:text-primary"
+                  title="trash"
+                  type="button"
+                >
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2V1h6v1h4v2H2V2h4Zm2 10v-5h2v5H8Zm6-9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3h10Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+                <!-- Modal -->
+                <div
+                  x-show="open"
+                  x-cloak
+                  class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+                >
+                  <div class="relative max-h-full w-full max-w-md p-4">
+                    <div
+                      class="relative rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <!-- Close Modal Button -->
+                      <button
+                        @click="open = false"
+                        type="button"
+                        class="ms-auto absolute top-3 right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <svg
+                          class="h-3 w-3"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 14 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                          />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                      </button>
+
+                      <!-- Modal Content -->
+                      <div class="p-4 text-center md:p-5">
+                        <svg
+                          class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        <h3
+                          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+                        >
+                          Are you sure want to delete this news?
+                        </h3>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="inline-flex items-center rounded-lg bg-primaryRed px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-b border-[#eee] px-2 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <h5 class="font-medium text-black dark:text-white">13</h5>
+          </td>
+          <td
+            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <div class="h-15 w-25">
+              <img
+                src="./images/cards/cards-01.png"
+                alt="User"
+                class="h-auto w-full object-cover"
+              />
+            </div>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">September News</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Rising Rates</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <div class="flex items-center space-x-3.5">
+              <button class="hover:text-primary" title="edit">
+                <a href="editNews.html">
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 12.5v3h3l8.74-8.74-3-3L2 12.5Zm13.71-8.79a1 1 0 0 0 0-1.42l-1.5-1.5a1 1 0 0 0-1.42 0l-1.71 1.71 3 3 1.63-1.63Z"
+                      fill=""
+                    />
+                  </svg>
+                </a>
+              </button>
+              <div class="mt-2" x-data="{ open: false }">
+                <button
+                  @click="open = true"
+                  class="hover:text-primary"
+                  title="trash"
+                  type="button"
+                >
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2V1h6v1h4v2H2V2h4Zm2 10v-5h2v5H8Zm6-9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3h10Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+                <!-- Modal -->
+                <div
+                  x-show="open"
+                  x-cloak
+                  class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+                >
+                  <div class="relative max-h-full w-full max-w-md p-4">
+                    <div
+                      class="relative rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <!-- Close Modal Button -->
+                      <button
+                        @click="open = false"
+                        type="button"
+                        class="ms-auto absolute top-3 right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <svg
+                          class="h-3 w-3"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 14 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                          />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                      </button>
+
+                      <!-- Modal Content -->
+                      <div class="p-4 text-center md:p-5">
+                        <svg
+                          class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        <h3
+                          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+                        >
+                          Are you sure want to delete this news?
+                        </h3>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="inline-flex items-center rounded-lg bg-primaryRed px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-b border-[#eee] px-2 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <h5 class="font-medium text-black dark:text-white">14</h5>
+          </td>
+          <td
+            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <div class="h-15 w-25">
+              <img
+                src="./images/cards/cards-01.png"
+                alt="User"
+                class="h-auto w-full object-cover"
+              />
+            </div>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">September News</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Rising Rates</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <div class="flex items-center space-x-3.5">
+              <button class="hover:text-primary" title="edit">
+                <a href="editNews.html">
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 12.5v3h3l8.74-8.74-3-3L2 12.5Zm13.71-8.79a1 1 0 0 0 0-1.42l-1.5-1.5a1 1 0 0 0-1.42 0l-1.71 1.71 3 3 1.63-1.63Z"
+                      fill=""
+                    />
+                  </svg>
+                </a>
+              </button>
+              <div class="mt-2" x-data="{ open: false }">
+                <button
+                  @click="open = true"
+                  class="hover:text-primary"
+                  title="trash"
+                  type="button"
+                >
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2V1h6v1h4v2H2V2h4Zm2 10v-5h2v5H8Zm6-9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3h10Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+                <!-- Modal -->
+                <div
+                  x-show="open"
+                  x-cloak
+                  class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+                >
+                  <div class="relative max-h-full w-full max-w-md p-4">
+                    <div
+                      class="relative rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <!-- Close Modal Button -->
+                      <button
+                        @click="open = false"
+                        type="button"
+                        class="ms-auto absolute top-3 right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <svg
+                          class="h-3 w-3"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 14 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                          />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                      </button>
+
+                      <!-- Modal Content -->
+                      <div class="p-4 text-center md:p-5">
+                        <svg
+                          class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        <h3
+                          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+                        >
+                          Are you sure want to delete this news?
+                        </h3>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="inline-flex items-center rounded-lg bg-primaryRed px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-b border-[#eee] px-2 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <h5 class="font-medium text-black dark:text-white">15</h5>
+          </td>
+          <td
+            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <div class="h-15 w-25">
+              <img
+                src="./images/cards/cards-01.png"
+                alt="User"
+                class="h-auto w-full object-cover"
+              />
+            </div>
           </td>
           <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
             <p class="text-black dark:text-white">September News</p>
@@ -210,7 +2198,7 @@
       <div>
         <span class="text-sm text-gray-700 dark:text-white">
           Showing <span class="font-medium">1</span> to
-          <span class="font-medium">10</span> of
+          <span class="font-medium">15</span> of
           <span class="font-medium">50</span> results
         </span>
       </div>
