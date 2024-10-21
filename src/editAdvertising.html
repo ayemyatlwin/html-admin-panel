@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Advertising | GGI Nippon Life</title>
+    <!-- Include TinyMCE from CDN -->
+    <script
+      src="https://cdn.tiny.cloud/1/kk5aiq1hor5m8vlvgokqunl5lmkf9q1lh5yxkc9025ysv6u2/tinymce/6/tinymce.min.js"
+      referrerpolicy="origin"
+    ></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript">
+      function featureFileUpload(event) {
+        const featurePreviewContainer =
+          document.getElementById("feature-preview");
+        featurePreviewContainer.innerHTML = "";
+
+        const files = event.target.files;
+        console.log("Files selected:", files);
+
+        if (files.length > 0) {
+          const formData = new FormData();
+
+          Array.from(files).forEach((file, index) => {
+            console.log(`Processing file #${index + 1}:`, file);
+            const reader = new FileReader();
+            formData.append("files", file);
+            reader.onload = function (e) {
+              console.log(`File #${index + 1} preview generated`);
+
+              const imgWrapper = document.createElement("div");
+              imgWrapper.classList.add("preview-image-wrapper");
+
+              const imgElement = document.createElement("img");
+              imgElement.src = e.target.result;
+              imgElement.classList.add("preview-image");
+
+              const closeButton = document.createElement("button");
+              closeButton.innerHTML = "&times;";
+              closeButton.classList.add("close-button");
+              closeButton.onclick = function () {
+                imgWrapper.remove();
+                console.log(`File #${index + 1} removed from preview`);
+              };
+
+              imgWrapper.appendChild(imgElement);
+              imgWrapper.appendChild(closeButton);
+
+              featurePreviewContainer.appendChild(imgWrapper);
+            };
+            reader.readAsDataURL(file);
+          });
+          uploadFiles(formData);
+        }
+      }
+
+      // Ajax upload function
+      function uploadFiles(formData) {
+        console.log("Starting file upload...", formData);
+        $.ajax({
+          url: "api/uploadfiles", //backend url
+          data: formData,
+          processData: false,
+          contentType: false,
+          type: "POST",
+          success: function (data) {
+            console.log("File upload success:", data);
+            $("#uploadedFileName").val(data.fileName);
+            alert("Files Uploaded! " + data.fileName);
+          },
+          error: function (xhr, status, error) {
+            console.error("File upload failed:", error);
+            alert("File upload failed.");
+          },
+        });
+      }
+    </script>
+
+    <style>
+      .preview-image-wrapper {
+        position: relative;
+        display: inline-block;
+        margin: 10px;
+      }
+
+      .preview-image {
+        max-width: 150px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .close-button {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        font-size: 18px;
+        line-height: 20px;
+        cursor: pointer;
+      }
+
+      .close-button:hover {
+        background-color: rgba(255, 0, 0, 0.7);
+      }
+    </style>
+  </head>
+
+  <body
+    x-data="{ page: 'createAdvertising', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-init="
+          darkMode = JSON.parse(localStorage.getItem('darkMode'));
+          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
+  >
+    <!-- ===== Preloader Start ===== -->
+    <include src="./partials/preloader.html"></include>
+    <!-- ===== Preloader End ===== -->
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <include src="./partials/sidebar.html" />
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div
+        class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
+      >
+        <!-- ===== Header Start ===== -->
+        <include src="./partials/header.html" />
+        <!-- ===== Header End ===== -->
+
+        <!-- ===== Main Content Start ===== -->
+        <main>
+          <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+            <!-- ====== Forms Section Start ===== -->
+            <div
+              class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
+            >
+              <div class="flex flex-wrap items-center">
+                <div class="w-full border-stroke dark:border-strokedark">
+                  <div class="w-full p-5 sm:p-9 xl:p-10">
+                    <h2
+                      class="text-2xl font-bold text-primary dark:text-white sm:text-title-xl2"
+                    >
+                      Edit Advertising
+                    </h2>
+                    <div
+                      class="mt-4 mb-6 rounded-lg bg-red-500 p-4 text-sm text-white"
+                    >
+                      <span class="font-bold">Error : </span>
+                      Something is wrong !
+                    </div>
+
+                    <form enctype="multipart/form-data">
+                      <!--  Title -->
+                      <div class="mb-4">
+                        <label
+                          class="mb-2.5 block font-medium text-primary dark:text-white"
+                        >
+                          Position Code</label
+                        >
+                        <div class="relative">
+                          <input
+                            type="text"
+                            placeholder="Enter the title "
+                            required
+                            class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                          />
+                        </div>
+                      </div>
+
+                      <!-- Upload Post Feature Image -->
+                      <div class="mb-4">
+                        <label
+                          class="mb-2.5 block font-medium text-primary dark:text-white"
+                        >
+                          Image
+                        </label>
+                        <div class="relative">
+                          <input
+                            type="file"
+                            accept="image/*"
+                            required
+                            class="w-full cursor-pointer rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            id="fileUpload"
+                            onchange="featureFileUpload(event)"
+                          />
+                          <input
+                            type="hidden"
+                            id="uploadedFileName"
+                            name="uploadedFileName"
+                          />
+                        </div>
+                        <small
+                          class="mt-2 block text-xs text-gray-500 dark:text-gray-400"
+                        >
+                          Max file size: 2MB. Multiple images not allowed.
+                          Recommended size: 1200x628px.
+                        </small>
+                      </div>
+
+                      <!-- Image Preview -->
+                      <div id="feature-preview" class="flex flex-wrap"></div>
+
+                      <div class="mb-4">
+                        <label
+                          class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >Start Date</label
+                        >
+                        <div class="relative">
+                          <input
+                            class="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            placeholder="mm/dd/yyyy"
+                            data-class="flatpickr-right"
+                          />
+
+                          <div
+                            class="pointer-events-none absolute inset-0 left-auto right-5 flex items-center"
+                          >
+                            <svg
+                              width="18"
+                              height="18"
+                              viewBox="0 0 18 18"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M15.7504 2.9812H14.2879V2.36245C14.2879 2.02495 14.0066 1.71558 13.641 1.71558C13.2754 1.71558 12.9941 1.99683 12.9941 2.36245V2.9812H4.97852V2.36245C4.97852 2.02495 4.69727 1.71558 4.33164 1.71558C3.96602 1.71558 3.68477 1.99683 3.68477 2.36245V2.9812H2.25039C1.29414 2.9812 0.478516 3.7687 0.478516 4.75308V14.5406C0.478516 15.4968 1.26602 16.3125 2.25039 16.3125H15.7504C16.7066 16.3125 17.5223 15.525 17.5223 14.5406V4.72495C17.5223 3.7687 16.7066 2.9812 15.7504 2.9812ZM1.77227 8.21245H4.16289V10.9968H1.77227V8.21245ZM5.42852 8.21245H8.38164V10.9968H5.42852V8.21245ZM8.38164 12.2625V15.0187H5.42852V12.2625H8.38164V12.2625ZM9.64727 12.2625H12.6004V15.0187H9.64727V12.2625ZM9.64727 10.9968V8.21245H12.6004V10.9968H9.64727ZM13.8379 8.21245H16.2285V10.9968H13.8379V8.21245ZM2.25039 4.24683H3.71289V4.83745C3.71289 5.17495 3.99414 5.48433 4.35977 5.48433C4.72539 5.48433 5.00664 5.20308 5.00664 4.83745V4.24683H13.0504V4.83745C13.0504 5.17495 13.3316 5.48433 13.6973 5.48433C14.0629 5.48433 14.3441 5.20308 14.3441 4.83745V4.24683H15.7504C16.0316 4.24683 16.2566 4.47183 16.2566 4.75308V6.94683H1.77227V4.75308C1.77227 4.47183 1.96914 4.24683 2.25039 4.24683ZM1.77227 14.5125V12.2343H4.16289V14.9906H2.25039C1.96914 15.0187 1.77227 14.7937 1.77227 14.5125ZM15.7504 15.0187H13.8379V12.2625H16.2285V14.5406C16.2566 14.7937 16.0316 15.0187 15.7504 15.0187Z"
+                                fill="#64748B"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mb-4">
+                        <label
+                          class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >End Date</label
+                        >
+                        <div class="relative">
+                          <input
+                            class="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            placeholder="mm/dd/yyyy"
+                            data-class="flatpickr-right"
+                          />
+
+                          <div
+                            class="pointer-events-none absolute inset-0 left-auto right-5 flex items-center"
+                          >
+                            <svg
+                              width="18"
+                              height="18"
+                              viewBox="0 0 18 18"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M15.7504 2.9812H14.2879V2.36245C14.2879 2.02495 14.0066 1.71558 13.641 1.71558C13.2754 1.71558 12.9941 1.99683 12.9941 2.36245V2.9812H4.97852V2.36245C4.97852 2.02495 4.69727 1.71558 4.33164 1.71558C3.96602 1.71558 3.68477 1.99683 3.68477 2.36245V2.9812H2.25039C1.29414 2.9812 0.478516 3.7687 0.478516 4.75308V14.5406C0.478516 15.4968 1.26602 16.3125 2.25039 16.3125H15.7504C16.7066 16.3125 17.5223 15.525 17.5223 14.5406V4.72495C17.5223 3.7687 16.7066 2.9812 15.7504 2.9812ZM1.77227 8.21245H4.16289V10.9968H1.77227V8.21245ZM5.42852 8.21245H8.38164V10.9968H5.42852V8.21245ZM8.38164 12.2625V15.0187H5.42852V12.2625H8.38164V12.2625ZM9.64727 12.2625H12.6004V15.0187H9.64727V12.2625ZM9.64727 10.9968V8.21245H12.6004V10.9968H9.64727ZM13.8379 8.21245H16.2285V10.9968H13.8379V8.21245ZM2.25039 4.24683H3.71289V4.83745C3.71289 5.17495 3.99414 5.48433 4.35977 5.48433C4.72539 5.48433 5.00664 5.20308 5.00664 4.83745V4.24683H13.0504V4.83745C13.0504 5.17495 13.3316 5.48433 13.6973 5.48433C14.0629 5.48433 14.3441 5.20308 14.3441 4.83745V4.24683H15.7504C16.0316 4.24683 16.2566 4.47183 16.2566 4.75308V6.94683H1.77227V4.75308C1.77227 4.47183 1.96914 4.24683 2.25039 4.24683ZM1.77227 14.5125V12.2343H4.16289V14.9906H2.25039C1.96914 15.0187 1.77227 14.7937 1.77227 14.5125ZM15.7504 15.0187H13.8379V12.2625H16.2285V14.5406C16.2566 14.7937 16.0316 15.0187 15.7504 15.0187Z"
+                                fill="#64748B"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--  Link Field -->
+                      <div class="mb-4">
+                        <label
+                          class="mb-2.5 block font-medium text-primary dark:text-white"
+                        >
+                          Link</label
+                        >
+                        <div class="relative">
+                          <input
+                            type="url"
+                            placeholder="Enter the link"
+                            required
+                            class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                          />
+                        </div>
+                      </div>
+
+                      <!-- Submit Button -->
+                      <div class="mb-4">
+                        <input
+                          type="submit"
+                          value="Edit"
+                          class="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 font-medium text-white transition hover:bg-opacity-90"
+                        />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- ====== Forms Section End ===== -->
+          </div>
+        </main>
+        <!-- ===== Main Content End ===== -->
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  </body>
+</html>
