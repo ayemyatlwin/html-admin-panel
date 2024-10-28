@@ -1,24 +1,24 @@
 <aside
   :class="sidebarToggle ? 'translate-x-0' : '-translate-x-full'"
-  class="absolute left-0 top-0 z-9999 flex h-screen w-65 flex-col overflow-y-hidden bg-white drop-shadow-lg duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0"
   @click.outside="sidebarToggle = false"
+  class="absolute left-0 top-0 z-9999 flex h-screen w-65 flex-col overflow-y-hidden bg-white drop-shadow-lg duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0"
 >
   <!-- SIDEBAR HEADER -->
   <div class="flex items-center justify-between gap-2 px-4 py-5.5 lg:py-6.5">
     <a href="index.html">
-      <img src="./images/logo/logo.png" alt="Logo" />
+      <img alt="Logo" src="./images/logo/logo.png" />
     </a>
 
     <button
-      class="block lg:hidden"
       @click.stop="sidebarToggle = !sidebarToggle"
+      class="block lg:hidden"
     >
       <svg
         class="fill-current"
-        width="20"
+        fill="none"
         height="18"
         viewBox="0 0 20 18"
-        fill="none"
+        width="20"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
@@ -46,17 +46,17 @@
           <!-- Menu Item Dashboard -->
           <li>
             <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'dashboard') && (page === 'dashboard') }"
+              @click="selected = (selected === 'dashboard' ? '':'dashboard')"
               class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="/index.html"
-              @click="selected = (selected === 'dashboard' ? '':'dashboard')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'dashboard') && (page === 'dashboard') }"
             >
               <svg
                 class="fill-current"
-                width="18"
+                fill="none"
                 height="18"
                 viewBox="0 0 18 18"
-                fill="none"
+                width="18"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
@@ -82,17 +82,17 @@
           </li>
           <li>
             <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Settings') && (page === 'settings') }"
+              @click="selected = (selected === 'Settings' ? '':'Settings')"
               class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="settings.html"
-              @click="selected = (selected === 'Settings' ? '':'Settings')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Settings') && (page === 'settings') }"
             >
               <svg
                 class="fill-current"
-                width="18"
+                fill="none"
                 height="19"
                 viewBox="0 0 18 19"
-                fill="none"
+                width="18"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <g clip-path="url(#clip0_130_9763)">
@@ -108,10 +108,10 @@
                 <defs>
                   <clipPath id="clip0_130_9763">
                     <rect
-                      width="18"
-                      height="18"
                       fill="white"
+                      height="18"
                       transform="translate(0 0.052124)"
+                      width="18"
                     />
                   </clipPath>
                 </defs>
@@ -125,17 +125,17 @@
           <!-- Menu Item Users -->
           <li>
             <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Users') || (page === 'createUser' || page === 'user-list') }"
+              @click.prevent="selected = (selected === 'Users' ? '':'Users')"
               class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
-              @click.prevent="selected = (selected === 'Users' ? '':'Users')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Users') || (page === 'createUser' || page === 'user-list') }"
             >
               <svg
                 class="fill-current"
-                width="18"
+                fill="none"
                 height="18"
                 viewBox="0 0 18 18"
-                fill="none"
+                width="18"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
@@ -150,42 +150,42 @@
 
               Users
               <svg
-                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 :class="{ 'rotate-180': (selected === 'Users') }"
-                width="20"
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                fill="none"
                 height="20"
                 viewBox="0 0 20 20"
-                fill="none"
+                width="20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
                   fill=""
+                  fill-rule="evenodd"
                 />
               </svg>
             </a>
 
             <!-- Dropdown Menu Start -->
             <div
-              class="translate transform overflow-hidden"
               :class="(selected === 'Users') ? 'block' :'hidden'"
+              class="translate transform overflow-hidden"
             >
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
+                    :class="page === 'createUser' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createUser.html"
-                    :class="page === 'createUser' && '!text-secondary'"
                     >Create User</a
                   >
                 </li>
                 <li>
                   <a
+                    :class="page === 'user-list' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="user-list.html"
-                    :class="page === 'user-list' && '!text-secondary'"
                     >User List</a
                   >
                 </li>
@@ -195,13 +195,12 @@
           </li>
           <li>
             <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'News') || (page === 'createNews' || page === 'news-list') }"
+              @click.prevent="selected = (selected === 'News' ? '':'News')"
               class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
-              @click.prevent="selected = (selected === 'News' ? '':'News')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'News') || (page === 'createNews' || page === 'news-list') }"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
                 class="svg-icon"
                 style="
                   width: 1em;
@@ -210,8 +209,9 @@
                   fill: currentColor;
                   overflow: hidden;
                 "
-                viewBox="0 0 1024 1024"
                 version="1.1"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M867.2 160 160 160C105.6 160 64 204.8 64 256l0 512c0 54.4 41.6 96 96 96l707.2 0c54.4 0 96-41.6 96-96L963.2 256C963.2 204.8 921.6 160 867.2 160zM899.2 768c0 19.2-12.8 32-32 32L160 800c-19.2 0-32-12.8-32-32L128 256c0-19.2 12.8-32 32-32l707.2 0c19.2 0 32 12.8 32 32L899.2 768z"
@@ -232,42 +232,42 @@
 
               News
               <svg
-                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 :class="{ 'rotate-180': (selected === 'News') }"
-                width="20"
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                fill="none"
                 height="20"
                 viewBox="0 0 20 20"
-                fill="none"
+                width="20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
                   fill=""
+                  fill-rule="evenodd"
                 />
               </svg>
             </a>
 
             <!-- Dropdown Menu Start -->
             <div
-              class="translate transform overflow-hidden"
               :class="(selected === 'News') ? 'block' :'hidden'"
+              class="translate transform overflow-hidden"
             >
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
+                    :class="page === 'createNews' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createNews.html"
-                    :class="page === 'createNews' && '!text-secondary'"
                     >Create News</a
                   >
                 </li>
                 <li>
                   <a
+                    :class="page === 'news-list' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="news-list.html"
-                    :class="page === 'news-list' && '!text-secondary'"
                     >News List</a
                   >
                 </li>
@@ -277,13 +277,12 @@
           </li>
           <li>
             <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Announcements') || (page === 'createAnnouncement' || page === 'announcement-list') }"
+              @click.prevent="selected = (selected === 'Announcements' ? '':'Announcements')"
               class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
-              @click.prevent="selected = (selected === 'Announcements' ? '':'Announcements')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Announcements') || (page === 'createAnnouncement' || page === 'announcement-list') }"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
                 class="svg-icon"
                 style="
                   width: 1em;
@@ -292,8 +291,9 @@
                   fill: currentColor;
                   overflow: hidden;
                 "
-                viewBox="0 0 1253 1024"
                 version="1.1"
+                viewBox="0 0 1253 1024"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M1141.133 1024H112.744C50.72 1024 0 973.322 0 911.36V112.64C0 50.698 50.74 0 112.724 0h1028.388c62.046 0 112.766 50.678 112.766 112.64v798.72c0 61.962-50.74 112.64-112.745 112.64z m56.362-911.36a56.424 56.424 0 0 0-56.362-56.32H112.744a56.424 56.424 0 0 0-56.403 56.32v798.678a56.424 56.424 0 0 0 56.362 56.32H1141.09a56.424 56.424 0 0 0 56.383-56.32V112.661z m-132.702 653.75H829.377a30.553 30.553 0 0 1-30.573-30.51c0-16.865 13.688-30.511 30.573-30.511h235.416c16.885 0 30.574 13.646 30.574 30.51 0 16.845-13.689 30.512-30.574 30.512z m0-151.802H829.377a30.553 30.553 0 0 1-30.573-30.51c0-16.886 13.688-30.554 30.573-30.554h235.416a30.553 30.553 0 0 1 0 61.043z m0-156.38H829.377a30.553 30.553 0 0 1-30.573-30.531c0-16.865 13.688-30.511 30.573-30.511h235.416c16.885 0 30.574 13.646 30.574 30.51 0 16.865-13.689 30.512-30.574 30.512z m0-151.802H829.377a30.553 30.553 0 0 1-30.573-30.511c0-16.865 13.688-30.532 30.573-30.532h235.416c16.885 0 30.574 13.667 30.574 30.511 0 16.865-13.689 30.532-30.574 30.532zM699.496 527.527h-105.45a21.692 21.692 0 0 1-21.672-21.713v-6.792c0-11.974 9.718-21.734 21.671-21.734h105.451c11.954 0 21.65 9.76 21.65 21.734v6.792c0 12.017-9.696 21.734-21.65 21.734z m-122.503-128.46c-8.088 6.813-19.185 4.326-24.785-5.517l-3.156-5.621c-5.6-9.864-3.573-23.406 4.514-30.219l86.685-72.996c8.108-6.813 19.184-4.326 24.785 5.538l3.197 5.58c5.58 9.884 3.553 23.405-4.535 30.239l-86.705 72.996z m-24.806 212.616c5.6-9.864 16.718-12.33 24.785-5.517l86.705 72.997c8.067 6.813 10.115 20.333 4.535 30.218l-3.197 5.58c-5.6 9.864-16.677 12.33-24.785 5.517l-86.685-72.997c-8.066-6.833-10.114-20.354-4.514-30.218l3.135-5.58z m-97.343 104.49c-33.896-25.015-103.006-64.387-150.841-99.495l-0.063-0.021c-0.564-0.355-1.129-2.299-1.672-2.633-5.851-3.281-8.38-12.267-39.957-12.33h-62.15c-16.698 0-25.747-8.255-25.747-25.015V427.76c0-16.739 9.885-24.158 25.747-24.158h61.879c31.744 0 34.335-9.09 40.207-12.35 0.544-0.335 1.129-2.3 1.672-2.634l0.063-0.02c49.402-35.109 118.031-71.66 150.841-97.698 9.927-7.9 44.158-22.78 44.158 23.781v375.704c0 46.54-33.939 33.311-44.137 25.788z"
@@ -301,42 +301,42 @@
               </svg>
               Announcements
               <svg
-                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 :class="{ 'rotate-180': (selected === 'Announcements') }"
-                width="20"
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                fill="none"
                 height="20"
                 viewBox="0 0 20 20"
-                fill="none"
+                width="20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
                   fill=""
+                  fill-rule="evenodd"
                 />
               </svg>
             </a>
 
             <!-- Dropdown Menu Start -->
             <div
-              class="translate transform overflow-hidden"
               :class="(selected === 'Announcements') ? 'block' :'hidden'"
+              class="translate transform overflow-hidden"
             >
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
+                    :class="page === 'createAnnouncement' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createAnnouncement.html"
-                    :class="page === 'createAnnouncement' && '!text-secondary'"
                     >Create Announcements</a
                   >
                 </li>
                 <li>
                   <a
+                    :class="page === 'announcement-list' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="announcement-list.html"
-                    :class="page === 'announcement-list' && '!text-secondary'"
                     >Announcements List</a
                   >
                 </li>
@@ -346,13 +346,12 @@
           </li>
           <li>
             <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Faqs') || (page === 'createFaq' || page === 'faq-list') }"
+              @click.prevent="selected = (selected === 'Faqs' ? '':'Faqs')"
               class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
-              @click.prevent="selected = (selected === 'Faqs' ? '':'Faqs')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Faqs') || (page === 'createFaq' || page === 'faq-list') }"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
                 class="svg-icon"
                 style="
                   width: 1em;
@@ -361,8 +360,9 @@
                   fill: currentColor;
                   overflow: hidden;
                 "
-                viewBox="0 0 1024 1024"
                 version="1.1"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M512 981.333333C252.8 981.333333 42.666667 771.2 42.666667 512S252.8 42.666667 512 42.666667s469.333333 210.133333 469.333333 469.333333-210.133333 469.333333-469.333333 469.333333z m0-85.333333a384 384 0 1 0 0-768 384 384 0 0 0 0 768z m8.106667-640c48.469333 0 87.978667 12.586667 117.802666 39.253333 29.866667 25.941333 44.757333 61.482667 44.757334 106.666667 0 37.034667-9.685333 67.413333-27.605334 91.093333-6.698667 7.424-28.330667 27.434667-64.085333 58.538667-13.44 11.093333-23.125333 23.68-29.866667 37.034667-3.498667 6.997333-6.4 17.152-8.704 30.421333a21.333333 21.333333 0 0 1-21.034666 17.706667h-46.122667a21.333333 21.333333 0 0 1-21.333333-22.101334c0.768-21.589333 4.906667-38.570667 12.458666-50.944 9.685333-20.010667 41.514667-50.645333 89.984-93.610666l8.96-10.368c13.397333-16.298667 20.096-34.048 20.096-52.565334 0-24.448-7.424-43.733333-20.864-57.813333-14.165333-14.08-34.304-20.736-59.648-20.736-32.810667 0-55.893333 9.642667-70.101333 30.378667-10.709333 14.421333-18.133333 25.045333-18.773333 46.378666a36.437333 36.437333 0 0 1-36.48 35.285334h-5.888a37.376 37.376 0 0 1-37.290667-40.192c0.469333-6.016 0.725333-11.52 0.725333-16.426667 0-21.333333 12.586667-52.906667 42.538667-81.322667C421.717333 271.530667 464.938667 256 520.106667 256z m-9.514667 420.053333c18.005333 0 33.578667 5.845333 45.866667 17.536 11.434667 11.690667 18.005333 26.709333 18.005333 45.098667 0 18.346667-6.570667 34.218667-18.858667 45.909333-12.245333 11.690667-27.008 17.536-45.013333 17.536a63.146667 63.146667 0 0 1-45.013333-18.346666c-12.288-11.690667-18.048-26.752-18.048-45.098667 0-18.346667 5.76-33.408 18.048-45.098667 12.245333-11.690667 27.008-17.493333 45.013333-17.493333z"
@@ -370,42 +370,42 @@
               </svg>
               FAQs
               <svg
-                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 :class="{ 'rotate-180': (selected === 'Faqs') }"
-                width="20"
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                fill="none"
                 height="20"
                 viewBox="0 0 20 20"
-                fill="none"
+                width="20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
                   fill=""
+                  fill-rule="evenodd"
                 />
               </svg>
             </a>
 
             <!-- Dropdown Menu Start -->
             <div
-              class="translate transform overflow-hidden"
               :class="(selected === 'Faqs') ? 'block' :'hidden'"
+              class="translate transform overflow-hidden"
             >
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
+                    :class="page === 'createFaq' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createFaq.html"
-                    :class="page === 'createFaq' && '!text-secondary'"
                     >Create FAQ</a
                   >
                 </li>
                 <li>
                   <a
+                    :class="page === 'faq-list' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="faq-list.html"
-                    :class="page === 'faq-list' && '!text-secondary'"
                     >FAQ List</a
                   >
                 </li>
@@ -415,13 +415,12 @@
           </li>
           <li>
             <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Notifications') || (page === 'createNotifications' || page === 'notifications-list') }"
+              @click.prevent="selected = (selected === 'Notifications' ? '':'Notifications')"
               class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
-              @click.prevent="selected = (selected === 'Notifications' ? '':'Notifications')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Notifications') || (page === 'createNotifications' || page === 'notifications-list') }"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
                 class="svg-icon"
                 style="
                   width: 1em;
@@ -430,8 +429,9 @@
                   fill: currentColor;
                   overflow: hidden;
                 "
-                viewBox="0 0 1024 1024"
                 version="1.1"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M479.573333 93.909333c-0.341333-20.266667-0.469333-40.533333 0.512-60.8a32.085333 32.085333 0 0 1 32.938667-29.909333 32.298667 32.298667 0 0 1 30.976 30.933333c0.298667 19.925333 0.810667 39.893333 0.64 59.818667 21.76 1.92 43.306667 5.717333 64.384 11.562667 63.274667 17.621333 122.154667 53.504 163.029333 105.344 9.813333 12.416 18.474667 25.642667 25.856 39.637333 8.362667 15.829333 15.018667 32.554667 19.669334 49.834667 4.138667 15.274667 6.698667 30.976 7.637333 46.805333 0.682667 11.349333 0.469333 22.784-0.256 34.176-1.152 18.090667-4.181333 35.968-6.314667 53.930667-0.426667 3.968-0.768 7.893333-1.109333 11.818666-0.938667 14.976-0.469333 29.866667 1.664 44.757334 1.066667 7.210667 2.346667 14.421333 4.437333 21.418666 3.498667 11.733333 8.746667 22.912 14.634667 33.621334 7.424 13.397333 16.042667 26.154667 25.130667 38.485333 27.392 37.12 59.349333 70.442667 89.685333 105.088 4.565333 5.290667 9.088 10.624 13.482667 16.085333 9.130667 11.605333 17.28 24.149333 22.912 37.888 3.114667 7.552 5.248 15.530667 5.632 23.68 0.384 7.168-0.597333 14.293333-2.389334 21.205334a89.856 89.856 0 0 1-8.149333 20.821333 105.813333 105.813333 0 0 1-26.752 30.976 207.018667 207.018667 0 0 1-49.493333 28.714667c-7.978667 3.413333-16.128 6.485333-24.362667 9.344-11.434667 3.925333-23.04 7.338667-34.730667 10.410666a682.666667 682.666667 0 0 1-48 10.581334c-42.112 7.850667-84.821333 12.544-127.530666 15.701333-15.146667 1.109333-30.293333 2.005333-45.482667 2.730667a115.029333 115.029333 0 0 1-12.074667 39.978666 116.650667 116.650667 0 0 1-154.88 52.138667 118.186667 118.186667 0 0 1-61.824-73.429333 120.618667 120.618667 0 0 1-3.669333-18.688 1793.536 1793.536 0 0 1-45.482667-2.730667 1164.16 1164.16 0 0 1-127.530666-15.701333 682.666667 682.666667 0 0 1-48-10.581334 492.032 492.032 0 0 1-34.730667-10.410666 372.437333 372.437333 0 0 1-24.362667-9.344 207.018667 207.018667 0 0 1-49.493333-28.714667 105.813333 105.813333 0 0 1-26.752-30.976 89.856 89.856 0 0 1-8.149333-20.821333 69.674667 69.674667 0 0 1-2.389334-21.205334c0.384-8.149333 2.517333-16.128 5.632-23.68 4.096-10.069333 9.685333-19.712 15.914667-28.586666 7.722667-11.008 16.725333-21.162667 25.6-31.274667 13.781333-15.573333 27.818667-30.933333 41.557333-46.549333 6.357333-7.296 6.357333-7.296 12.629334-14.634667 16.469333-19.584 32.597333-39.552 46.336-61.184 9.728-15.274667 18.602667-31.488 23.808-48.938667 2.090667-6.997333 3.370667-14.208 4.437333-21.418666a211.84 211.84 0 0 0 0.554667-56.576c-1.450667-11.989333-3.242667-23.936-4.693334-35.968a327.296 327.296 0 0 1-2.176-45.269334c0.426667-14.762667 2.261333-29.482667 5.504-43.861333 3.925333-17.493333 9.856-34.517333 17.578667-50.645333 6.784-14.208 14.933333-27.776 24.192-40.490667 39.424-54.101333 98.218667-92.16 161.92-111.36a358.997333 358.997333 0 0 1 71.893333-13.738667z m83.114667 826.794667a2867.84 2867.84 0 0 1-101.376 0 53.888 53.888 0 0 0 21.12 28.501333c13.525333 9.173333 31.061333 11.52 46.549333 6.272a53.546667 53.546667 0 0 0 33.706667-34.773333zM512 156.458667a295.338667 295.338667 0 0 0-79.872 10.709333 280.32 280.32 0 0 0-26.154667 8.704c-53.290667 20.650667-101.717333 58.88-126.677333 111.189333a170.666667 170.666667 0 0 0-16.469333 61.354667 208.64 208.64 0 0 0 0.085333 28.757333c1.066667 17.066667 4.010667 33.92 6.016 50.901334a282.026667 282.026667 0 0 1-0.810667 72.917333 214.186667 214.186667 0 0 1-6.442666 30.592c-9.002667 30.037333-25.258667 57.514667-43.264 82.986667-29.653333 42.026667-65.365333 79.232-99.2 117.802666a729.6 729.6 0 0 0-11.733334 14.037334c-3.968 5.034667-7.509333 10.24-10.581333 15.829333a39.424 39.424 0 0 0-4.053333 9.088c0.213333 1.578667 0.725333 3.072 1.237333 4.565333 2.432 6.826667 7.850667 11.946667 13.482667 16.341334 11.349333 8.917333 24.661333 15.274667 37.930666 20.650666a349.781333 349.781333 0 0 0 38.997334 13.013334c9.002667 2.474667 18.090667 4.693333 27.221333 6.698666 12.928 2.858667 25.898667 5.290667 38.954667 7.466667a1196.373333 1196.373333 0 0 0 115.072 12.672c48.682667 3.285333 97.493333 4.394667 146.261333 4.394667a2272.426667 2272.426667 0 0 0 135.338667-3.669334 1353.898667 1353.898667 0 0 0 100.053333-9.514666c14.08-1.92 28.16-4.138667 42.154667-6.741334 10.026667-1.834667 19.968-3.925333 29.866666-6.229333 8.874667-2.048 17.664-4.352 26.368-6.869333a304.512 304.512 0 0 0 37.333334-13.141334c11.306667-4.821333 22.442667-10.453333 32.256-17.877333 4.949333-3.754667 10.026667-8.192 13.098666-13.696a30.72 30.72 0 0 0 2.346667-6.357333c0.085333-0.426667 0.469333-1.28 0.341333-1.706667-1.152-4.522667-3.754667-8.746667-6.101333-12.714667-5.717333-9.514667-13.013333-17.877333-20.266667-26.24-15.317333-17.578667-31.104-34.730667-46.506666-52.181333-6.698667-7.68-6.698667-7.68-13.312-15.402667-19.498667-23.210667-38.485333-46.976-54.4-72.832a263.424 263.424 0 0 1-26.496-54.869333 230.741333 230.741333 0 0 1-10.325334-55.125333 275.712 275.712 0 0 1 0.341334-44.416c1.450667-16.469333 4.266667-32.768 6.058666-49.194667a232.277333 232.277333 0 0 0 1.322667-34.944 172.074667 172.074667 0 0 0-17.877333-68.565333 194.048 194.048 0 0 0-18.602667-30.208C691.2 209.493333 640 179.370667 585.856 165.589333A302.08 302.08 0 0 0 512 156.458667z"
@@ -439,42 +439,42 @@
               </svg>
               Notifications
               <svg
-                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 :class="{ 'rotate-180': (selected === 'Notifications') }"
-                width="20"
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                fill="none"
                 height="20"
                 viewBox="0 0 20 20"
-                fill="none"
+                width="20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
                   fill=""
+                  fill-rule="evenodd"
                 />
               </svg>
             </a>
 
             <!-- Dropdown Menu Start -->
             <div
-              class="translate transform overflow-hidden"
               :class="(selected === 'Notifications') ? 'block' :'hidden'"
+              class="translate transform overflow-hidden"
             >
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
+                    :class="page === 'createNotifications' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createNotifications.html"
-                    :class="page === 'createNotifications' && '!text-secondary'"
                     >Create Notification</a
                   >
                 </li>
                 <li>
                   <a
+                    :class="page === 'notifications-list' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="notifications-list.html"
-                    :class="page === 'notifications-list' && '!text-secondary'"
                     >Notification List</a
                   >
                 </li>
@@ -484,13 +484,12 @@
           </li>
           <li>
             <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Event') || (page === 'createEvent' || page === 'event-list') }"
+              @click.prevent="selected = (selected === 'Event' ? '':'Event')"
               class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
-              @click.prevent="selected = (selected === 'Event' ? '':'Event')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Event') || (page === 'createEvent' || page === 'event-list') }"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
                 class="svg-icon"
                 style="
                   width: 1em;
@@ -499,8 +498,9 @@
                   fill: currentColor;
                   overflow: hidden;
                 "
-                viewBox="0 0 1024 1024"
                 version="1.1"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M390.972952 97.52381 390.729143 146.285714 630.00381 146.285714 630.296381 97.52381Z"
@@ -517,42 +517,43 @@
               </svg>
               Events
               <svg
-                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 :class="{ 'rotate-180': (selected === 'Event') }"
-                width="20"
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                fill="none"
                 height="20"
                 viewBox="0 0 20 20"
-                fill="none"
+                width="20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
                   fill=""
+                  fill-rule="evenodd"
                 />
               </svg>
             </a>
 
             <!-- Dropdown Menu Start -->
+
             <div
-              class="translate transform overflow-hidden"
               :class="(selected === 'Event') ? 'block' :'hidden'"
+              class="translate transform overflow-hidden"
             >
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
+                    :class="page === 'createEvent' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createEvent.html"
-                    :class="page === 'createEvent' && '!text-secondary'"
                     >Create Event</a
                   >
                 </li>
                 <li>
                   <a
+                    :class="page === 'event-list' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="event-list.html"
-                    :class="page === 'event-list' && '!text-secondary'"
                     >Event List</a
                   >
                 </li>
@@ -562,13 +563,12 @@
           </li>
           <li>
             <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Campaign') || (page === 'createCampaign' || page === 'campaign-list') }"
+              @click.prevent="selected = (selected === 'Campaign' ? '':'Campaign')"
               class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
-              @click.prevent="selected = (selected === 'Campaign' ? '':'Campaign')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Campaign') || (page === 'createCampaign' || page === 'campaign-list') }"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
                 class="svg-icon"
                 style="
                   width: 1em;
@@ -577,8 +577,9 @@
                   fill: currentColor;
                   overflow: hidden;
                 "
-                viewBox="0 0 1024 1024"
                 version="1.1"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M888.514259 742.334969 888.514259 742.334969c-12.409634 12.409634-32.715099 12.409634-45.124733 0l-90.248444-90.248444c-12.409634-12.409634-12.409634-32.715099 0-45.124733l0 0c12.409634-12.409634 32.715099-12.409634 45.124733 0l90.249467 90.248444C900.92287 709.61987 900.92287 729.925335 888.514259 742.334969zM935.280376 481.368352 935.280376 481.368352c0 17.549701-14.358009 31.907711-31.907711 31.907711L775.741823 513.276063c-17.549701 0-31.907711-14.358009-31.907711-31.907711l0 0c0-17.549701 14.358009-31.907711 31.907711-31.907711l127.630842 0C920.922367 449.460642 935.280376 463.818651 935.280376 481.368352zM753.141082 373.944737 753.141082 373.944737c12.409634 12.409634 32.715099 12.409634 45.124733 0l90.249467-90.248444c12.409634-12.409634 12.409634-32.715099 0-45.124733l0 0c-12.409634-12.409634-32.715099-12.409634-45.124733 0l-90.248444 90.248444C740.731448 341.229638 740.731448 361.535103 753.141082 373.944737zM623.036909 951.717743c-11.110035 0-22.583344-4.448312-32.720216-13.024641l-246.657726-208.682833c-13.453407-11.382235-15.132652-31.515784-3.750417-44.968168 11.382235-13.452383 31.515784-15.132652 44.968168-3.750417l216.285998 182.987614L601.162716 160.03281 407.043576 325.567937c-17.97335 15.326057-48.161906 26.450419-71.78186 26.450419L152.535045 352.018356l0 321.972039 87.490633 0c17.622356 0 31.907711 14.285355 31.907711 31.907711s-14.285355 31.907711-31.907711 31.907711l-90.391706 0c-33.589003 0-60.915371-27.325345-60.915371-60.914348L88.718601 349.117282c0-33.589003 27.326369-60.915371 60.915371-60.915371l185.626721 0c8.382924 0 23.99653-5.753027 30.375821-11.1919L590.295204 85.432765c15.430434-13.155624 33.994232-16.695241 49.662073-9.464559 15.666818 7.230682 25.02086 23.652699 25.02086 43.929512L664.978137 904.063397c0 20.249183-9.340739 36.671201-24.987091 43.928488C634.604362 950.489776 628.870778 951.717743 623.036909 951.717743z"
@@ -586,42 +587,42 @@
               </svg>
               Campaigns
               <svg
-                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 :class="{ 'rotate-180': (selected === 'Campaign') }"
-                width="20"
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                fill="none"
                 height="20"
                 viewBox="0 0 20 20"
-                fill="none"
+                width="20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
                   fill=""
+                  fill-rule="evenodd"
                 />
               </svg>
             </a>
 
             <!-- Dropdown Menu Start -->
             <div
-              class="translate transform overflow-hidden"
               :class="(selected === 'Campaign') ? 'block' :'hidden'"
+              class="translate transform overflow-hidden"
             >
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
+                    :class="page === 'createCampaign' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createCampaign.html"
-                    :class="page === 'createCampaign' && '!text-secondary'"
                     >Create Campaign</a
                   >
                 </li>
                 <li>
                   <a
+                    :class="page === 'campaign-list' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="campaign-list.html"
-                    :class="page === 'campaign-list' && '!text-secondary'"
                     >Campaign List</a
                   >
                 </li>
@@ -631,13 +632,12 @@
           </li>
           <li>
             <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Branch') || (page === 'createBranch' || page === 'campaign-list') }"
+              @click.prevent="selected = (selected === 'Branch' ? '':'Branch')"
               class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
-              @click.prevent="selected = (selected === 'Branch' ? '':'Branch')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Branch') || (page === 'createBranch' || page === 'campaign-list') }"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
                 class="svg-icon"
                 style="
                   width: 1em;
@@ -646,8 +646,9 @@
                   fill: currentColor;
                   overflow: hidden;
                 "
-                viewBox="0 0 1024 1024"
                 version="1.1"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M320 296v-80c0-13.2 10.8-24 24-24h80c13.2 0 24 10.8 24 24v80c0 13.2-10.8 24-24 24h-80c-13.2 0-24-10.8-24-24z m280 24h80c13.2 0 24-10.8 24-24v-80c0-13.2-10.8-24-24-24h-80c-13.2 0-24 10.8-24 24v80c0 13.2 10.8 24 24 24z m-256 192h80c13.2 0 24-10.8 24-24v-80c0-13.2-10.8-24-24-24h-80c-13.2 0-24 10.8-24 24v80c0 13.2 10.8 24 24 24z m256 0h80c13.2 0 24-10.8 24-24v-80c0-13.2-10.8-24-24-24h-80c-13.2 0-24 10.8-24 24v80c0 13.2 10.8 24 24 24z m-152 168v-80c0-13.2-10.8-24-24-24h-80c-13.2 0-24 10.8-24 24v80c0 13.2 10.8 24 24 24h80c13.2 0 24-10.8 24-24z m152 24h80c13.2 0 24-10.8 24-24v-80c0-13.2-10.8-24-24-24h-80c-13.2 0-24 10.8-24 24v80c0 13.2 10.8 24 24 24z m360 248v72H64v-72c0-13.2 10.8-24 24-24h39V48c0-26.6 21.4-48 48-48h674c26.6 0 48 21.4 48 48v880H936c13.2 0 24 10.8 24 24zM223 926H448v-134c0-13.2 10.8-24 24-24h80c13.2 0 24 10.8 24 24v134h225V98L224 96l-1 830z"
@@ -656,42 +657,42 @@
               </svg>
               Branches
               <svg
-                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 :class="{ 'rotate-180': (selected === 'Branch') }"
-                width="20"
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                fill="none"
                 height="20"
                 viewBox="0 0 20 20"
-                fill="none"
+                width="20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
                   fill=""
+                  fill-rule="evenodd"
                 />
               </svg>
             </a>
 
             <!-- Dropdown Menu Start -->
             <div
-              class="translate transform overflow-hidden"
               :class="(selected === 'Branch') ? 'block' :'hidden'"
+              class="translate transform overflow-hidden"
             >
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
+                    :class="page === 'createBranch' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createBranch.html"
-                    :class="page === 'createBranch' && '!text-secondary'"
                     >Create Branch</a
                   >
                 </li>
                 <li>
                   <a
+                    :class="page === 'branch-list' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="branch-list.html"
-                    :class="page === 'branch-list' && '!text-secondary'"
                     >Branch List</a
                   >
                 </li>
@@ -701,13 +702,12 @@
           </li>
           <li>
             <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'MasterData') || (page === 'createMasterData' || page === 'master-data-list') }"
+              @click.prevent="selected = (selected === 'MasterData' ? '':'MasterData')"
               class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
-              @click.prevent="selected = (selected === 'MasterData' ? '':'MasterData')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'MasterData') || (page === 'createMasterData' || page === 'master-data-list') }"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
                 class="svg-icon"
                 style="
                   width: 1em;
@@ -716,8 +716,9 @@
                   fill: currentColor;
                   overflow: hidden;
                 "
-                viewBox="0 0 1024 1024"
                 version="1.1"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M256 333.994667V853.333333h512V170.666667H419.328L256 333.994667z m-72.832-47.786667L384 85.333333h426.666667a42.666667 42.666667 0 0 1 42.666666 42.666667v768a42.666667 42.666667 0 0 1-42.666666 42.666667H213.333333a42.666667 42.666667 0 0 1-42.666666-42.666667V316.330667a42.666667 42.666667 0 0 1 12.501333-30.165334zM640 213.333333h85.333333v170.666667h-85.333333V213.333333z m-128 0h85.333333v170.666667h-85.333333V213.333333zM384 256h85.333333v128H384V256z"
@@ -725,83 +726,82 @@
               </svg>
               Master Data
               <svg
-                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 :class="{ 'rotate-180': (selected === 'MasterData') }"
-                width="20"
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                fill="none"
                 height="20"
                 viewBox="0 0 20 20"
-                fill="none"
+                width="20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
                   fill=""
+                  fill-rule="evenodd"
                 />
               </svg>
             </a>
 
             <!-- Dropdown Menu Start -->
             <div
-              class="translate transform overflow-hidden"
               :class="(selected === 'MasterData') ? 'block' :'hidden'"
+              class="translate transform overflow-hidden"
             >
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
+                    :class="page === 'createMasterData' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createMasterData.html"
-                    :class="page === 'createMasterData' && '!text-secondary'"
                     >Create Master Data</a
                   >
                 </li>
                 <li>
                   <a
+                    :class="page === 'master-data-list' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="master-data-list.html"
-                    :class="page === 'master-data-list' && '!text-secondary'"
                     >Master Data List</a
                   >
                 </li>
                 <!-- <li>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="svg-icon"
-                    style="
-                      width: 1em;
-                      height: 1em;
-                      vertical-align: middle;
-                      fill: currentColor;
-                      overflow: hidden;
-                    "
-                    viewBox="0 0 1024 1024"
-                    version="1.1"
-                  >
-                    <path
-                      d="M770.133333 917.333333H275.2C228.266667 917.333333 192 881.066667 192 834.133333s36.266667-83.2 83.2-83.2H810.666667c12.8 0 21.333333 8.533333 21.333333 21.333334v83.2c0 34.133333-27.733333 61.866667-61.866667 61.866666z m-494.933333-123.733333c-21.333333 0-40.533333 17.066667-40.533333 40.533333s17.066667 40.533333 40.533333 40.533334h494.933333c10.666667 0 19.2-8.533333 19.2-19.2v-61.866667H275.2z"
-                    />
-                    <path
-                      d="M330.666667 789.333333c-12.8 0-21.333333-8.533333-21.333334-21.333333V138.666667c0-12.8 8.533333-21.333333 21.333334-21.333334s21.333333 8.533333 21.333333 21.333334V768c0 12.8-8.533333 21.333333-21.333333 21.333333zM454.4 501.333333l-14.933333 51.2h-46.933334l59.733334-196.266666H512l61.866667 196.266666h-46.933334l-14.933333-51.2h-57.6z m51.2-34.133333l-12.8-42.666667c-4.266667-10.666667-6.4-25.6-10.666667-38.4-2.133333 10.666667-6.4 25.6-8.533333 38.4l-12.8 42.666667h44.8zM680.533333 550.4l-2.133333-14.933333c-8.533333 10.666667-23.466667 17.066667-40.533333 17.066666-29.866667 0-46.933333-21.333333-46.933334-42.666666 0-36.266667 34.133333-55.466667 83.2-55.466667v-2.133333c0-8.533333-4.266667-19.2-25.6-19.2-14.933333 0-29.866667 4.266667-38.4 10.666666l-8.533333-27.733333c10.666667-6.4 29.866667-12.8 55.466667-12.8 46.933333 0 61.866667 27.733333 61.866666 61.866667v49.066666c0 12.8 0 25.6 2.133334 34.133334h-40.533334z m-6.4-66.133333c-23.466667 0-40.533333 6.4-40.533333 23.466666 0 10.666667 8.533333 17.066667 17.066667 17.066667 10.666667 0 19.2-6.4 23.466666-17.066667v-23.466666z"
-                    />
-                    <path
-                      d="M768 917.333333H277.333333c-12.8 0-21.333333-8.533333-21.333333-21.333333s8.533333-21.333333 21.333333-21.333333h490.666667c10.666667 0 21.333333-8.533333 21.333333-19.2V168.533333c0-10.666667-8.533333-19.2-21.333333-19.2H275.2c-21.333333 0-40.533333 17.066667-40.533333 40.533334v644.266666c0 12.8-8.533333 21.333333-21.333334 21.333334s-21.333333-8.533333-21.333333-21.333334V189.866667C192 142.933333 228.266667 106.666667 275.2 106.666667H768c36.266667 0 64 27.733333 64 61.866666V853.333333c0 36.266667-27.733333 64-64 64z"
-                    />
-                  </svg>
-                </li> -->
+                                                                                                  <svg
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    class="svg-icon"
+                                                                                                    style="
+                                                                                                      width: 1em;
+                                                                                                      height: 1em;
+                                                                                                      vertical-align: middle;
+                                                                                                      fill: currentColor;
+                                                                                                      overflow: hidden;
+                                                                                                    "
+                                                                                                    viewBox="0 0 1024 1024"
+                                                                                                    version="1.1"
+                                                                                                  >
+                                                                                                    <path
+                                                                                                      d="M770.133333 917.333333H275.2C228.266667 917.333333 192 881.066667 192 834.133333s36.266667-83.2 83.2-83.2H810.666667c12.8 0 21.333333 8.533333 21.333333 21.333334v83.2c0 34.133333-27.733333 61.866667-61.866667 61.866666z m-494.933333-123.733333c-21.333333 0-40.533333 17.066667-40.533333 40.533333s17.066667 40.533333 40.533333 40.533334h494.933333c10.666667 0 19.2-8.533333 19.2-19.2v-61.866667H275.2z"
+                                                                                                    />
+                                                                                                    <path
+                                                                                                      d="M330.666667 789.333333c-12.8 0-21.333333-8.533333-21.333334-21.333333V138.666667c0-12.8 8.533333-21.333333 21.333334-21.333334s21.333333 8.533333 21.333333 21.333334V768c0 12.8-8.533333 21.333333-21.333333 21.333333zM454.4 501.333333l-14.933333 51.2h-46.933334l59.733334-196.266666H512l61.866667 196.266666h-46.933334l-14.933333-51.2h-57.6z m51.2-34.133333l-12.8-42.666667c-4.266667-10.666667-6.4-25.6-10.666667-38.4-2.133333 10.666667-6.4 25.6-8.533333 38.4l-12.8 42.666667h44.8zM680.533333 550.4l-2.133333-14.933333c-8.533333 10.666667-23.466667 17.066667-40.533333 17.066666-29.866667 0-46.933333-21.333333-46.933334-42.666666 0-36.266667 34.133333-55.466667 83.2-55.466667v-2.133333c0-8.533333-4.266667-19.2-25.6-19.2-14.933333 0-29.866667 4.266667-38.4 10.666666l-8.533333-27.733333c10.666667-6.4 29.866667-12.8 55.466667-12.8 46.933333 0 61.866667 27.733333 61.866666 61.866667v49.066666c0 12.8 0 25.6 2.133334 34.133334h-40.533334z m-6.4-66.133333c-23.466667 0-40.533333 6.4-40.533333 23.466666 0 10.666667 8.533333 17.066667 17.066667 17.066667 10.666667 0 19.2-6.4 23.466666-17.066667v-23.466666z"
+                                                                                                    />
+                                                                                                    <path
+                                                                                                      d="M768 917.333333H277.333333c-12.8 0-21.333333-8.533333-21.333333-21.333333s8.533333-21.333333 21.333333-21.333333h490.666667c10.666667 0 21.333333-8.533333 21.333333-19.2V168.533333c0-10.666667-8.533333-19.2-21.333333-19.2H275.2c-21.333333 0-40.533333 17.066667-40.533333 40.533334v644.266666c0 12.8-8.533333 21.333333-21.333334 21.333334s-21.333333-8.533333-21.333333-21.333334V189.866667C192 142.933333 228.266667 106.666667 275.2 106.666667H768c36.266667 0 64 27.733333 64 61.866666V853.333333c0 36.266667-27.733333 64-64 64z"
+                                                                                                    />
+                                                                                                  </svg>
+                                                                                                </li> -->
               </ul>
             </div>
             <!-- Dropdown Menu End -->
           </li>
           <li>
             <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Dictionary') || (page === 'createDictionary' || page === 'dictionary-list') }"
+              @click.prevent="selected = (selected === 'Dictionary' ? '':'Dictionary')"
               class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
-              @click.prevent="selected = (selected === 'Dictionary' ? '':'Dictionary')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Dictionary') || (page === 'createDictionary' || page === 'dictionary-list') }"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
                 class="svg-icon"
                 style="
                   width: 1em;
@@ -810,8 +810,9 @@
                   fill: currentColor;
                   overflow: hidden;
                 "
-                viewBox="0 0 1024 1024"
                 version="1.1"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M449.6 116.2H303.8c-14.2 0-25.7-11.5-25.7-25.7s11.5-25.7 25.7-25.7h145.8c14.2 0 25.7 11.5 25.7 25.7s-11.5 25.7-25.7 25.7z m0 0"
@@ -831,42 +832,42 @@
               </svg>
               Dictionary
               <svg
-                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 :class="{ 'rotate-180': (selected === 'Dictionary') }"
-                width="20"
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                fill="none"
                 height="20"
                 viewBox="0 0 20 20"
-                fill="none"
+                width="20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
                   fill=""
+                  fill-rule="evenodd"
                 />
               </svg>
             </a>
 
             <!-- Dropdown Menu Start -->
             <div
-              class="translate transform overflow-hidden"
               :class="(selected === 'Dictionary') ? 'block' :'hidden'"
+              class="translate transform overflow-hidden"
             >
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
+                    :class="page === 'createDictionary' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createDictionary.html"
-                    :class="page === 'createDictionary' && '!text-secondary'"
                     >Create Dictionary</a
                   >
                 </li>
                 <li>
                   <a
+                    :class="page === 'dictionary-list' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="dictionary-list.html"
-                    :class="page === 'dictionary-list' && '!text-secondary'"
                     >Dictionary List</a
                   >
                 </li>
@@ -876,13 +877,12 @@
           </li>
           <li>
             <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Advertising') || (page === 'createAdvertising' || page === 'advertising-list') }"
+              @click.prevent="selected = (selected === 'Advertising' ? '':'Advertising')"
               class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
-              @click.prevent="selected = (selected === 'Advertising' ? '':'Advertising')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Advertising') || (page === 'createAdvertising' || page === 'advertising-list') }"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
                 class="svg-icon"
                 style="
                   width: 1em;
@@ -891,8 +891,9 @@
                   fill: currentColor;
                   overflow: hidden;
                 "
-                viewBox="0 0 1024 1024"
                 version="1.1"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M707.296 274.272c0-44.512-7.456-79.2-27.296-98.976-19.744-22.208-51.936-37.088-94.016-37.088h-79.136v269.728h74.208c42.048 0 76.736-12.384 96.544-37.088 19.776-19.84 29.696-54.496 29.696-96.576z"
@@ -909,42 +910,42 @@
               </svg>
               Advertising
               <svg
-                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 :class="{ 'rotate-180': (selected === 'Advertising') }"
-                width="20"
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                fill="none"
                 height="20"
                 viewBox="0 0 20 20"
-                fill="none"
+                width="20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
                   fill=""
+                  fill-rule="evenodd"
                 />
               </svg>
             </a>
 
             <!-- Dropdown Menu Start -->
             <div
-              class="translate transform overflow-hidden"
               :class="(selected === 'Advertising') ? 'block' :'hidden'"
+              class="translate transform overflow-hidden"
             >
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
+                    :class="page === 'createAdvertising' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createAdvertising.html"
-                    :class="page === 'createAdvertising' && '!text-secondary'"
                     >Create Advertising</a
                   >
                 </li>
                 <li>
                   <a
+                    :class="page === 'advertising-list' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="advertising-list.html"
-                    :class="page === 'advertising-list' && '!text-secondary'"
                     >Advertising List</a
                   >
                 </li>
@@ -954,13 +955,12 @@
           </li>
           <li>
             <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Product') || (page === 'createProducts' || page === 'product-list') }"
+              @click.prevent="selected = (selected === 'Product' ? '':'Product')"
               class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
-              @click.prevent="selected = (selected === 'Product' ? '':'Product')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Product') || (page === 'createProducts' || page === 'product-list') }"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
                 class="svg-icon"
                 style="
                   width: 1em;
@@ -969,8 +969,9 @@
                   fill: currentColor;
                   overflow: hidden;
                 "
-                viewBox="0 0 1024 1024"
                 version="1.1"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M504.1 452.5c-18.3 0-36.5-4.1-50.7-10.1l-280.1-138c-18.3-10.1-30.4-24.4-30.4-40.6 0-16.2 10.2-32.5 30.4-42.6L455.4 77.1c16.2-8.1 34.5-12.2 54.8-12.2 18.3 0 36.5 4.1 50.7 10.1L841 213c18.3 10.1 30.4 24.4 30.4 40.6 0 16.2-10.1 32.5-30.4 42.6L558.9 440.3c-16.3 8.1-34.5 12.2-54.8 12.2zM193.6 261.7l280.1 138c8.1 4.1 18.3 6.1 30.4 6.1 12.2 0 24.4-2 32.5-6.1l284.1-144.1-280.1-138c-8.1-4.1-18.3-6.1-30.4-6.1-12.2 0-24.4 2-32.5 6.1L193.6 261.7z m253.6 696.1c-10.1 0-20.3-2-30.4-8.1L165.1 817.8c-30.4-14.2-52.8-46.7-52.8-73.1V391.6c0-24.4 18.3-42.6 44.6-42.6 10.1 0 20.3 2 30.4 8.1L437.1 489c30.4 14.2 52.8 46.7 52.8 73.1v353.1c0 24.4-18.3 42.6-42.7 42.6z m-10.1-48.7c2 2 4.1 2 6.1 2v-349c0-8.1-10.1-24.4-26.4-32.5L165.1 397.7c-2-2-4.1-2-6.1-2v349.1c0 8.1 10.2 24.4 26.4 32.5l251.7 131.8z m144.1 48.7c-24.4 0-42.6-18.3-42.6-42.6V562.1c0-26.4 22.3-58.9 52.8-73.1L841 357.1c10.1-4.1 20.3-8.1 30.4-8.1 24.4 0 42.6 18.3 42.6 42.6v353.1c0 26.4-22.3 58.9-52.8 73.1L611.6 949.7c-12.2 6.1-20.3 8.1-30.4 8.1z m280-560.1L611.6 529.6c-16.2 8.1-26.4 24.4-26.4 32.5v349.1c2 0 4.1-2 6.1-2l249.6-131.9c16.2-8.1 26.4-24.4 26.4-32.5V395.7c-2 0-4 2-6.1 2z m0 0"
@@ -978,42 +979,42 @@
               </svg>
               Products
               <svg
-                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 :class="{ 'rotate-180': (selected === 'Product') }"
-                width="20"
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                fill="none"
                 height="20"
                 viewBox="0 0 20 20"
-                fill="none"
+                width="20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
                   fill=""
+                  fill-rule="evenodd"
                 />
               </svg>
             </a>
 
             <!-- Dropdown Menu Start -->
             <div
-              class="translate transform overflow-hidden"
               :class="(selected === 'Product') ? 'block' :'hidden'"
+              class="translate transform overflow-hidden"
             >
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
+                    :class="page === 'createProducts' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createProducts.html"
-                    :class="page === 'createProducts' && '!text-secondary'"
                     >Create Products</a
                   >
                 </li>
                 <li>
                   <a
+                    :class="page === 'product-list' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="product-list.html"
-                    :class="page === 'product-list' && '!text-secondary'"
                     >Product List</a
                   >
                 </li>
@@ -1021,15 +1022,15 @@
             </div>
             <!-- Dropdown Menu End -->
           </li>
+
           <li>
             <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Product-Inquiry') && (page === 'product-inquiry') }"
+              @click="selected = (selected === 'Product-Inquiry' ? '':'Product-Inquiry')"
               class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
-              href="#"
-              @click.prevent="selected = (selected === 'Policies' ? '':'Policies')"
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Policies') || (page === 'createPolicies' || page === 'Policies-list') }"
+              href="product-inquiry.html"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
                 class="svg-icon"
                 style="
                   width: 1em;
@@ -1038,8 +1039,43 @@
                   fill: currentColor;
                   overflow: hidden;
                 "
-                viewBox="0 0 1024 1024"
                 version="1.1"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M375.552 201.216l173.824 0c20.736 0 37.76-16.896 37.76-37.76l0-1.408c0-20.736-16.896-37.76-37.76-37.76L375.552 124.288c-20.736 0-37.76 16.896-37.76 37.76l0 1.408C337.792 184.32 354.688 201.216 375.552 201.216z"
+                />
+                <path
+                  d="M453.76 674.816 303.36 674.816l0-48 162.816 0c29.952-76.16 103.936-130.176 190.72-130.176 30.848 0 59.904 7.04 86.144 19.2L743.04 215.808c0-29.312-23.68-52.992-52.992-52.992l-68.48 0 0 0.768c0 39.808-32.256 72.192-72.192 72.192L375.552 235.776c-39.808 0-72.192-32.256-72.192-72.192l0-0.768-68.48 0c-29.312 0-52.992 23.68-52.992 52.992l0 525.824c0 29.312 23.68 52.992 52.992 52.992l239.488 0C460.032 766.72 451.84 735.104 451.84 701.568 451.84 692.48 452.608 683.648 453.76 674.816zM303.36 361.6l318.08 0 0 48L303.36 409.6 303.36 361.6zM303.36 494.208l167.168 0 0 48L303.36 542.208 303.36 494.208z"
+                />
+                <path
+                  d="M776.704 799.488c22.4-27.392 34.944-61.568 34.944-97.92 0-85.248-69.376-154.752-154.752-154.752s-154.752 69.376-154.752 154.752S571.648 856.32 656.896 856.32c34.688 0 67.456-11.264 94.848-32.512 1.024-0.768 1.92-1.792 2.944-2.56l78.336 78.336 21.888-21.888L776.704 799.488zM732.8 799.36c-21.888 17.024-48.128 25.984-75.904 25.984-68.224 0-123.776-55.552-123.776-123.776s55.552-123.776 123.776-123.776 123.776 55.552 123.776 123.776C780.672 740.096 763.136 775.68 732.8 799.36z"
+                />
+              </svg>
+              Product Inquiry
+            </a>
+          </li>
+
+          <li>
+            <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Policies') || (page === 'createPolicies' || page === 'Policies-list') }"
+              @click.prevent="selected = (selected === 'Policies' ? '':'Policies')"
+              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              href="#"
+            >
+              <svg
+                class="svg-icon"
+                style="
+                  width: 1em;
+                  height: 1em;
+                  vertical-align: middle;
+                  fill: currentColor;
+                  overflow: hidden;
+                "
+                version="1.1"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M856 952H168V104h545.94L856 246.06z m-640-48h592V265.94L694.06 152H216z"
@@ -1050,42 +1086,42 @@
               </svg>
               Policies
               <svg
-                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 :class="{ 'rotate-180': (selected === 'Policies') }"
-                width="20"
+                class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                fill="none"
                 height="20"
                 viewBox="0 0 20 20"
-                fill="none"
+                width="20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
                   fill=""
+                  fill-rule="evenodd"
                 />
               </svg>
             </a>
 
             <!-- Dropdown Menu Start -->
             <div
-              class="translate transform overflow-hidden"
               :class="(selected === 'Policies') ? 'block' :'hidden'"
+              class="translate transform overflow-hidden"
             >
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
+                    :class="page === 'createPolicies' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createPolicies.html"
-                    :class="page === 'createPolicies' && '!text-secondary'"
                     >Create Policies</a
                   >
                 </li>
                 <li>
                   <a
+                    :class="page === 'policies-list' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="policies-list.html"
-                    :class="page === 'policies-list' && '!text-secondary'"
                     >Policies List</a
                   >
                 </li>

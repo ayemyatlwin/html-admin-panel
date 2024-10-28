@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>View Product Inquiry Detail | GGI Nippon Life</title>
+</head>
+
+<body
+        :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
+        x-data="{ page: 'view-product-inquiry', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+        x-init="
+          darkMode = JSON.parse(localStorage.getItem('darkMode'));
+          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+>
+<!-- ===== Preloader Start ===== -->
+<include src="./partials/preloader.html"></include>
+<!-- ===== Preloader End ===== -->
+
+<!-- ===== Page Wrapper Start ===== -->
+<div class="flex h-screen overflow-hidden">
+  <!-- ===== Sidebar Start ===== -->
+  <include src="./partials/sidebar.html"></include>
+  <!-- ===== Sidebar End ===== -->
+
+  <!-- ===== Content Area Start ===== -->
+  <div
+          class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
+  >
+    <!-- ===== Header Start ===== -->
+    <include src="./partials/header.html"/>
+    <!-- ===== Header End ===== -->
+
+    <!-- ===== Main Content Start ===== -->
+    <main>
+      <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+        <div class="mx-auto max-w-270">
+          <!-- Breadcrumb Start -->
+          <div
+                  class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+          >
+            <h2
+                    class="text-title-md2 font-bold text-primary dark:text-white"
+            >
+              Product Inquiry Detail
+            </h2>
+          </div>
+          <!-- Breadcrumb End -->
+
+          <!-- ====== Settings Section Start -->
+          <div class="grid">
+            <div class="col-span-5 xl:col-span-3">
+              <div
+                      class="rounded-lg border border-stroke bg-white p-7 shadow-lg dark:border-strokedark dark:bg-boxdark"
+              >
+                <!-- Product Name -->
+                <div class="mb-6">
+                  <h2
+                          class="text-2xl font-semibold text-primary dark:text-white"
+                  >
+                    Simple Life Insurance
+                  </h2>
+                </div>
+
+                <!-- Inquirer Information in Row Format with Width Split -->
+                <div class="space-y-4">
+                  <!-- Inquirer Name -->
+                  <div class="flex flex-1">
+                    <p
+                            class=" flex-[0.3] text-lg font-medium text-gray-500 dark:text-gray-400"
+                    >
+                      Inquirer Name
+                    </p>
+                    <p
+                            class=" flex-[0.7] text-lg font-semibold text-primary dark:text-white"
+                    >
+                      Thomas Gray
+                    </p>
+                  </div>
+
+                  <!-- Inquirer Phone -->
+                  <div class="flex">
+                    <p
+                            class="flex-[0.3] text-lg font-medium text-gray-500 dark:text-gray-400"
+                    >
+                      Inquirer Phone
+                    </p>
+                    <p
+                            class="flex-[0.7] text-lg font-semibold text-primary dark:text-white"
+                    >
+                      0998897789
+                    </p>
+                  </div>
+
+                  <!-- Inquirer Email -->
+                  <div class="flex">
+                    <p
+                            class="flex-[0.3] text-lg font-medium text-gray-500 dark:text-gray-400"
+                    >
+                      Inquirer Email
+                    </p>
+                    <p
+                            class="flex-[0.7] text-lg font-semibold text-primary dark:text-white"
+                    >
+                      inquirer@mail
+                    </p>
+                  </div>
+
+                  <!-- Inquirer NRC -->
+                  <div class="flex">
+                    <p
+                            class="flex-[0.3] text-lg font-medium text-gray-500 dark:text-gray-400"
+                    >
+                      Inquirer NRC
+                    </p>
+                    <p
+                            class="flex-[0.7] text-lg font-semibold text-primary dark:text-white"
+                    >
+                      Inquirer nrc number
+                    </p>
+                  </div>
+
+                  <!-- Inquirer DOB -->
+                  <div class="flex">
+                    <p
+                            class="flex-[0.3] text-lg font-medium text-gray-500 dark:text-gray-400"
+                    >
+                      Inquirer DOB
+                    </p>
+                    <p
+                            class="flex-[0.7] text-lg font-semibold text-primary dark:text-white"
+                    >
+                      3rd Oct, 2000
+                    </p>
+                  </div>
+
+                  <!-- Message Section -->
+                  <div class="flex">
+                    <p
+                            class="flex-[0.3] text-lg font-medium text-gray-500 dark:text-gray-400"
+                    >
+                      Message
+                    </p>
+                    <p
+                            class="flex-[0.7] text-lg font-semibold text-primary dark:text-white"
+                    >
+                      I want to know more about this product. Please contact
+                      my number to explain me in detail.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== Settings Section End -->
+        </div>
+      </div>
+    </main>
+    <!-- ===== Main Content End ===== -->
+  </div>
+  <!-- ===== Content Area End ===== -->
+</div>
+<!-- ===== Page Wrapper End ===== -->
+</body>
+</html>
