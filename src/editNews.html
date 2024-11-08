@@ -4,49 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <title>Edit News Post | GGI Nippon Life</title>
-    <!-- Include TinyMCE from CDN -->
-    <script
-      src="https://cdn.tiny.cloud/1/kk5aiq1hor5m8vlvgokqunl5lmkf9q1lh5yxkc9025ysv6u2/tinymce/6/tinymce.min.js"
-      referrerpolicy="origin"
-    ></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script type="text/javascript">
-      tinymce.init({
-        selector: "textarea.rich-text-editor",
-        plugins: [
-          "advlist",
-          "autolink",
-          "lists",
-          "link",
-          "image",
-          "charmap",
-          "preview",
-          "anchor",
-          "searchreplace",
-          "visualblocks",
-          "code",
-          "fullscreen",
-          "insertdatetime",
-          "media",
-          "table",
-          "code",
-          "help",
-          "wordcount",
-        ],
-        toolbar:
-          "undo redo | blocks | " +
-          "fontselect" +
-          "formatselect" +
-          "bold italic | forecolor backcolor | alignleft aligncenter " +
-          "alignright alignjustify | bullist numlist outdent indent | " +
-          "removeformat | help",
-        height: 300,
-        branding: false,
-      });
-
       function handleFileUpload(event) {
         const imageContainer = document.getElementById("imagePreview");
         imageContainer.innerHTML = "";
@@ -323,7 +290,7 @@
                         </div>
                       </div>
 
-                      <!--  Content with TinyMCE Rich Text Editor -->
+                      <!--  Content with Quill Rich Text Editor -->
                       <div class="mb-4 flex flex-1 gap-2">
                         <div class="flex-[0.5]">
                           <label
@@ -331,26 +298,32 @@
                           >
                             Content</label
                           >
-                          <div class="relative">
-                            <textarea
-                              class="rich-text-editor"
-                              placeholder="Enter the content "
-                              required
-                            ></textarea>
-                          </div>
+                          <div
+                            id="editor-container"
+                            style="height: 240px"
+                            class=""
+                          ></div>
+                          <textarea
+                            id="editor-container-textarea"
+                            name="editor-container-textarea"
+                            style="display: none"
+                          ></textarea>
                         </div>
                         <div class="flex-[0.5]">
                           <label
                             class="mb-2.5 block font-medium text-primary dark:text-white"
                             >အကြောင်းအရာ</label
                           >
-                          <div class="relative">
-                            <textarea
-                              class="rich-text-editor"
-                              placeholder="အကြောင်းအရာကိုရိုက်ထည့်ပါ။"
-                              required
-                            ></textarea>
-                          </div>
+                          <div
+                            id="editor-container-mm"
+                            style="height: 240px"
+                            class=""
+                          ></div>
+                          <textarea
+                            id="editor-container-textarea-mm"
+                            name="editor-container-textarea-mm"
+                            style="display: none"
+                          ></textarea>
                         </div>
                       </div>
 
@@ -447,5 +420,30 @@
       <!-- ===== Content Area End ===== -->
     </div>
     <!-- ===== Page Wrapper End ===== -->
+    <script>
+      function initializeQuillEditor(editorId, textareaId, placeholder) {
+        const quill = new Quill(editorId, {
+          theme: "snow",
+          placeholder: placeholder,
+        });
+        const textarea = document.getElementById(textareaId);
+
+        quill.on("text-change", function () {
+          textarea.value = quill.root.innerHTML;
+        });
+        textarea.value = quill.root.innerHTML;
+      }
+
+      initializeQuillEditor(
+        "#editor-container",
+        "editor-container-textarea",
+        "Enter the content"
+      );
+      initializeQuillEditor(
+        "#editor-container-mm",
+        "editor-container-textarea-mm",
+        "အကြောင်းအရာကိုရိုက်ထည့်ပါ။"
+      );
+    </script>
   </body>
 </html>

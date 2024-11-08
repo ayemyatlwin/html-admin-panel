@@ -7,44 +7,12 @@
     <title>Edit Products | GGI Nippon Life</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script
-      src="https://cdn.tiny.cloud/1/kk5aiq1hor5m8vlvgokqunl5lmkf9q1lh5yxkc9025ysv6u2/tinymce/6/tinymce.min.js"
-      referrerpolicy="origin"
-    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script type="text/javascript">
-      tinymce.init({
-        selector: "textarea.rich-text-editor",
-        plugins: [
-          "advlist",
-          "autolink",
-          "lists",
-          "link",
-          "image",
-          "charmap",
-          "preview",
-          "anchor",
-          "searchreplace",
-          "visualblocks",
-          "code",
-          "fullscreen",
-          "insertdatetime",
-          "media",
-          "table",
-          "code",
-          "help",
-          "wordcount",
-        ],
-        toolbar:
-          "undo redo | blocks | " +
-          "fontselect" +
-          "formatselect" +
-          "bold italic | forecolor backcolor | alignleft aligncenter " +
-          "alignright alignjustify | bullist numlist outdent indent | " +
-          "removeformat | help",
-        height: 300,
-        branding: false,
-      });
-
       function productIconUpload(event) {
         const featurePreviewContainer = document.getElementById(
           "product-icon-preview"
@@ -408,7 +376,7 @@
                         </div>
                       </div>
 
-                      <!-- Description -->
+                      <!--  Content with Quill Rich Text Editor -->
                       <div class="mb-4 flex flex-1 gap-2">
                         <div class="flex-[0.5]">
                           <label
@@ -416,30 +384,35 @@
                           >
                             Description</label
                           >
-                          <div class="relative">
-                            <textarea
-                              class="rich-text-editor"
-                              placeholder="Enter product description"
-                              required
-                            ></textarea>
-                          </div>
+                          <div
+                            id="editor-description"
+                            style="height: 240px"
+                            class=""
+                          ></div>
+                          <textarea
+                            id="editor-description-textarea"
+                            name="editor-description-textarea"
+                            style="display: none"
+                          ></textarea>
                         </div>
                         <div class="flex-[0.5]">
                           <label
                             class="mb-2.5 block font-medium text-primary dark:text-white"
                             >ဖော်ပြချက်</label
                           >
-                          <div class="relative">
-                            <textarea
-                              class="rich-text-editor"
-                              placeholder="ထုတ်ကုန်ဖော်ပြချက်ကိုရိုက်ထည့်ပါ"
-                              required
-                            ></textarea>
-                          </div>
+                          <div
+                            id="editor-description-mm"
+                            style="height: 240px"
+                            class=""
+                          ></div>
+                          <textarea
+                            id="editor-description-textarea-mm"
+                            name="editor-description-textarea-mm"
+                            style="display: none"
+                          ></textarea>
                         </div>
                       </div>
 
-                      <!-- Feature -->
                       <div class="mb-4 flex flex-1 gap-2">
                         <div class="flex-[0.5]">
                           <label
@@ -447,30 +420,35 @@
                           >
                             Feature</label
                           >
-                          <div class="relative">
-                            <textarea
-                              class="rich-text-editor"
-                              placeholder="Enter the product feature "
-                              required
-                            ></textarea>
-                          </div>
+                          <div
+                            id="editor-feature"
+                            style="height: 240px"
+                            class=""
+                          ></div>
+                          <textarea
+                            id="editor-feature-textarea"
+                            name="editor-feature-textarea"
+                            style="display: none"
+                          ></textarea>
                         </div>
                         <div class="flex-[0.5]">
                           <label
                             class="mb-2.5 block font-medium text-primary dark:text-white"
-                            >ထူးခြားချက်</label
-                          >
-                          <div class="relative">
-                            <textarea
-                              class="rich-text-editor"
-                              placeholder="ထုတ်ကုန်ထူးခြားချက်ကိုရိုက်ထည့်ပါ"
-                              required
-                            ></textarea>
-                          </div>
+                            >ထူးခြားချက်
+                          </label>
+                          <div
+                            id="editor-feature-mm"
+                            style="height: 240px"
+                            class=""
+                          ></div>
+                          <textarea
+                            id="editor-feature-textarea-mm"
+                            name="editor-feature-textarea-mm"
+                            style="display: none"
+                          ></textarea>
                         </div>
                       </div>
 
-                      <!-- Benefits -->
                       <div class="mb-4 flex flex-1 gap-2">
                         <div class="flex-[0.5]">
                           <label
@@ -478,30 +456,35 @@
                           >
                             Benefits</label
                           >
-                          <div class="relative">
-                            <textarea
-                              class="rich-text-editor"
-                              placeholder="Enter product benefits"
-                              required
-                            ></textarea>
-                          </div>
+                          <div
+                            id="editor-benefits"
+                            style="height: 240px"
+                            class=""
+                          ></div>
+                          <textarea
+                            id="editor-benefits-textarea"
+                            name="editor-benefits-textarea"
+                            style="display: none"
+                          ></textarea>
                         </div>
                         <div class="flex-[0.5]">
                           <label
                             class="mb-2.5 block font-medium text-primary dark:text-white"
-                            >အကျိုးကျေးဇူးများ</label
-                          >
-                          <div class="relative">
-                            <textarea
-                              class="rich-text-editor"
-                              placeholder="ထုတ်ကုန်အကျိုးကျေးဇူးများကိုရိုက်ထည့်ပါ"
-                              required
-                            ></textarea>
-                          </div>
+                            >အကျိုးကျေးဇူးများ
+                          </label>
+                          <div
+                            id="editor-benefits-mm"
+                            style="height: 240px"
+                            class=""
+                          ></div>
+                          <textarea
+                            id="editor-benefits-textarea-mm"
+                            name="editor-benefits-textarea-mm"
+                            style="display: none"
+                          ></textarea>
                         </div>
                       </div>
 
-                      <!-- Knowledge -->
                       <div class="mb-4 flex flex-1 gap-2">
                         <div class="flex-[0.5]">
                           <label
@@ -509,27 +492,32 @@
                           >
                             Knowledge</label
                           >
-                          <div class="relative">
-                            <textarea
-                              class="rich-text-editor"
-                              placeholder="Enter product knowledge"
-                              required
-                            ></textarea>
-                          </div>
+                          <div
+                            id="editor-knowledge"
+                            style="height: 240px"
+                            class=""
+                          ></div>
+                          <textarea
+                            id="editor-knowledge-textarea"
+                            name="editor-knowledge-textarea"
+                            style="display: none"
+                          ></textarea>
                         </div>
                         <div class="flex-[0.5]">
                           <label
                             class="mb-2.5 block font-medium text-primary dark:text-white"
-                          >
-                            ဗဟုသုတများ
+                            >ဗဟုသုတများ
                           </label>
-                          <div class="relative">
-                            <textarea
-                              class="rich-text-editor"
-                              placeholder="ထုတ်ကုန်ဗဟုသုတများကိုရိုက်ထည့်ပါ"
-                              required
-                            ></textarea>
-                          </div>
+                          <div
+                            id="editor-knowledge-mm"
+                            style="height: 240px"
+                            class=""
+                          ></div>
+                          <textarea
+                            id="editor-knowledge-textarea-mm"
+                            name="editor-knowledge-textarea-mm"
+                            style="display: none"
+                          ></textarea>
                         </div>
                       </div>
 
@@ -559,5 +547,60 @@
       <!-- ===== Content Area End ===== -->
     </div>
     <!-- ===== Page Wrapper End ===== -->
+    <script>
+      function initializeQuillEditor(editorId, textareaId, placeholder) {
+        const quill = new Quill(editorId, {
+          theme: "snow",
+          placeholder: placeholder,
+        });
+        const textarea = document.getElementById(textareaId);
+
+        quill.on("text-change", function () {
+          textarea.value = quill.root.innerHTML;
+        });
+        textarea.value = quill.root.innerHTML;
+      }
+
+      initializeQuillEditor(
+        "#editor-description",
+        "editor-description-textarea",
+        "Enter the content"
+      );
+      initializeQuillEditor(
+        "#editor-description-mm",
+        "editor-description-textarea-mm",
+        "ဖော်ပြချက်ကိုရိုက်ထည့်ပါ။"
+      );
+      initializeQuillEditor(
+        "#editor-feature",
+        "editor-feature-textarea",
+        "Enter the content"
+      );
+      initializeQuillEditor(
+        "#editor-feature-mm",
+        "editor-feature-textarea-mm",
+        "ထူးခြားချက်ကိုရိုက်ထည့်ပါ။"
+      );
+      initializeQuillEditor(
+        "#editor-benefits",
+        "editor-benefits-textarea",
+        "Enter the content"
+      );
+      initializeQuillEditor(
+        "#editor-benefits-mm",
+        "editor-benefits-textarea-mm",
+        "အကျိုးကျေးဇူးများကိုရိုက်ထည့်ပါ။"
+      );
+      initializeQuillEditor(
+        "#editor-knowledge",
+        "editor-knowledge-textarea",
+        "Enter the content"
+      );
+      initializeQuillEditor(
+        "#editor-knowledge-mm",
+        "editor-knowledge-textarea-mm",
+        "ဗဟုသုတများကိုရိုက်ထည့်ပါ။"
+      );
+    </script>
   </body>
 </html>
