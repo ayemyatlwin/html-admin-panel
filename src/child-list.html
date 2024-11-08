@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Master Data Child List | GGI Nippon Life</title>
+  </head>
+
+  <body
+    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
+    x-data="{ page: 'child-list', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-init="
+          darkMode = JSON.parse(localStorage.getItem('darkMode'));
+          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+  >
+    <!-- ===== Preloader Start ===== -->
+    <include src="./partials/preloader.html"></include>
+    <!-- ===== Preloader End ===== -->
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <include src="./partials/sidebar.html"></include>
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div
+        class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
+      >
+        <!-- ===== Header Start ===== -->
+        <include src="./partials/header.html" />
+        <!-- ===== Header End ===== -->
+
+        <!-- ===== Main Content Start ===== -->
+        <main class="relative">
+          <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+            <!-- Breadcrumb Start -->
+            <div class="mb-5 flex flex-col">
+              <a
+                href="./master-data-list.html"
+                class="flex gap-2 px-2 text-primary"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="svg-icon mt-1"
+                  style="
+                    width: 1em;
+                    height: 1em;
+                    vertical-align: middle;
+                    fill: currentColor;
+                    overflow: hidden;
+                  "
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                >
+                  <path
+                    d="M596.676923 248.123077c204.8 0 372.184615 165.415385 372.184615 372.184615s-167.384615 372.184615-372.184615 372.184616h-161.476923c-15.753846 0-25.6-11.815385-25.6-27.569231v-63.015385c0-15.753846 11.815385-29.538462 27.569231-29.538461h159.507692c139.815385 0 252.061538-112.246154 252.061539-252.061539s-112.246154-252.061538-252.061539-252.061538H322.953846s-15.753846 0-21.661538 1.969231c-15.753846 7.876923-11.815385 19.692308 1.96923 33.476923l96.492308 96.492307c11.815385 11.815385 9.846154 29.538462-1.969231 41.353847L354.461538 584.861538c-11.815385 11.815385-25.6 11.815385-37.415384 1.969231l-256-256c-9.846154-9.846154-9.846154-25.6 0-35.446154L315.076923 41.353846c11.815385-11.815385 31.507692-11.815385 41.353846 0l41.353846 41.353846c11.815385 11.815385 11.815385 31.507692 0 41.353846l-96.492307 96.492308c-11.815385 11.815385-11.815385 25.6 7.876923 25.6h13.784615l273.723077 1.969231z"
+                  />
+                </svg>
+                <span class="mb-5">Back</span>
+              </a>
+              <h2 class="text-title-md2 font-bold text-primary dark:text-white">
+                Master Data Child
+              </h2>
+            </div>
+            <!-- Breadcrumb End -->
+
+            <!-- ====== Table Section Start -->
+            <div class="flex flex-col gap-10">
+              <!-- ====== Table One Start -->
+              <include src="./partials/child-table.html" />
+              <!-- ====== Table One End -->
+            </div>
+            <!-- ====== Table Section End -->
+          </div>
+        </main>
+        <!-- ===== Main Content End ===== -->
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  </body>
+</html>

@@ -2,17 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Product Inquiry List | GGI Nippon Life</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Member List | GGI Nippon Life</title>
   </head>
 
   <body
-    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
-    x-data="{ page: 'product-inquiry', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-data="{ page: 'member', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
     x-init="
           darkMode = JSON.parse(localStorage.getItem('darkMode'));
           $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
   >
     <!-- ===== Preloader Start ===== -->
     <include src="./partials/preloader.html"></include>
@@ -40,7 +40,7 @@
               class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
             >
               <h2 class="text-title-md2 font-bold text-primary dark:text-white">
-                Product Inquiry
+                Register member
               </h2>
             </div>
             <!-- Breadcrumb End -->
@@ -48,7 +48,7 @@
             <!-- ====== Table Section Start -->
             <div class="flex flex-col gap-10">
               <!-- ====== Table One Start -->
-              <include src="./partials/product-inquiry-table.html" />
+              <include src="./partials/member-table.html" />
               <!-- ====== Table One End -->
             </div>
             <!-- ====== Table Section End -->

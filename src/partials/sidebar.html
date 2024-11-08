@@ -122,6 +122,34 @@
           </li>
 
           <!-- Menu Item Dashboard -->
+          <li>
+            <a
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'member') && (page === 'member') }"
+              @click="selected = (selected === 'member' ? '':'member')"
+              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              href="/member.html"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="svg-icon"
+                style="
+                  width: 1em;
+                  height: 1em;
+                  vertical-align: middle;
+                  fill: currentColor;
+                  overflow: hidden;
+                "
+                viewBox="0 0 1024 1024"
+                version="1.1"
+              >
+                <path
+                  d="M671.989734 537.535578C751.823281 485.28752 804.573216 395.090665 804.573216 292.573807 804.573216 130.998848 673.578769 0 511.995831 0 350.4279 0 219.426784 130.998848 219.426784 292.573807 219.426784 395.090665 272.176719 485.28752 352.010266 537.535578 147.598436 604.738763 0 797.154507 0 1024L1024 1024C1024 797.154507 876.408233 604.738763 671.989734 537.535578L671.989734 537.535578Z"
+                />
+              </svg>
+
+              Member
+            </a>
+          </li>
           <!-- Menu Item Users -->
           <li>
             <a
@@ -1025,8 +1053,8 @@
 
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Product-Inquiry') && (page === 'product-inquiry') }"
-              @click="selected = (selected === 'Product-Inquiry' ? '':'Product-Inquiry')"
+              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'product-inquiry') && (page === 'product-inquiry') }"
+              @click="selected = (selected === 'product-inquiry' ? '':'product-inquiry')"
               class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="product-inquiry.html"
             >

@@ -1,154 +1,154 @@
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Create Notifications | GGI Nippon Life</title>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Notifications | GGI Nippon Life</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-      <script type="text/javascript">
-        function featureFileUpload(event) {
-          const featurePreviewContainer =
-            document.getElementById("feature-preview");
-          featurePreviewContainer.innerHTML = "";
+    <script type="text/javascript">
+      function featureFileUpload(event) {
+        const featurePreviewContainer =
+          document.getElementById("feature-preview");
+        featurePreviewContainer.innerHTML = "";
 
-          const files = event.target.files;
-          console.log("Files selected:", files);
+        const files = event.target.files;
+        console.log("Files selected:", files);
 
-          if (files.length > 0) {
-            const formData = new FormData();
+        if (files.length > 0) {
+          const formData = new FormData();
 
-            Array.from(files).forEach((file, index) => {
-              console.log(`Processing file #${index + 1}:`, file);
-              const reader = new FileReader();
-              formData.append("files", file);
-              reader.onload = function (e) {
-                console.log(`File #${index + 1} preview generated`);
+          Array.from(files).forEach((file, index) => {
+            console.log(`Processing file #${index + 1}:`, file);
+            const reader = new FileReader();
+            formData.append("files", file);
+            reader.onload = function (e) {
+              console.log(`File #${index + 1} preview generated`);
 
-                const imgWrapper = document.createElement("div");
-                imgWrapper.classList.add("preview-image-wrapper");
+              const imgWrapper = document.createElement("div");
+              imgWrapper.classList.add("preview-image-wrapper");
 
-                const imgElement = document.createElement("img");
-                imgElement.src = e.target.result;
-                imgElement.classList.add("preview-image");
+              const imgElement = document.createElement("img");
+              imgElement.src = e.target.result;
+              imgElement.classList.add("preview-image");
 
-                const closeButton = document.createElement("button");
-                closeButton.innerHTML = "&times;";
-                closeButton.classList.add("close-button");
-                closeButton.onclick = function () {
-                  imgWrapper.remove();
-                  console.log(`File #${index + 1} removed from preview`);
-                };
-
-                imgWrapper.appendChild(imgElement);
-                imgWrapper.appendChild(closeButton);
-
-                featurePreviewContainer.appendChild(imgWrapper);
+              const closeButton = document.createElement("button");
+              closeButton.innerHTML = "&times;";
+              closeButton.classList.add("close-button");
+              closeButton.onclick = function () {
+                imgWrapper.remove();
+                console.log(`File #${index + 1} removed from preview`);
               };
-              reader.readAsDataURL(file);
-            });
-            uploadFiles(formData);
-          }
-        }
 
-        // Ajax upload function
-        function uploadFiles(formData) {
-          console.log("Starting file upload...", formData);
-          $.ajax({
-            url: "api/uploadfiles", //backend url
-            data: formData,
-            processData: false,
-            contentType: false,
-            type: "POST",
-            success: function (data) {
-              console.log("File upload success:", data);
-              $("#uploadedFileName").val(data.fileName);
-              alert("Files Uploaded! " + data.fileName);
-            },
-            error: function (xhr, status, error) {
-              console.error("File upload failed:", error);
-              alert("File upload failed.");
-            },
+              imgWrapper.appendChild(imgElement);
+              imgWrapper.appendChild(closeButton);
+
+              featurePreviewContainer.appendChild(imgWrapper);
+            };
+            reader.readAsDataURL(file);
           });
+          uploadFiles(formData);
         }
-      </script>
+      }
 
-      <style>
-        .preview-image-wrapper {
-          position: relative;
-          display: inline-block;
-          margin: 10px;
-        }
+      // Ajax upload function
+      function uploadFiles(formData) {
+        console.log("Starting file upload...", formData);
+        $.ajax({
+          url: "api/uploadfiles", //backend url
+          data: formData,
+          processData: false,
+          contentType: false,
+          type: "POST",
+          success: function (data) {
+            console.log("File upload success:", data);
+            $("#uploadedFileName").val(data.fileName);
+            alert("Files Uploaded! " + data.fileName);
+          },
+          error: function (xhr, status, error) {
+            console.error("File upload failed:", error);
+            alert("File upload failed.");
+          },
+        });
+      }
+    </script>
 
-        .preview-image {
-          max-width: 150px;
-          border-radius: 10px;
-          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    <style>
+      .preview-image-wrapper {
+        position: relative;
+        display: inline-block;
+        margin: 10px;
+      }
 
-        .close-button {
-          position: absolute;
-          top: 5px;
-          right: 5px;
-          background-color: rgba(0, 0, 0, 0.5);
-          color: white;
-          border: none;
-          border-radius: 50%;
-          width: 24px;
-          height: 24px;
-          font-size: 18px;
-          line-height: 20px;
-          cursor: pointer;
-        }
+      .preview-image {
+        max-width: 150px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      }
 
-        .close-button:hover {
-          background-color: rgba(255, 0, 0, 0.7);
-        }
-      </style>
-    </head>
+      .close-button {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        font-size: 18px;
+        line-height: 20px;
+        cursor: pointer;
+      }
 
-    <body
-      x-data="{ page: 'createNotifications', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
-      x-init="
+      .close-button:hover {
+        background-color: rgba(255, 0, 0, 0.7);
+      }
+    </style>
+  </head>
+
+  <body
+    x-data="{ page: 'createNotifications', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-init="
             darkMode = JSON.parse(localStorage.getItem('darkMode'));
             $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
-      :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
-    >
-      <!-- ===== Preloader Start ===== -->
-      <include src="./partials/preloader.html"></include>
-      <!-- ===== Preloader End ===== -->
+    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
+  >
+    <!-- ===== Preloader Start ===== -->
+    <include src="./partials/preloader.html"></include>
+    <!-- ===== Preloader End ===== -->
 
-      <!-- ===== Page Wrapper Start ===== -->
-      <div class="flex h-screen overflow-hidden">
-        <!-- ===== Sidebar Start ===== -->
-        <include src="./partials/sidebar.html" />
-        <!-- ===== Sidebar End ===== -->
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <include src="./partials/sidebar.html" />
+      <!-- ===== Sidebar End ===== -->
 
-        <!-- ===== Content Area Start ===== -->
-        <div
-          class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
-        >
-          <!-- ===== Header Start ===== -->
-          <include src="./partials/header.html" />
-          <!-- ===== Header End ===== -->
+      <!-- ===== Content Area Start ===== -->
+      <div
+        class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
+      >
+        <!-- ===== Header Start ===== -->
+        <include src="./partials/header.html" />
+        <!-- ===== Header End ===== -->
 
-          <!-- ===== Main Content Start ===== -->
-          <main>
-            <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-              <!-- ====== Forms Section Start ===== -->
-              <div
-                class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
-              >
-                <div class="flex flex-wrap items-center">
-                  <div class="w-full border-stroke dark:border-strokedark">
-                    <div class="w-full p-5 sm:p-9 xl:p-10">
-                      <h2
-                        class="text-2xl font-bold text-primary dark:text-white sm:text-title-xl2"
-                      >
-                        Create Notification
-                      </h2>
-                      <div
+        <!-- ===== Main Content Start ===== -->
+        <main>
+          <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+            <!-- ====== Forms Section Start ===== -->
+            <div
+              class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
+            >
+              <div class="flex flex-wrap items-center">
+                <div class="w-full border-stroke dark:border-strokedark">
+                  <div class="w-full p-5 sm:p-9 xl:p-10">
+                    <h2
+                      class="text-2xl font-bold text-primary dark:text-white sm:text-title-xl2"
+                    >
+                      Create Notification
+                    </h2>
+                    <div
                       class="mt-4 mb-6 rounded-lg bg-red-500 p-4 text-sm text-white"
                     >
                       <span class="font-bold">Error : </span>
@@ -160,327 +160,326 @@
                       <span class="font-bold">Success : </span>
                       Successfully Saved !
                     </div>
-                      <form>
-                        <!-- Title Field -->
-                        <div class="mb-4">
-                          <label
-                            class="mb-2.5 block font-medium text-primary dark:text-white"
-                            >Title</label
-                          >
-                          <div class="relative">
+                    <form>
+                      <!-- Title Field -->
+                      <div class="mb-4">
+                        <label
+                          class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >Title</label
+                        >
+                        <div class="relative">
+                          <input
+                            type="text"
+                            placeholder="Enter the title"
+                            required
+                            class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                          />
+                        </div>
+                      </div>
+
+                      <!-- Content Field -->
+                      <div class="mb-4">
+                        <label
+                          class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >Content</label
+                        >
+                        <div class="relative">
+                          <textarea
+                            placeholder="Enter the content"
+                            required
+                            class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            rows="5"
+                          ></textarea>
+                        </div>
+                      </div>
+
+                      <!-- CTA Text Field -->
+                      <div class="mb-4">
+                        <label
+                          class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >CTA Text</label
+                        >
+                        <div class="relative">
+                          <input
+                            type="text"
+                            placeholder="Enter the CTA text"
+                            required
+                            class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                          />
+                        </div>
+                      </div>
+
+                      <!-- CTA Link Field -->
+                      <div class="mb-4">
+                        <label
+                          class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >CTA Link</label
+                        >
+                        <div class="relative">
+                          <input
+                            type="url"
+                            placeholder="Enter the CTA link"
+                            required
+                            class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="mb-4">
+                        <label
+                          class="mb-2.5 block font-medium text-primary dark:text-white"
+                        >
+                          Upload Post Feature Image
+                        </label>
+                        <div class="relative">
+                          <input
+                            type="file"
+                            accept="image/*"
+                            required
+                            class="w-full cursor-pointer rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            id="fileUpload"
+                            onchange="featureFileUpload(event)"
+                          />
+                          <input
+                            type="hidden"
+                            id="uploadedFileName"
+                            name="uploadedFileName"
+                          />
+                        </div>
+                        <small
+                          class="mt-2 block text-xs text-gray-500 dark:text-gray-400"
+                        >
+                          Max file size: 2MB. Multiple images not allowed.
+                          Recommended size: 1200x628px.
+                        </small>
+                      </div>
+
+                      <!-- Image Preview -->
+                      <div id="feature-preview" class="flex flex-wrap"></div>
+
+                      <div class="mb-4" x-data="{ target: 'all' }">
+                        <label
+                          class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >Target</label
+                        >
+
+                        <div class="flex gap-x-6">
+                          <div class="flex gap-1">
                             <input
-                              type="text"
-                              placeholder="Enter the title"
-                              required
-                              class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                              type="radio"
+                              name="target"
+                              value="all"
+                              id="radio-all"
+                              x-model="target"
+                              class="mt-0.5 shrink-0 rounded-full border-gray-200 text-primary focus:ring-primary disabled:pointer-events-none disabled:opacity-50"
                             />
+                            <label
+                              for="radio-all"
+                              class="ms-2 text-sm text-gray-500 dark:text-neutral-400"
+                              >Send to all</label
+                            >
+                          </div>
+
+                          <div class="flex gap-1">
+                            <input
+                              type="radio"
+                              name="target"
+                              value="segment"
+                              id="radio-segment"
+                              x-model="target"
+                              class="mt-0.5 shrink-0 rounded-full border-gray-200 text-primary focus:ring-primary disabled:pointer-events-none disabled:opacity-50"
+                            />
+                            <label
+                              for="radio-segment"
+                              class="ms-2 text-sm text-gray-500 dark:text-neutral-400"
+                              >Segment</label
+                            >
+                          </div>
+
+                          <div class="flex gap-1">
+                            <input
+                              type="radio"
+                              name="target"
+                              value="person"
+                              id="radio-person"
+                              x-model="target"
+                              class="mt-0.5 shrink-0 rounded-full border-gray-200 text-primary focus:ring-primary disabled:pointer-events-none disabled:opacity-50"
+                            />
+                            <label
+                              for="radio-person"
+                              class="ms-2 text-sm text-gray-500 dark:text-neutral-400"
+                              >Select Target Person</label
+                            >
                           </div>
                         </div>
 
-                        <!-- Content Field -->
-                        <div class="mb-4">
+                        <!-- Segment input field shown when 'Segment' radio is selected -->
+                        <div
+                          id="segment"
+                          class="desc mt-4"
+                          x-show="target == 'segment'"
+                        >
                           <label
                             class="mb-2.5 block font-medium text-primary dark:text-white"
-                            >Content</label
+                            >Segment Name</label
                           >
-                          <div class="relative">
-                            <textarea
-                              placeholder="Enter the content"
-                              required
-                              class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                              rows="5"
-                            ></textarea>
-                          </div>
+                          <input
+                            type="text"
+                            placeholder="Enter Segment Name"
+                            class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                          />
                         </div>
-
-                        <!-- CTA Text Field -->
-                        <div class="mb-4">
+                        <div
+                          id="person"
+                          class="desc mt-4"
+                          x-show="target == 'person'"
+                          class=""
+                        >
                           <label
                             class="mb-2.5 block font-medium text-primary dark:text-white"
-                            >CTA Text</label
+                            >Select Target Person Phone</label
                           >
-                          <div class="relative">
-                            <input
-                              type="text"
-                              placeholder="Enter the CTA text"
-                              required
-                              class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                            />
-                          </div>
-                        </div>
+                          <select class="hidden" x-cloak id="select">
+                            <option value="1">
+                              Ko Maung Myint [094654949846]
+                            </option>
+                            <option value="2">
+                              Ko Sein Thaung [091654649848]
+                            </option>
+                            <option value="3">
+                              Ma Nu Nu Thar [09879846516]
+                            </option>
+                          </select>
 
-                        <!-- CTA Link Field -->
-                        <div class="mb-4">
-                          <label
-                            class="mb-2.5 block font-medium text-primary dark:text-white"
-                            >CTA Link</label
+                          <div
+                            x-data="dropdown()"
+                            x-init="loadOptions()"
+                            class="flex flex-col items-center"
                           >
-                          <div class="relative">
                             <input
-                              type="url"
-                              placeholder="Enter the CTA link"
-                              required
-                              class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                            />
-                          </div>
-                        </div>
-
-                        <div class="mb-4">
-                          <label
-                            class="mb-2.5 block font-medium text-primary dark:text-white"
-                          >
-                            Upload Post Feature Image
-                          </label>
-                          <div class="relative">
-                            <input
-                              type="file"
-                              accept="image/*"
-                              required
-                              class="w-full cursor-pointer rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                              id="fileUpload"
-                              onchange="featureFileUpload(event)"
-                            />
-                            <input
+                              name="values"
                               type="hidden"
-                              id="uploadedFileName"
-                              name="uploadedFileName"
+                              :value="selectedValues()"
                             />
-                          </div>
-                          <small
-                            class="mt-2 block text-xs text-gray-500 dark:text-gray-400"
-                          >
-                            Max file size: 2MB. Multiple images not allowed.
-                            Recommended size: 1200x628px.
-                          </small>
-                        </div>
-
-                        <!-- Image Preview -->
-                        <div id="feature-preview" class="flex flex-wrap"></div>
-
-                        <div class="mb-4" x-data="{ target: 'all' }">
-                          <label
-                            class="mb-2.5 block font-medium text-primary dark:text-white"
-                            >Target</label
-                          >
-
-                          <div class="flex gap-x-6">
-                            <div class="flex gap-1">
-                              <input
-                                type="radio"
-                                name="target"
-                                value="all"
-                                id="radio-all"
-                                x-model="target"
-                                class="mt-0.5 shrink-0 rounded-full border-gray-200 text-primary focus:ring-primary disabled:pointer-events-none disabled:opacity-50"
-                              />
-                              <label
-                                for="radio-all"
-                                class="ms-2 text-sm text-gray-500 dark:text-neutral-400"
-                                >Send to all</label
-                              >
-                            </div>
-
-                            <div class="flex gap-1">
-                              <input
-                                type="radio"
-                                name="target"
-                                value="segment"
-                                id="radio-segment"
-                                x-model="target"
-                                class="mt-0.5 shrink-0 rounded-full border-gray-200 text-primary focus:ring-primary disabled:pointer-events-none disabled:opacity-50"
-                              />
-                              <label
-                                for="radio-segment"
-                                class="ms-2 text-sm text-gray-500 dark:text-neutral-400"
-                                >Segment</label
-                              >
-                            </div>
-
-                            <div class="flex gap-1">
-                              <input
-                                type="radio"
-                                name="target"
-                                value="person"
-                                id="radio-person"
-                                x-model="target"
-                                class="mt-0.5 shrink-0 rounded-full border-gray-200 text-primary focus:ring-primary disabled:pointer-events-none disabled:opacity-50"
-                              />
-                              <label
-                                for="radio-person"
-                                class="ms-2 text-sm text-gray-500 dark:text-neutral-400"
-                                >Select Target Person</label
-                              >
-                            </div>
-                          </div>
-
-                          <!-- Segment input field shown when 'Segment' radio is selected -->
-                          <div
-                            id="segment"
-                            class="desc mt-4"
-                            x-show="target == 'segment'"
-                          >
-                            <label
-                              class="mb-2.5 block font-medium text-primary dark:text-white"
-                              >Segment Name</label
-                            >
-                            <input
-                              type="text"
-                              placeholder="Enter Segment Name"
-                              class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                            />
-                          </div>
-                          <div
-                            id="person"
-                            class="desc mt-4"
-                            x-show="target == 'person'"
-                            class=""
-                          >
-                            <label
-                              class="mb-2.5 block font-medium text-primary dark:text-white"
-                              >Select Target Person Phone</label
-                            >
-                            <select class="hidden" x-cloak id="select">
-                              <option value="1">
-                                Ko Maung Myint [094654949846]
-                              </option>
-                              <option value="2">
-                                Ko Sein Thaung [091654649848]
-                              </option>
-                              <option value="3">
-                                Ma Nu Nu Thar [09879846516]
-                              </option>
-                            </select>
-
-                            <div
-                              x-data="dropdown()"
-                              x-init="loadOptions()"
-                              class="flex flex-col items-center"
-                            >
-                              <input
-                                name="values"
-                                type="hidden"
-                                :value="selectedValues()"
-                              />
-                              <div class="relative z-20 inline-block w-full">
-                                <div class="relative flex flex-col items-center">
-                                  <div @click="open" class="w-full">
-                                    <div
-                                      class="mb-2 flex rounded border border-stroke py-2 pl-3 pr-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input"
-                                    >
-                                      <div class="flex flex-auto flex-wrap gap-3">
-                                        <template
-                                          x-for="(option,index) in selected"
-                                          :key="index"
+                            <div class="relative z-20 inline-block w-full">
+                              <div class="relative flex flex-col items-center">
+                                <div @click="open" class="w-full">
+                                  <div
+                                    class="mb-2 flex rounded border border-stroke py-2 pl-3 pr-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input"
+                                  >
+                                    <div class="flex flex-auto flex-wrap gap-3">
+                                      <template
+                                        x-for="(option,index) in selected"
+                                        :key="index"
+                                      >
+                                        <div
+                                          class="my-1.5 flex items-center justify-center rounded border-[.5px] border-stroke bg-gray px-2.5 py-1.5 text-sm font-medium dark:border-strokedark dark:bg-white/30"
                                         >
                                           <div
-                                            class="my-1.5 flex items-center justify-center rounded border-[.5px] border-stroke bg-gray px-2.5 py-1.5 text-sm font-medium dark:border-strokedark dark:bg-white/30"
+                                            class="max-w-full flex-initial"
+                                            x-model="options[option]"
+                                            x-text="options[option].text"
+                                          ></div>
+                                          <div
+                                            class="flex flex-auto flex-row-reverse"
                                           >
                                             <div
-                                              class="max-w-full flex-initial"
-                                              x-model="options[option]"
-                                              x-text="options[option].text"
-                                            ></div>
-                                            <div
-                                              class="flex flex-auto flex-row-reverse"
+                                              @click="remove(index,option)"
+                                              class="cursor-pointer pl-2 hover:text-danger"
                                             >
-                                              <div
-                                                @click="remove(index,option)"
-                                                class="cursor-pointer pl-2 hover:text-danger"
+                                              <svg
+                                                class="fill-current"
+                                                role="button"
+                                                width="12"
+                                                height="12"
+                                                viewBox="0 0 12 12"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
                                               >
-                                                <svg
-                                                  class="fill-current"
-                                                  role="button"
-                                                  width="12"
-                                                  height="12"
-                                                  viewBox="0 0 12 12"
-                                                  fill="none"
-                                                  xmlns="http://www.w3.org/2000/svg"
-                                                >
-                                                  <path
-                                                    fill-rule="evenodd"
-                                                    clip-rule="evenodd"
-                                                    d="M9.35355 3.35355C9.54882 3.15829 9.54882 2.84171 9.35355 2.64645C9.15829 2.45118 8.84171 2.45118 8.64645 2.64645L6 5.29289L3.35355 2.64645C3.15829 2.45118 2.84171 2.45118 2.64645 2.64645C2.45118 2.84171 2.45118 3.15829 2.64645 3.35355L5.29289 6L2.64645 8.64645C2.45118 8.84171 2.45118 9.15829 2.64645 9.35355C2.84171 9.54882 3.15829 9.54882 3.35355 9.35355L6 6.70711L8.64645 9.35355C8.84171 9.54882 9.15829 9.54882 9.35355 9.35355C9.54882 9.15829 9.54882 8.84171 9.35355 8.64645L6.70711 6L9.35355 3.35355Z"
-                                                    fill="currentColor"
-                                                  ></path>
-                                                </svg>
-                                              </div>
+                                                <path
+                                                  fill-rule="evenodd"
+                                                  clip-rule="evenodd"
+                                                  d="M9.35355 3.35355C9.54882 3.15829 9.54882 2.84171 9.35355 2.64645C9.15829 2.45118 8.84171 2.45118 8.64645 2.64645L6 5.29289L3.35355 2.64645C3.15829 2.45118 2.84171 2.45118 2.64645 2.64645C2.45118 2.84171 2.45118 3.15829 2.64645 3.35355L5.29289 6L2.64645 8.64645C2.45118 8.84171 2.45118 9.15829 2.64645 9.35355C2.84171 9.54882 3.15829 9.54882 3.35355 9.35355L6 6.70711L8.64645 9.35355C8.84171 9.54882 9.15829 9.54882 9.35355 9.35355C9.54882 9.15829 9.54882 8.84171 9.35355 8.64645L6.70711 6L9.35355 3.35355Z"
+                                                  fill="currentColor"
+                                                ></path>
+                                              </svg>
                                             </div>
                                           </div>
-                                        </template>
-                                        <div
-                                          x-show="selected.length == 0"
-                                          class="flex-1"
-                                        >
-                                          <input
-                                            placeholder="Select a option"
-                                            class="h-full w-full appearance-none bg-transparent p-1 px-2 outline-none"
-                                            :value="selectedValues()"
-                                          />
                                         </div>
-                                      </div>
+                                      </template>
                                       <div
-                                        class="flex w-8 items-center py-1 pl-1 pr-1"
+                                        x-show="selected.length == 0"
+                                        class="flex-1"
                                       >
-                                        <button
-                                          type="button"
-                                          @click="open"
-                                          class="h-6 w-6 cursor-pointer outline-none focus:outline-none"
-                                          :class="isOpen() === true ? 'rotate-180' : ''"
-                                        >
-                                          <svg
-                                            width="24"
-                                            height="24"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                          >
-                                            <g opacity="0.8">
-                                              <path
-                                                fill-rule="evenodd"
-                                                clip-rule="evenodd"
-                                                d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                                                fill="#637381"
-                                              ></path>
-                                            </g>
-                                          </svg>
-                                        </button>
+                                        <input
+                                          placeholder="Select a option"
+                                          class="h-full w-full appearance-none bg-transparent p-1 px-2 outline-none"
+                                          :value="selectedValues()"
+                                        />
                                       </div>
                                     </div>
-                                  </div>
-                                  <div class="w-full px-4">
                                     <div
-                                      x-show.transition.origin.top="isOpen()"
-                                      class="max-h-select absolute top-full left-0 z-40 w-full overflow-y-auto rounded bg-white shadow dark:bg-form-input"
-                                      @click.outside="close"
+                                      class="flex w-8 items-center py-1 pl-1 pr-1"
                                     >
-                                      <div class="flex w-full flex-col">
-                                        <template
-                                          x-for="(option,index) in options"
-                                          :key="index"
+                                      <button
+                                        type="button"
+                                        @click="open"
+                                        class="h-6 w-6 cursor-pointer outline-none focus:outline-none"
+                                        :class="isOpen() === true ? 'rotate-180' : ''"
+                                      >
+                                        <svg
+                                          width="24"
+                                          height="24"
+                                          viewBox="0 0 24 24"
+                                          fill="none"
+                                          xmlns="http://www.w3.org/2000/svg"
                                         >
-                                          <div>
+                                          <g opacity="0.8">
+                                            <path
+                                              fill-rule="evenodd"
+                                              clip-rule="evenodd"
+                                              d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                              fill="#637381"
+                                            ></path>
+                                          </g>
+                                        </svg>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="w-full px-4">
+                                  <div
+                                    x-show.transition.origin.top="isOpen()"
+                                    class="max-h-select absolute top-full left-0 z-40 w-full overflow-y-auto rounded bg-white shadow dark:bg-form-input"
+                                    @click.outside="close"
+                                  >
+                                    <div class="flex w-full flex-col">
+                                      <template
+                                        x-for="(option,index) in options"
+                                        :key="index"
+                                      >
+                                        <div>
+                                          <div
+                                            class="w-full cursor-pointer rounded-t border-b border-stroke hover:bg-primary/5 dark:border-form-strokedark"
+                                            @click="select(index,$event)"
+                                          >
                                             <div
-                                              class="w-full cursor-pointer rounded-t border-b border-stroke hover:bg-primary/5 dark:border-form-strokedark"
-                                              @click="select(index,$event)"
+                                              :class="option.selected ? 'border-primary' : ''"
+                                              class="relative flex w-full items-center border-l-2 border-transparent p-2 pl-2"
                                             >
                                               <div
-                                                :class="option.selected ? 'border-primary' : ''"
-                                                class="relative flex w-full items-center border-l-2 border-transparent p-2 pl-2"
+                                                class="flex w-full items-center"
                                               >
                                                 <div
-                                                  class="flex w-full items-center"
-                                                >
-                                                  <div
-                                                    class="mx-2 leading-6"
-                                                    x-model="option"
-                                                    x-text="option.text"
-                                                  ></div>
-                                                </div>
+                                                  class="mx-2 leading-6"
+                                                  x-model="option"
+                                                  x-text="option.text"
+                                                ></div>
                                               </div>
                                             </div>
                                           </div>
-                                        </template>
-                                      </div>
+                                        </div>
+                                      </template>
                                     </div>
                                   </div>
                                 </div>
@@ -488,77 +487,83 @@
                             </div>
                           </div>
                         </div>
+                      </div>
 
-                        <!-- Submit Button -->
-                        <div class="mb-4">
-                          <input
-                            type="submit"
-                            value="Create"
-                            class="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 font-medium text-white transition hover:bg-opacity-90"
-                          />
-                        </div>
-                      </form>
-                    </div>
+                      <!-- Submit Button -->
+                      <div class="mb-4 flex gap-3">
+                        <input
+                          type="submit"
+                          value="Save"
+                          class="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 font-medium text-white transition hover:bg-opacity-90"
+                        />
+                        <input
+                          type="button"
+                          value="Cancel"
+                          class="w-full cursor-pointer rounded-lg border border-primary p-4 font-medium text-primary transition hover:bg-opacity-90"
+                        />
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
-              <!-- ====== Forms Section End ===== -->
             </div>
-          </main>
-          <!-- ===== Main Content End ===== -->
-        </div>
-        <!-- ===== Content Area End ===== -->
+            <!-- ====== Forms Section End ===== -->
+          </div>
+        </main>
+        <!-- ===== Main Content End ===== -->
       </div>
-      <!-- ===== Page Wrapper End ===== -->
-      <script>
-        function dropdown() {
-          return {
-            options: [],
-            selected: [],
-            show: false,
-            open() {
-              this.show = true;
-            },
-            close() {
-              this.show = false;
-            },
-            isOpen() {
-              return this.show === true;
-            },
-            select(index, event) {
-              if (!this.options[index].selected) {
-                this.options[index].selected = true;
-                this.options[index].element = event.target;
-                this.selected.push(index);
-              } else {
-                this.selected.splice(this.selected.lastIndexOf(index), 1);
-                this.options[index].selected = false;
-              }
-            },
-            remove(index, option) {
-              this.options[option].selected = false;
-              this.selected.splice(index, 1);
-            },
-            loadOptions() {
-              const options = document.getElementById("select").options;
-              for (let i = 0; i < options.length; i++) {
-                this.options.push({
-                  value: options[i].value,
-                  text: options[i].innerText,
-                  selected:
-                    options[i].getAttribute("selected") != null
-                      ? options[i].getAttribute("selected")
-                      : false,
-                });
-              }
-            },
-            selectedValues() {
-              return this.selected.map((option) => {
-                return this.options[option].value;
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+    <script>
+      function dropdown() {
+        return {
+          options: [],
+          selected: [],
+          show: false,
+          open() {
+            this.show = true;
+          },
+          close() {
+            this.show = false;
+          },
+          isOpen() {
+            return this.show === true;
+          },
+          select(index, event) {
+            if (!this.options[index].selected) {
+              this.options[index].selected = true;
+              this.options[index].element = event.target;
+              this.selected.push(index);
+            } else {
+              this.selected.splice(this.selected.lastIndexOf(index), 1);
+              this.options[index].selected = false;
+            }
+          },
+          remove(index, option) {
+            this.options[option].selected = false;
+            this.selected.splice(index, 1);
+          },
+          loadOptions() {
+            const options = document.getElementById("select").options;
+            for (let i = 0; i < options.length; i++) {
+              this.options.push({
+                value: options[i].value,
+                text: options[i].innerText,
+                selected:
+                  options[i].getAttribute("selected") != null
+                    ? options[i].getAttribute("selected")
+                    : false,
               });
-            },
-          };
-        }
-      </script>
-    </body>
-  </html>
+            }
+          },
+          selectedValues() {
+            return this.selected.map((option) => {
+              return this.options[option].value;
+            });
+          },
+        };
+      }
+    </script>
+  </body>
+</html>

@@ -2,25 +2,23 @@
   class="rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1"
 >
   <div class="max-w-full overflow-x-auto">
-    <!-- Top Section with Search and Create faq Button  -->
+    <!-- Top Section with Search and Create  Button  -->
     <div class="mb-5 flex justify-between">
       <!-- Search Box -->
       <div class="relative">
         <input
-          type="text"
-          placeholder="Search keywords ..."
           class="rounded-md border py-2 px-3 focus:outline-none dark:border-strokedark dark:bg-boxdark dark:text-white"
+          placeholder="Search Data ..."
+          type="text"
         />
       </div>
 
-      <!-- Create Policies Button -->
       <a
-        href="createPolicies.html"
         class="inline-flex items-center justify-center gap-2.5 rounded-md border border-primary px-7 py-2 text-center font-medium text-primary hover:bg-gray-100 lg:px-7 xl:px-8"
+        href="createMasterDataChild.html"
       >
         <span>
           <svg
-            xmlns="http://www.w3.org/2000/svg"
             class="svg-icon"
             style="
               width: 1em;
@@ -29,38 +27,33 @@
               fill: currentColor;
               overflow: hidden;
             "
-            viewBox="0 0 1024 1024"
             version="1.1"
+            viewBox="0 0 1024 1024"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M856 952H168V104h545.94L856 246.06z m-640-48h592V265.94L694.06 152H216z"
-            />
-            <path
-              d="M656 103.79V304h200zM704 256V152l104 104zM283.19 488h457.63v48H283.19zM283.19 323h288v48h-288zM283.19 653h457.63v48H283.19z"
+              d="M256 333.994667V853.333333h512V170.666667H419.328L256 333.994667z m-72.832-47.786667L384 85.333333h426.666667a42.666667 42.666667 0 0 1 42.666666 42.666667v768a42.666667 42.666667 0 0 1-42.666666 42.666667H213.333333a42.666667 42.666667 0 0 1-42.666666-42.666667V316.330667a42.666667 42.666667 0 0 1 12.501333-30.165334zM640 213.333333h85.333333v170.666667h-85.333333V213.333333z m-128 0h85.333333v170.666667h-85.333333V213.333333zM384 256h85.333333v128H384V256z"
             />
           </svg>
         </span>
-        Create
+        Create Master Data
       </a>
     </div>
     <table class="w-full table-auto">
       <thead>
         <tr class="bg-gray-2 text-left dark:bg-meta-4">
           <th
-            class="w-[5%] px-4 py-4 font-medium text-black dark:text-white xl:pl-11"
+            class="w-[10%] px-4 py-4 font-medium text-black dark:text-white xl:pl-11"
           >
             No.
           </th>
-          <th
-            class="w-[40%] px-4 py-4 font-medium text-black dark:text-white xl:pl-11"
-          >
-            Page Title
+          <th class="w-[40%] px-4 py-4 font-medium text-black dark:text-white">
+            Name(en)
           </th>
           <th class="w-[40%] px-4 py-4 font-medium text-black dark:text-white">
-            Codes
+            Name(mm)
           </th>
-
-          <th class="px-4 py-4 font-medium text-black dark:text-white">
+          <th class="w-[10%] px-4 py-4 font-medium text-black dark:text-white">
             Actions
           </th>
         </tr>
@@ -68,31 +61,26 @@
       <tbody>
         <tr>
           <td
-            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+            class="border-b border-[#eee] px-4 py-5 dark:border-strokedark xl:pl-11"
           >
             <h5 class="font-medium text-black dark:text-white">1</h5>
           </td>
-          <td
-            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
-          >
-            <h5 class="font-medium text-black dark:text-white">
-              Terms and Conditions
-            </h5>
+          <td class="border-b border-[#eee] px-4 py-5">
+            <h5 class="font-medium text-black dark:text-white">Hlaing</h5>
           </td>
-          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-            <p class="text-black dark:text-white">TC001</p>
+          <td class="border-b border-[#eee] px-4 py-5">
+            <p class="text-black dark:text-white">လှိုင်</p>
           </td>
-
-          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+          <td class="border-b border-[#eee] px-4 py-5">
             <div class="flex items-center space-x-3.5">
               <button class="hover:text-primary" title="edit">
-                <a href="editPolicies.html">
+                <a href="../editMasterDataChild.html">
                   <svg
                     class="fill-current"
-                    width="18"
+                    fill="none"
                     height="18"
                     viewBox="0 0 18 18"
-                    fill="none"
+                    width="18"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
@@ -102,45 +90,102 @@
                   </svg>
                 </a>
               </button>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td
-            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
-          >
-            <h5 class="font-medium text-black dark:text-white">1</h5>
-          </td>
-          <td
-            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
-          >
-            <h5 class="font-medium text-black dark:text-white">
-              Privacy Policy
-            </h5>
-          </td>
-          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-            <p class="text-black dark:text-white">PP001</p>
-          </td>
-
-          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-            <div class="flex items-center space-x-3.5">
-              <button class="hover:text-primary" title="edit">
-                <a href="editPolicies.html">
+              <div class="mt-2" x-data="{ open: false }">
+                <button
+                  @click="open = true"
+                  class="hover:text-primary"
+                  title="trash"
+                  type="button"
+                >
                   <svg
                     class="fill-current"
-                    width="18"
+                    fill="none"
                     height="18"
                     viewBox="0 0 18 18"
-                    fill="none"
+                    width="18"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M2 12.5v3h3l8.74-8.74-3-3L2 12.5Zm13.71-8.79a1 1 0 0 0 0-1.42l-1.5-1.5a1 1 0 0 0-1.42 0l-1.71 1.71 3 3 1.63-1.63Z"
+                      d="M6 2V1h6v1h4v2H2V2h4Zm2 10v-5h2v5H8Zm6-9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3h10Z"
                       fill=""
                     />
                   </svg>
-                </a>
-              </button>
+                </button>
+                <!-- Modal -->
+                <div
+                  class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+                  x-cloak
+                  x-show="open"
+                >
+                  <div class="relative max-h-full w-full max-w-md p-4">
+                    <div
+                      class="relative rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <!-- Close Modal Button -->
+                      <button
+                        @click="open = false"
+                        class="ms-auto absolute top-3 right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="h-3 w-3"
+                          fill="none"
+                          viewBox="0 0 14 14"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                          />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                      </button>
+
+                      <!-- Modal Content -->
+                      <div class="p-4 text-center md:p-5">
+                        <svg
+                          aria-hidden="true"
+                          class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                          />
+                        </svg>
+                        <h3
+                          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+                        >
+                          Are you sure move to trash this data?
+                        </h3>
+                        <button
+                          @click="open = false"
+                          class="inline-flex items-center rounded-lg bg-red-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                          type="button"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          @click="open = false"
+                          class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                          type="button"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </td>
         </tr>
@@ -159,82 +204,82 @@
         <ul class="flex h-8 items-center -space-x-px text-sm">
           <li>
             <a
-              href="#"
               class="ms-0 border-e-0 rounded-s-lg flex h-8 items-center justify-center rounded-l-lg border border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-primary dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              href="#"
             >
               <span class="sr-only">Previous</span>
               <svg
-                class="h-2.5 w-2.5 rtl:rotate-180"
                 aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
+                class="h-2.5 w-2.5 rtl:rotate-180"
                 fill="none"
                 viewBox="0 0 6 10"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
+                  d="M5 1 1 5l4 4"
                   stroke="currentColor"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M5 1 1 5l4 4"
                 />
               </svg>
             </a>
           </li>
           <li>
             <a
-              href="#"
               class="flex h-8 items-center justify-center border border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-primary dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              href="#"
               >1</a
             >
           </li>
           <li>
             <a
-              href="#"
               class="flex h-8 items-center justify-center border border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-primary dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              href="#"
               >2</a
             >
           </li>
           <li>
             <a
-              href="#"
               aria-current="page"
               class="z-10 flex h-8 items-center justify-center border border-gray-300 bg-blue-50 px-3 leading-tight text-primary hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+              href="#"
               >3</a
             >
           </li>
           <li>
             <a
-              href="#"
               class="flex h-8 items-center justify-center border border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-primary dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              href="#"
               >4</a
             >
           </li>
           <li>
             <a
-              href="#"
               class="flex h-8 items-center justify-center border border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-primary dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              href="#"
               >5</a
             >
           </li>
           <li>
             <a
-              href="#"
               class="rounded-e-lg flex h-8 items-center justify-center rounded-r-lg border border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-primary dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              href="#"
             >
               <span class="sr-only">Next</span>
               <svg
-                class="h-2.5 w-2.5 rtl:rotate-180"
                 aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
+                class="h-2.5 w-2.5 rtl:rotate-180"
                 fill="none"
                 viewBox="0 0 6 10"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
+                  d="m1 9 4-4-4-4"
                   stroke="currentColor"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="m1 9 4-4-4-4"
                 />
               </svg>
             </a>
