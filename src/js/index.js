@@ -58,3 +58,15 @@ document.addEventListener("DOMContentLoaded", () => {
   chart04();
   map01();
 });
+function autoInitializeEditors() {
+  document.querySelectorAll("[data-editor-id]").forEach((editor) => {
+    const editorId = editor.getAttribute("data-editor-id");
+    const textareaId = editor.getAttribute("data-textarea-id");
+    const placeholder =
+      editor.getAttribute("data-placeholder") || "Enter content";
+
+    window.initializeQuillEditor(`#${editorId}`, textareaId, placeholder);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", autoInitializeEditors);

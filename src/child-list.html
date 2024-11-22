@@ -2,17 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Master Data Child List | GGI Nippon Life</title>
   </head>
 
   <body
-    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
     x-data="{ page: 'child-list', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
     x-init="
           darkMode = JSON.parse(localStorage.getItem('darkMode'));
           $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
   >
     <!-- ===== Preloader Start ===== -->
     <include src="./partials/preloader.html"></include>
@@ -35,36 +35,46 @@
         <!-- ===== Main Content Start ===== -->
         <main class="relative">
           <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-            <!-- Breadcrumb Start -->
-            <div class="mb-5 flex flex-col">
-              <a
-                href="./master-data-list.html"
-                class="flex gap-2 px-2 text-primary"
+            <!-- ===== Breadcrumb Start ===== -->
+            <nav class="mb-6" aria-label="breadcrumb">
+              <ol
+                class="inline-flex list-none p-0 text-sm text-gray-600 dark:text-gray-400"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="svg-icon mt-1"
-                  style="
-                    width: 1em;
-                    height: 1em;
-                    vertical-align: middle;
-                    fill: currentColor;
-                    overflow: hidden;
-                  "
-                  viewBox="0 0 1024 1024"
-                  version="1.1"
-                >
-                  <path
-                    d="M596.676923 248.123077c204.8 0 372.184615 165.415385 372.184615 372.184615s-167.384615 372.184615-372.184615 372.184616h-161.476923c-15.753846 0-25.6-11.815385-25.6-27.569231v-63.015385c0-15.753846 11.815385-29.538462 27.569231-29.538461h159.507692c139.815385 0 252.061538-112.246154 252.061539-252.061539s-112.246154-252.061538-252.061539-252.061538H322.953846s-15.753846 0-21.661538 1.969231c-15.753846 7.876923-11.815385 19.692308 1.96923 33.476923l96.492308 96.492307c11.815385 11.815385 9.846154 29.538462-1.969231 41.353847L354.461538 584.861538c-11.815385 11.815385-25.6 11.815385-37.415384 1.969231l-256-256c-9.846154-9.846154-9.846154-25.6 0-35.446154L315.076923 41.353846c11.815385-11.815385 31.507692-11.815385 41.353846 0l41.353846 41.353846c11.815385 11.815385 11.815385 31.507692 0 41.353846l-96.492307 96.492308c-11.815385 11.815385-11.815385 25.6 7.876923 25.6h13.784615l273.723077 1.969231z"
-                  />
-                </svg>
-                <span class="mb-5">Back</span>
-              </a>
+                <li class="flex items-center">
+                  <a href="/master-data-list.html" class="hover:text-primary"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="svg-icon"
+                      style="
+                        width: 1em;
+                        height: 1em;
+                        vertical-align: middle;
+                        fill: currentColor;
+                        overflow: hidden;
+                      "
+                      viewBox="0 0 1024 1024"
+                      version="1.1"
+                    >
+                      <path
+                        d="M947.712 508.48 555.008 140.224C547.968 132.672 538.176 128.384 527.872 128.384S507.776 132.672 500.672 140.224L73.92 510.912C63.872 521.728 61.184 537.472 67.072 550.976s19.264 22.336 33.984 22.336l92.288 0 0 280.32C193.344 888.768 220.864 896 256 896l63.36 0 21.184 0 7.04 0L339.456 896c23.424 0 42.368-19.008 42.368-42.368l0-171.264C381.824 659.008 400.832 640 424.32 640l173.888 0c23.488 0 42.432 19.008 42.432 42.368l0 171.264c0 23.36 19.008 42.368 42.432 42.368l84.224 0C802.496 896 832 888.768 832 853.632l0-280.32 90.688 0c0.128 0 0.128 0 0.256 0 20.48 0 37.056-16.64 37.056-37.12C960 525.248 955.2 515.392 947.712 508.48z"
+                      /></svg
+                  ></a>
+                  <span class="mx-2">/</span>
+                </li>
+                <li class="flex items-center">
+                  <a href="#" class="hover:text-primary">Master Data Child</a>
+                </li>
+              </ol>
+            </nav>
+            <!-- ===== Breadcrumb End ===== -->
+
+            <div
+              class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+            >
               <h2 class="text-title-md2 font-bold text-primary dark:text-white">
                 Master Data Child
               </h2>
             </div>
-            <!-- Breadcrumb End -->
 
             <!-- ====== Table Section Start -->
             <div class="flex flex-col gap-10">
