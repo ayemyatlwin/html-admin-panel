@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Create Policies | GGI Nippon Life</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Google Map API  -->
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWsOXxUykaP2iK8f2mJ1EYzvsD0SGQgVA"
+    ></script>
+    <!-- Map Script Start -->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        const coordslength = 6;
+        const defaultLat = 16.850979;
+        const defaultLng = 96.12986879609821;
+        const zoom = 15;
+
+        const mapOptions = {
+          zoom: zoom,
+          center: new google.maps.LatLng(defaultLat, defaultLng),
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+        };
+
+        const map = new google.maps.Map($("#canvas")[0], mapOptions);
+
+        const marker = new google.maps.Marker({
+          position: map.getCenter(),
+          map: map,
+          icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png", // Custom marker icon
+            anchor: new google.maps.Point(16, 16),
+          },
+        });
+
+        google.maps.event.addListener(map, "center_changed", function () {
+          const center = map.getCenter();
+          $("#latitude").val(center.lat().toFixed(coordslength));
+          $("#longitude").val(center.lng().toFixed(coordslength));
+          marker.setPosition(center);
+        });
+
+        function updateMapFromInput() {
+          const lat = parseFloat($("#latitude").val());
+          const lng = parseFloat($("#longitude").val());
+
+          if (!isNaN(lat) && !isNaN(lng)) {
+            const newCenter = new google.maps.LatLng(lat, lng);
+            map.setCenter(newCenter);
+            marker.setPosition(newCenter);
+          }
+        }
+
+        $("#latitude, #longitude").on("input", function () {
+          updateMapFromInput();
+        });
+      });
+    </script>
+    <!-- Map Script End -->
+  </head>
+
+  <body
+    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
+    x-data="{ page: 'createPolicies', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-init="
+          darkMode = JSON.parse(localStorage.getItem('darkMode'));
+          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+  >
+    <!-- ===== Preloader Start ===== -->
+    <include src="./partials/preloader.html"></include>
+    <!-- ===== Preloader End ===== -->
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <include src="./partials/sidebar.html" />
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div
+        class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
+      >
+        <!-- ===== Header Start ===== -->
+        <include src="./partials/header.html" />
+        <!-- ===== Header End ===== -->
+
+        <!-- ===== Main Content Start ===== -->
+        <main>
+          <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+            <!-- ====== Forms Section Start ===== -->
+            <div
+              class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
+            >
+              <div class="flex flex-wrap items-center">
+                <div class="w-full border-stroke dark:border-strokedark">
+                  <div class="w-full p-5 sm:p-9 xl:p-10">
+                    <h2
+                      class="text-2xl font-bold text-primary dark:text-white sm:text-title-xl2"
+                    >
+                      Testing Form
+                    </h2>
+
+                    <!-- Map Section Start -->
+                    <label
+                      class="mb-2.5 mt-3 block font-medium text-primary dark:text-white"
+                    >
+                      Map Location
+                    </label>
+                    <div class="mb-5 bg-slate-100 py-3 px-2">
+                      <div id="canvas" style="height: 300px"></div>
+                      <br />
+                      <div class="flex flex-1 gap-3">
+                        <div class="flex-[0.5]">
+                          <label for="latitude">Latitude:</label>
+                          <input
+                            class="w-full rounded-lg border border-stroke bg-white bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            id="latitude"
+                            type="text"
+                          />
+                        </div>
+                        <div class="flex-[0.5]">
+                          <label for="longitude">Longitude:</label>
+                          <input
+                            class="w-full rounded-lg border border-stroke bg-white bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            id="longitude"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Map Section End  -->
+
+                    <form enctype="multipart/form-data">
+                      <!--  Title -->
+                      <div class="mb-4 flex flex-1 gap-2">
+                        <div class="flex-[0.5]">
+                          <label
+                            class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >
+                            Title</label
+                          >
+                          <div class="relative">
+                            <input
+                              class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                              placeholder="Enter the title  "
+                              required
+                              type="text"
+                            />
+                          </div>
+                        </div>
+                        <div class="flex-[0.5]">
+                          <label
+                            class="mb-2.5 block font-medium text-primary dark:text-white"
+                          >
+                            ခေါင်းစဉ်
+                          </label>
+                          <div class="relative">
+                            <input
+                              class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                              placeholder="ခေါင်းစဉ်ကိုရိုက်ထည့်ပါ။"
+                              required
+                              type="text"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Submit Button -->
+                      <div class="mb-4 flex gap-3">
+                        <input
+                          class="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 font-medium text-white transition hover:bg-opacity-90"
+                          type="submit"
+                          value="Save"
+                        />
+                        <input
+                          class="w-full cursor-pointer rounded-lg border border-primary p-4 font-medium text-primary transition hover:bg-opacity-90"
+                          type="button"
+                          value="Cancel"
+                        />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- ====== Forms Section End ===== -->
+          </div>
+        </main>
+        <!-- ===== Main Content End ===== -->
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  </body>
+</html>

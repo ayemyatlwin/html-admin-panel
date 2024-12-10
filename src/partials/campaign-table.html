@@ -16,7 +16,7 @@
       </div>
 
       <!-- Create Campaign Button -->
-      <div class="flex">
+      <div class="flex gap-2">
         <a
           href="createCampaign.html"
           class="inline-flex items-center justify-center gap-2.5 rounded-md border border-primary px-7 py-2 text-center font-medium text-primary hover:bg-gray-100 lg:px-7 xl:px-8"
@@ -42,13 +42,170 @@
           </span>
           Create Campaign
         </a>
+        <div
+          class="inline-flex items-center justify-center rounded border border-primary px-2 text-primary"
+          x-data="{ open: false }"
+        >
+          <!-- Filter Button -->
+          <button
+            @click="open = true"
+            class="flex gap-2 hover:text-primary"
+            title="filter"
+            type="button"
+          >
+            <span class="pt-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="svg-icon"
+                style="
+                  width: 1em;
+                  height: 1em;
+                  vertical-align: middle;
+                  fill: currentColor;
+                  overflow: hidden;
+                "
+                viewBox="0 0 1024 1024"
+                version="1.1"
+              >
+                <path
+                  d="M875.9 148L629.1 425.4 616 440.2v435.7l-2.2-1.8-2.4-1.5L408 743.4V440.2l-13.1-14.8L148.1 148h727.8m0-52H148.1c-44.4 0-68.4 52.1-39.5 85.8L356 460v283.4c0 17.8 9.1 34.4 24.1 43.9l203.4 129.2c9.9 7.9 21.2 11.5 32.2 11.5 26.9 0 52.2-21.2 52.2-52.1V460l247.4-278.2c29-33.7 5-85.8-39.4-85.8z"
+                />
+              </svg>
+            </span>
+            <span>Filter</span>
+          </button>
+
+          <!-- Modal -->
+          <div
+            x-show="open"
+            x-cloak
+            class="fixed inset-0 z-9999 flex items-center justify-center bg-gray-900 bg-opacity-50"
+          >
+            <div
+              class="w-full max-w-lg rounded-lg bg-white p-6 shadow-lg"
+              @click.away="open = false"
+            >
+              <!-- Modal Header -->
+              <div class="flex items-center justify-between border-b pb-3">
+                <h3 class="text-lg font-medium">Filter Options</h3>
+                <button
+                  @click="open = false"
+                  class="text-gray-400 hover:text-gray-600"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <!-- Modal Form -->
+              <div
+                x-data="dateRangePicker()"
+                x-init="init()"
+                class="mt-4 space-y-4"
+              >
+                <div class="flex flex-1 gap-3">
+                  <div class="flex-[0.5]">
+                    <label
+                      for="startDate1"
+                      class="block text-sm font-medium text-gray-700"
+                      >Start Date</label
+                    >
+                    <input
+                      type="date"
+                      x-model="startDate1"
+                      id="startDate1"
+                      class="block w-full rounded-lg border border-gray-300 p-2.5 text-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div class="flex-[0.5]">
+                    <label
+                      for="endDate1"
+                      class="block text-sm font-medium text-gray-700"
+                      >End Date
+                    </label>
+                    <input
+                      type="date"
+                      x-model="endDate1"
+                      id="endDate1"
+                      class="block w-full rounded-lg border border-gray-300 p-2.5 text-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                </div>
+                <div class="flex flex-1 gap-3">
+                  <div class="flex-[0.5]">
+                    <label
+                      for="startDate2"
+                      class="block text-sm font-medium text-gray-700"
+                      >Publish Start Date</label
+                    >
+                    <input
+                      type="date"
+                      x-model="startDate2"
+                      id="startDate2"
+                      class="block w-full rounded-lg border border-gray-300 p-2.5 text-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div class="flex-[0.5]">
+                    <label
+                      for="endDate2"
+                      class="block text-sm font-medium text-gray-700"
+                      >Publish End Date</label
+                    >
+                    <input
+                      type="date"
+                      x-model="endDate2"
+                      id="endDate2"
+                      class="block w-full rounded-lg border border-gray-300 px-5 py-2 text-sm focus:border-blue-500 focus:ring-blue-500"
+                    />
+                  </div>
+                </div>
+
+                <!-- Dropdown -->
+                <div class="flex flex-1 gap-3">
+                  <div class="flex-[0.5]">
+                    <div>
+                      <label
+                        for="selector"
+                        class="block text-sm font-medium text-gray-700"
+                        >Select Author</label
+                      >
+                      <select
+                        id="selector"
+                        x-model="selectedOption"
+                        class="block w-full rounded-lg border border-gray-300 py-2 text-sm focus:border-blue-500 focus:ring-blue-500"
+                      >
+                        <option value="">Choose an Author</option>
+                        <option value="option1">Author 1</option>
+                        <option value="option2">Author 2</option>
+                        <option value="option3">Author 3</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="flex-[0.5]"></div>
+                </div>
+
+                <!-- Apply Button -->
+                <div class="text-right">
+                  <button
+                    @click="open = false"
+                    class="rounded-lg bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+                  >
+                    Apply
+                  </button>
+                  <button
+                    @click="open = false"
+                    type="button"
+                    class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="mb-3 flex gap-3">
-      <div>
-        <include src="dateRangePicker.html"></include>
-      </div>
-    </div>
+
     <table class="w-full table-auto">
       <thead>
         <tr class="bg-gray-2 text-left dark:bg-meta-4">
@@ -102,6 +259,164 @@
           </td>
           <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
             <p class="text-black dark:text-white">11/11/2024</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <div class="flex items-center space-x-3.5">
+              <button class="hover:text-primary" title="edit">
+                <a href="../editCampaign.html">
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 12.5v3h3l8.74-8.74-3-3L2 12.5Zm13.71-8.79a1 1 0 0 0 0-1.42l-1.5-1.5a1 1 0 0 0-1.42 0l-1.71 1.71 3 3 1.63-1.63Z"
+                      fill=""
+                    />
+                  </svg>
+                </a>
+              </button>
+              <div class="mt-2" x-data="{ open: false }">
+                <button
+                  @click="open = true"
+                  class="hover:text-primary"
+                  title="trash"
+                  type="button"
+                >
+                  <svg
+                    class="fill-current"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2V1h6v1h4v2H2V2h4Zm2 10v-5h2v5H8Zm6-9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V3h10Z"
+                      fill=""
+                    />
+                  </svg>
+                </button>
+                <!-- Modal -->
+                <div
+                  x-show="open"
+                  x-cloak
+                  class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+                >
+                  <div class="relative max-h-full w-full max-w-md p-4">
+                    <div
+                      class="relative rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <!-- Close Modal Button -->
+                      <button
+                        @click="open = false"
+                        type="button"
+                        class="ms-auto absolute top-3 right-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <svg
+                          class="h-3 w-3"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 14 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                          />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                      </button>
+
+                      <!-- Modal Content -->
+                      <div class="p-4 text-center md:p-5">
+                        <svg
+                          class="mx-auto mb-4 h-12 w-12 text-gray-400 dark:text-gray-200"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                        </svg>
+                        <h3
+                          class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+                        >
+                          Are you sure want to delete this campaign?
+                        </h3>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="inline-flex items-center rounded-lg bg-primaryRed px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+                        >
+                          Yes
+                        </button>
+                        <button
+                          @click="open = false"
+                          type="button"
+                          class="ms-3 rounded-lg border border-gray-200 bg-white py-2.5 px-5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-b border-[#eee] px-2 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <h5 class="font-medium text-black dark:text-white">2</h5>
+          </td>
+          <td
+            class="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11"
+          >
+            <div class="flex h-15 w-25 items-center justify-center bg-gray-100">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="svg-icon"
+                  style="
+                    width: 1.5em;
+                    height: 1.5em;
+                    vertical-align: middle;
+                    fill: currentColor;
+                    overflow: hidden;
+                  "
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                >
+                  <path
+                    d="M832 170.666667H426.666667a42.666667 42.666667 0 0 0 0 85.333333h405.333333a42.666667 42.666667 0 0 1 42.666667 42.666667v288.426666l-80.213334-80.213333a128 128 0 0 0-48.64-30.293333 42.666667 42.666667 0 1 0-27.306666 81.066666 34.986667 34.986667 0 0 1 15.36 9.813334l141.226666 140.373333a28.16 28.16 0 0 0 0 6.4 35.413333 35.413333 0 0 0 0 6.4 50.346667 50.346667 0 0 0 5.546667 7.68 20.48 20.48 0 0 0 3.84 4.693333 38.4 38.4 0 0 0 8.533333 5.973334 25.6 25.6 0 0 0 4.693334 2.56 38.826667 38.826667 0 0 0 15.786666 3.413333 42.666667 42.666667 0 0 0 42.666667-42.666667V298.666667a128 128 0 0 0-124.16-128zM136.96 97.706667a42.666667 42.666667 0 0 0-60.586667 60.586666L135.68 217.6A128 128 0 0 0 106.666667 298.666667v426.666666a128 128 0 0 0 128 128h537.173333l72.533333 72.96a42.666667 42.666667 0 0 0 60.586667 0 42.666667 42.666667 0 0 0 0-60.586666zM192 298.666667a42.666667 42.666667 0 0 1 5.12-19.626667l116.053333 115.626667a128 128 0 0 0-42.666666 26.88L192 501.76z m42.666667 469.333333a42.666667 42.666667 0 0 1-42.666667-42.666667v-103.253333l140.8-140.373333a42.666667 42.666667 0 0 1 59.733333 0L678.826667 768z"
+                  />
+                </svg>
+              </span>
+            </div>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">Lorem ipsum dolor sit.</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">11/12/2024</p>
+          </td>
+          <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+            <p class="text-black dark:text-white">14/12/2024</p>
           </td>
           <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
             <div class="flex items-center space-x-3.5">
@@ -321,3 +636,25 @@
     </div>
   </div>
 </div>
+<script>
+  function dateRangePicker() {
+    return {
+      startDate1: "",
+      endDate1: "",
+      startDate2: "",
+      endDate2: "",
+      selectedOption: "",
+      init() {},
+      applyChanges() {
+        console.log({
+          startDate1: this.startDate1,
+          endDate1: this.endDate1,
+          startDate2: this.startDate2,
+          endDate2: this.endDate2,
+          selectedOption: this.selectedOption,
+        });
+        alert("Filters applied. Check console for details.");
+      },
+    };
+  }
+</script>

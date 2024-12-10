@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tags</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tags .tag {
+        display: flex;
+        align-items: center;
+        background-color: #007bff;
+        color: #fff;
+        padding: 4px 8px;
+        border-radius: 16px;
+        font-size: 14px;
+      }
+
+      .tags .tag .remove-btn {
+        margin-left: 8px;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .tags-input {
+        flex-grow: 1;
+        border: none;
+        outline: none;
+        font-size: 14px;
+      }
+
+      .tags-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: 150px;
+        overflow-y: auto;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-top: 4px;
+        z-index: 1000;
+      }
+
+      .tags-dropdown li {
+        padding: 8px;
+        cursor: pointer;
+      }
+
+      .tags-dropdown li:hover {
+        background: #007bff;
+        color: #fff;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tags</h1>
+    <div class="w-[40%]">
+      <div class="tags mb-5 mt-2"></div>
+      <div class="flex gap-4 px-2 py-1">
+        <input
+          type="search"
+          id="tags-input"
+          class="tags-input px-2"
+          placeholder="Type to search..."
+        />
+        <div class="mt-2" x-data="{ open: false }">
+          <button
+            @click="open = true"
+            class="flex justify-center rounded bg-primary py-1 px-2 font-medium text-gray hover:bg-opacity-90"
+            title="add tags"
+            type="button"
+            id="add-tag-btn"
+          >
+            Add
+          </button>
+          <!-- Modal -->
+          <div
+            x-show="open"
+            x-cloak
+            class="fixed inset-0 z-999999 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-50"
+          >
+            <div class="relative max-h-full w-full max-w-md p-4">
+              <div class="relative rounded-lg bg-white shadow dark:bg-gray-700">
+                <!-- Modal Content -->
+                <div class="p-4">
+                  <div class="flex flex-col">
+                    <p
+                      class="mb-4 text-center text-title-md font-bold text-primary sm:text-title-sm"
+                    >
+                      Create Tag
+                    </p>
+                    <div class="mb-4 flex flex-1 gap-3">
+                      <div class="flex[0..5]">
+                        <label
+                          class="mb-1 block font-medium text-primary"
+                          for="tag-name-input"
+                          >Tag Name (en)</label
+                        >
+                        <input
+                          type="text"
+                          required
+                          id="tag-name-input"
+                          placeholder="Enter tag name"
+                          class="w-full rounded-lg border border-stroke bg-transparent py-2 px-4 outline-none focus:border-primary focus-visible:shadow-none"
+                        />
+                      </div>
+                      <div class="flex[0..5]">
+                        <label
+                          class="mb-1 block font-medium text-primary"
+                          for="tag-name-input-mm"
+                          >Tag Name (mm)</label
+                        >
+                        <input
+                          type="text"
+                          required
+                          id="tag-name-input-mm"
+                          placeholder="Enter tag name"
+                          class="w-full rounded-lg border border-stroke bg-transparent py-2 px-4 outline-none focus:border-primary focus-visible:shadow-none"
+                        />
+                      </div>
+                    </div>
+                    <div class="flex gap-2">
+                      <button
+                        @click="open = false"
+                        class="w-full cursor-pointer rounded-lg border border-primary bg-primary p-2 font-medium text-white transition hover:bg-opacity-90"
+                        id="save-tag-btn"
+                        type="submit"
+                      >
+                        Save
+                      </button>
+                      <button
+                        @click="open = false"
+                        class="w-full cursor-pointer rounded-lg border border-primary p-2 font-medium text-primary transition hover:bg-opacity-90"
+                        id="close-dialog-btn"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul id="tags-dropdown" class="tags-dropdown mx-1 hidden w-[34%]"></ul>
+    </div>
+
+    <script>
+      const tags = ["one", "two", "three", "four"];
+      let selectedTags = [];
+
+      const tagsInput = document.getElementById("tags-input");
+      const tagsDropdown = document.getElementById("tags-dropdown");
+      const tagsContainer = document.querySelector(".tags");
+      const tagNameInput = document.getElementById("tag-name-input");
+      const tagNameInputMM = document.getElementById("tag-name-input-mm");
+      const saveTagBtn = document.getElementById("save-tag-btn");
+      const addTagBtn = document.getElementById("add-tag-btn");
+
+      function renderTags() {
+        tagsContainer.innerHTML = "";
+        selectedTags.forEach((tag, index) => {
+          const tagElement = document.createElement("div");
+          tagElement.classList.add("tag");
+          tagElement.innerHTML = `
+            ${tag} 
+            <button class="remove-btn" data-index="${index}">&times;</button>
+          `;
+          tagsContainer.appendChild(tagElement);
+        });
+      }
+
+      function renderDropdown(filteredTags) {
+        tagsDropdown.innerHTML = "";
+        filteredTags.forEach((tag) => {
+          const item = document.createElement("li");
+          item.textContent = tag;
+          tagsDropdown.appendChild(item);
+        });
+        tagsDropdown.classList.remove("hidden");
+      }
+
+      function addTag(tag) {
+        if (!selectedTags.includes(tag)) {
+          selectedTags.push(tag);
+          renderTags();
+        }
+        tagsInput.value = "";
+        tagsDropdown.classList.add("hidden");
+      }
+
+      saveTagBtn.addEventListener("click", () => {
+        const newTag = tagNameInput.value.trim();
+        if (newTag && !selectedTags.includes(newTag)) {
+          addTag(newTag);
+          if (!tags.includes(newTag)) {
+            tags.push(newTag);
+          }
+        }
+        tagNameInput.value = "";
+        tagNameInputMM.value = "";
+      });
+
+      addTagBtn.addEventListener("click", (e) => {
+        tagsDropdown.classList.add("hidden");
+      });
+
+      tagsInput.addEventListener("input", () => {
+        const value = tagsInput.value.toLowerCase();
+        const filteredTags = tags.filter(
+          (tag) =>
+            tag.toLowerCase().includes(value) && !selectedTags.includes(tag)
+        );
+        renderDropdown(filteredTags);
+      });
+
+      tagsInput.addEventListener("focus", () => {
+        const filteredTags = tags.filter((tag) => !selectedTags.includes(tag));
+        renderDropdown(filteredTags);
+      });
+
+      tagsDropdown.addEventListener("click", (e) => {
+        console.log("event", e);
+        if (e.target.tagName === "LI") {
+          addTag(e.target.textContent);
+        }
+      });
+
+      tagsInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && tagsDropdown.querySelector("li")) {
+          const firstDropdownItem = tagsDropdown.querySelector("li");
+          if (firstDropdownItem) addTag(firstDropdownItem.textContent);
+          e.preventDefault();
+        }
+      });
+
+      tagsContainer.addEventListener("click", (e) => {
+        if (e.target.classList.contains("remove-btn")) {
+          const index = e.target.dataset.index;
+          selectedTags.splice(index, 1);
+          renderTags();
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -13,6 +13,7 @@
     <title>Create News Post | GGI Nippon Life</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/quill-html-edit-button@2.2.7/dist/quill.htmlEditButton.min.js"></script>
 
     <script type="text/javascript">
       function handleFileUpload(event) {
@@ -222,8 +223,8 @@
 
                     <form>
                       <!--  Title -->
-                      <div class="mb-4 flex flex-1 gap-2">
-                        <div class="flex-[0.5]">
+                      <div class="mb-4 flex flex-1 gap-3">
+                        <div class="flex-[0.4]">
                           <label
                             class="mb-2.5 block font-medium text-primary dark:text-white"
                           >
@@ -239,7 +240,7 @@
                             />
                           </div>
                         </div>
-                        <div class="flex-[0.5]">
+                        <div class="flex-[0.4]">
                           <label
                             class="mb-2.5 block font-medium text-primary dark:text-white"
                           >
@@ -253,6 +254,23 @@
                               required
                               class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                             />
+                          </div>
+                        </div>
+                        <div class="flex-[0.2]">
+                          <div class="mt-14" x-data="{ checkboxToggle: false }">
+                            <label
+                              for="checkboxLabelTwo"
+                              class="flex cursor-pointer select-none items-center text-sm font-medium"
+                            >
+                              <div class="relative">
+                                <input
+                                  type="checkbox"
+                                  id="checkboxLabelTwo"
+                                  class="mr-2 mt-1"
+                                />
+                              </div>
+                              Is Active
+                            </label>
                           </div>
                         </div>
                       </div>
@@ -387,10 +405,14 @@
     </div>
     <!-- ===== Page Wrapper End ===== -->
     <script>
+      Quill.register("modules/htmlEditButton", htmlEditButton);
       function initializeQuillEditor(editorId, textareaId, placeholder) {
         const quill = new Quill(editorId, {
           theme: "snow",
           placeholder: placeholder,
+          modules: {
+            htmlEditButton: {},
+          },
         });
         const textarea = document.getElementById(textareaId);
 
