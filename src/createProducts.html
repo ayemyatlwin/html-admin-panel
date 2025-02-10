@@ -515,7 +515,19 @@
                           class="w-full cursor-pointer rounded-lg border border-primary p-4 font-medium text-primary transition hover:bg-opacity-90"
                         />
                       </div>
-                      <include src="./partials/tag-form.html" />
+
+                      <div
+                        class="relative mb-4 mt-20 flex flex-1 flex-col gap-10"
+                      >
+                        <div>
+                          <div class="relative" id="tags-component1"></div>
+                        </div>
+                        <div>
+                          <div class="relative" id="tags-component2"></div>
+                        </div>
+                      </div>
+                      <!-- <div id="tags-component3"></div>
+                      <div id="tags-component4"></div> -->
                     </form>
                   </div>
                 </div>
@@ -530,6 +542,66 @@
     </div>
     <!-- ===== Page Wrapper End ===== -->
     <script>
+      const array1 = [
+        {
+          id: 1,
+          name: "HEALTH INSURANCE PRODUSTS",
+          name_mm: "HEALTH",
+        },
+        {
+          id: 2,
+          name: "HEALTH INSURANCE",
+          name_mm: "HEALTH",
+        },
+        {
+          id: 3,
+          name: "HEALTH",
+          name_mm: "HEALTH",
+        },
+        {
+          id: 4,
+          name: "FLEXI HEALTH",
+          name_mm: "HEALTH",
+        },
+      ];
+
+      const array2 = [
+        {
+          id: 12,
+          name: "Text One",
+          name_mm: "Text One",
+        },
+        {
+          id: 13,
+          name: "Text two",
+          name_mm: "Text two",
+        },
+      ];
+
+      function addNewTag(name_en, name_mm) {
+        //call add tag
+        return {
+          id: 12, //new id
+          name: name_en,
+          name_mm: name_mm,
+        };
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        tagComponent(
+          document.getElementById("tags-component1"),
+          "Tags",
+          array2,
+          addNewTag
+        );
+        tagComponent(
+          document.getElementById("tags-component2"),
+          "Tags",
+          array1,
+          addNewTag
+        );
+      });
+
       function initializeQuillEditor(editorId, textareaId, placeholder) {
         const quill = new Quill(editorId, {
           theme: "snow",

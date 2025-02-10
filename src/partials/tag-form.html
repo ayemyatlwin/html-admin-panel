@@ -1,6 +1,7 @@
 <h1>Tags</h1>
 <div class="relative">
   <div class="tags mb-5 mt-2"></div>
+
   <div class="flex gap-4 px-2 py-1">
     <input
       type="search"
@@ -91,16 +92,61 @@
 </div>
 
 <script>
-  const tags = ["one", "two", "three", "four"];
-  let selectedTags = [];
+  tagComponent(document.getElementById("tags-component"), "test title");
+  // const tags = ["one", "two", "three", "four"];
+  // let selectedTags = [];
 
-  const tagsInput = document.getElementById("tags-input");
-  const tagsDropdown = document.getElementById("tags-dropdown");
-  const tagsContainer = document.querySelector(".tags");
-  const tagNameInput = document.getElementById("tag-name-input");
-  const tagNameInputMM = document.getElementById("tag-name-input-mm");
-  const saveTagBtn = document.getElementById("save-tag-btn");
-  const addTagBtn = document.getElementById("add-tag-btn");
+  // const tagsInput = document.getElementById("tags-input");
+  // const tagsDropdown = document.getElementById("tags-dropdown");
+  // const tagsContainer = document.querySelector(".tags");
+  // const tagNameInput = document.getElementById("tag-name-input");
+  // const tagNameInputMM = document.getElementById("tag-name-input-mm");
+  // const saveTagBtn = document.getElementById("save-tag-btn");
+  // const addTagBtn = document.getElementById("add-tag-btn");
+
+  // const inputSearch = document.querySelector(".input-search");
+
+  // function searchInput(placeholder) {
+  //   const inputContainer = document.createElement("div");
+  //   const input = document.createElement("input");
+  //   input.type = "text";
+  //   input.placeholder = placeholder;
+  //   input.classList.add("tags-input");
+  //   input.addEventListener("input", (event) => {
+  //     const value = event.target.value.toLowerCase();
+
+  //     const filteredTags = tags.filter(
+  //       (tag) =>
+  //         tag.toLowerCase().includes(value) && !selectedTags.includes(tag)
+  //     );
+  //     renderDropdown(filteredTags);
+  //     // onInputChange(event.target.value);
+  //     console.log("event", event.target.value);
+  //   });
+  //   input.addEventListener("focus", () => {
+  //     const filteredTags = tags.filter((tag) => !selectedTags.includes(tag));
+  //     renderDropdown(filteredTags);
+  //   });
+
+  //   inputContainer.appendChild(input);
+  //   return inputContainer;
+  // }
+
+  // function tagComponent(container) {
+  //   const input = searchInput("Type to search...", "tags-input");
+  //   container.appendChild(input);
+  //   return input;
+  // }
+
+  // tagComponent(inputSearch);
+
+  // const input = searchInput("Type to search...", "tags-input", (value) => {
+  //   const filteredTags = tags.filter((tag) =>
+  //     tag.toLowerCase().includes(value.toLowerCase())
+  //   );
+  //   renderDropdown(filteredTags);
+  // });
+  // container.appendChild(input);
 
   function renderTags() {
     tagsContainer.innerHTML = "";
@@ -218,6 +264,7 @@
     border: none;
     outline: none;
     font-size: 14px;
+    width: 400px;
   }
 
   .tags-dropdown {

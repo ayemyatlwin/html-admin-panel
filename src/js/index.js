@@ -2,7 +2,6 @@ import "jsvectormap/dist/css/jsvectormap.css";
 import "flatpickr/dist/flatpickr.min.css";
 import "../css/satoshi.css";
 import "../css/style.css";
-
 import Alpine from "alpinejs";
 import persist from "@alpinejs/persist";
 import flatpickr from "flatpickr";
@@ -11,6 +10,7 @@ import chart02 from "./components/chart-02";
 import chart03 from "./components/chart-03";
 import chart04 from "./components/chart-04";
 import map01 from "./components/map-01";
+import selector from "./selector.js";
 
 Alpine.plugin(persist);
 window.Alpine = Alpine;
@@ -70,3 +70,5 @@ function autoInitializeEditors() {
 }
 
 document.addEventListener("DOMContentLoaded", autoInitializeEditors);
+
+

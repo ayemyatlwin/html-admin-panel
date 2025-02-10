@@ -22,7 +22,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -100%);
-        z-index: 1000;
+        z-index: 500;
         pointer-events: none;
       }
     </style>
@@ -171,9 +171,9 @@
     <!-- ===== Page Wrapper End ===== -->
     <script>
       $(document).ready(function () {
-        const coordslength = 6;
+        const coordslength = 8;
         const defaultLat = 16.850979;
-        const defaultLng = 96.12986879609821;
+        const defaultLng = 96.1298688;
 
         const map = L.map("map", {
           center: [defaultLat, defaultLng],
@@ -185,10 +185,14 @@
           attribution: "© OpenStreetMap contributors",
         }).addTo(map);
 
+        let isManualChange = false;
+
         function updateInputs() {
-          const center = map.getCenter();
-          $("#latitude").val(center.lat);
-          $("#longitude").val(center.lng);
+          if (!isManualChange) {
+            const center = map.getCenter();
+            $("#latitude").val(center.lat.toFixed(coordslength));
+            $("#longitude").val(center.lng.toFixed(coordslength));
+          }
         }
 
         map.on("moveend", updateInputs);
@@ -202,13 +206,24 @@
           }
         }
 
+        // Detect manual input changes
+        $("#latitude, #longitude")
+          .on("focus", function () {
+            isManualChange = false;
+          })
+          .on("blur", function () {
+            isManualChange = false;
+            updateMapFromInput();
+          });
+
         $("#latitude, #longitude").on("input", function () {
-          updateMapFromInput();
+          if (isManualChange) {
+            updateMapFromInput();
+          }
         });
 
         updateInputs();
       });
     </script>
   </body>
- 
 </html>
