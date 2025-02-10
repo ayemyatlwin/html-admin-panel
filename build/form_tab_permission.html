@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Tab Permission</title>
+    <style></style>
+  <link rel="icon" href="favicon.ico"><link href="style.css" rel="stylesheet"></head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div class="tab-label active" data-target="settings-tab">Settings</div>
+        <div class="tab-label" data-target="members-tab">Members</div>
+        <div class="tab-label" data-target="users-tab">Users</div>
+        <div class="tab-label" data-target="roles-tab">Roles</div>
+        <div class="tab-label" data-target="news-tab">News</div>
+      </div>
+
+      <div class="content">
+        <div class="tab-content active" id="settings-tab">
+          <ul>
+            <li class="mt-4">
+              <div class="flex items-center gap-2">
+                <label
+                  for="menu-1"
+                  class="font-bold text-gray-700 dark:text-white"
+                  >Settings</label
+                >
+              </div>
+              <div
+                class="mt-1 flex items-center space-x-4"
+                style="margin-left: 1rem"
+              >
+                <div class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="menu-20"
+                    value="20"
+                    name="SelectedMenu"
+                    class="menu-checkbox"
+                    data-type="Edit"
+                    data-parent-id="1"
+                  />
+                  <label for="menu-20" class="text-gray-700 dark:text-white">
+                    Edit
+                  </label>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <script defer src="bundle.js"></script></body>
+</html>

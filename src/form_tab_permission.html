@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Tab Permission</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+      }
+
+      .tab-container {
+        display: flex;
+        width: 100%;
+      }
+
+      .sidebar {
+        width: 20%;
+        background-color: #fff;
+        border-right: 1px solid #ddd;
+        padding: 1rem;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      }
+      .tab-label {
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 8px;
+        color: #333;
+      }
+
+      .tab-label.active {
+        background-color: #e7f3ff;
+        color: #007bff;
+        font-weight: bold;
+      }
+
+      .content {
+        width: 80%;
+        padding: 1rem;
+        background-color: #fff;
+        overflow-y: auto;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tab-container">
+      <div class="sidebar">
+        <div class="tab-label active" data-target="settings-tab">Settings</div>
+        <div class="tab-label" data-target="members-tab">Members</div>
+        <div class="tab-label" data-target="users-tab">Users</div>
+        <div class="tab-label" data-target="roles-tab">Roles</div>
+        <div class="tab-label" data-target="news-tab">News</div>
+        <div class="tab-label" data-target="faqs-category-tab">
+          FAQs Category
+        </div>
+        <div class="tab-label" data-target="faqs-tab">FAQs</div>
+        <div class="tab-label" data-target="events-tab">Events</div>
+        <div class="tab-label" data-target="campaigns-tab">Campaigns</div>
+        <div class="tab-label" data-target="maseter-tab">Master Data</div>
+        <div class="tab-label" data-target="product-category-tab">
+          Product Category
+        </div>
+        <div class="tab-label" data-target="products-tab">Products</div>
+        <div class="tab-label" data-target="promotion-tab">Promotion</div>
+        <div class="tab-label" data-target="product-inquiry-tab">
+          Product Inquiry
+        </div>
+        <div class="tab-label" data-target="brochure-download-tab">
+          Brochure Download List
+        </div>
+        <div class="tab-label" data-target="tag-tab">Tag</div>
+      </div>
+
+      <div class="content">
+        <div class="tab-content active" id="settings-tab">
+          <ul>
+            <li class="mt-4">
+              <div class="flex items-center gap-2">
+                <label
+                  for="menu-1"
+                  class="font-bold text-gray-700 dark:text-white"
+                  >Settings</label
+                >
+              </div>
+              <div
+                class="mt-1 flex items-center space-x-4"
+                style="margin-left: 1rem"
+              >
+                <div class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="menu-20"
+                    value="20"
+                    name="SelectedMenu"
+                    class="menu-checkbox"
+                    data-type="Edit"
+                    data-parent-id="1"
+                  />
+                  <label for="menu-20" class="text-gray-700 dark:text-white">
+                    Edit
+                  </label>
+                </div>
+              </div>
+            </li>
+
+            <li class="mt-4">
+              <div class="flex items-center gap-2">
+                <label
+                  for="menu-2"
+                  class="font-bold text-gray-700 dark:text-white"
+                  >Members</label
+                >
+              </div>
+              <div
+                class="mt-1 flex items-center space-x-4"
+                style="margin-left: 1rem"
+              >
+                <div class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="menu-21"
+                    value="21"
+                    name="SelectedMenu"
+                    class="menu-checkbox"
+                    data-type="Read"
+                    data-parent-id="2"
+                    data-action="check-all"
+                  />
+                  <label for="menu-21" class="text-gray-700 dark:text-white">
+                    Read
+                  </label>
+                </div>
+              </div>
+            </li>
+
+            <li class="mt-4">
+              <div class="flex items-center gap-2">
+                <label
+                  for="menu-3"
+                  class="font-bold text-gray-700 dark:text-white"
+                  >Users</label
+                >
+              </div>
+              <div
+                class="mt-1 flex items-center space-x-4"
+                style="margin-left: 1rem"
+              >
+                <div class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="menu-22"
+                    value="22"
+                    name="SelectedMenu"
+                    class="menu-checkbox"
+                    data-type="Read"
+                    data-parent-id="3"
+                    data-action="check-all"
+                  />
+                  <label for="menu-22" class="text-gray-700 dark:text-white">
+                    Read
+                  </label>
+                </div>
+                <div class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="menu-23"
+                    value="23"
+                    name="SelectedMenu"
+                    class="menu-checkbox"
+                    data-type="Create"
+                    data-parent-id="3"
+                  />
+                  <label for="menu-23" class="text-gray-700 dark:text-white">
+                    Create
+                  </label>
+                </div>
+                <div class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="menu-24"
+                    value="24"
+                    name="SelectedMenu"
+                    class="menu-checkbox"
+                    data-type="Edit"
+                    data-parent-id="3"
+                  />
+                  <label for="menu-24" class="text-gray-700 dark:text-white">
+                    Edit
+                  </label>
+                </div>
+                <div class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="menu-25"
+                    value="25"
+                    name="SelectedMenu"
+                    class="menu-checkbox"
+                    data-type="Delete"
+                    data-parent-id="3"
+                  />
+                  <label for="menu-25" class="text-gray-700 dark:text-white">
+                    Delete
+                  </label>
+                </div>
+                <div class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="menu-26"
+                    value="26"
+                    name="SelectedMenu"
+                    class="menu-checkbox"
+                    data-type="Trash"
+                    data-parent-id="3"
+                  />
+                  <label for="menu-26" class="text-gray-700 dark:text-white">
+                    Trash
+                  </label>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-content" id="members-tab">
+          <ul>
+            <li class="mt-4">
+              <div
+                class="mt-1 flex items-center space-x-4"
+                style="margin-left: 1rem"
+              >
+                <div class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="menu-20"
+                    value="20"
+                    name="SelectedMenu"
+                    class="menu-checkbox"
+                    data-type="Edit"
+                    data-parent-id="1"
+                  />
+                  <label for="menu-20" class="text-gray-700 dark:text-white">
+                    Edit
+                  </label>
+                </div>
+              </div>
+            </li>
+
+            <li class="mt-4">
+              <div class="flex items-center gap-2">
+                <label
+                  for="menu-2"
+                  class="font-bold text-gray-700 dark:text-white"
+                  >Members</label
+                >
+              </div>
+              <div
+                class="mt-1 flex items-center space-x-4"
+                style="margin-left: 1rem"
+              >
+                <div class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="menu-21"
+                    value="21"
+                    name="SelectedMenu"
+                    class="menu-checkbox"
+                    data-type="Read"
+                    data-parent-id="2"
+                    data-action="check-all"
+                  />
+                  <label for="menu-21" class="text-gray-700 dark:text-white">
+                    Read
+                  </label>
+                </div>
+              </div>
+            </li>
+
+            <li class="mt-4">
+              <div class="flex items-center gap-2">
+                <label
+                  for="menu-3"
+                  class="font-bold text-gray-700 dark:text-white"
+                  >Users</label
+                >
+              </div>
+              <div
+                class="mt-1 flex items-center space-x-4"
+                style="margin-left: 1rem"
+              >
+                <div class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="menu-22"
+                    value="22"
+                    name="SelectedMenu"
+                    class="menu-checkbox"
+                    data-type="Read"
+                    data-parent-id="3"
+                    data-action="check-all"
+                  />
+                  <label for="menu-22" class="text-gray-700 dark:text-white">
+                    Read
+                  </label>
+                </div>
+                <div class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="menu-23"
+                    value="23"
+                    name="SelectedMenu"
+                    class="menu-checkbox"
+                    data-type="Create"
+                    data-parent-id="3"
+                  />
+                  <label for="menu-23" class="text-gray-700 dark:text-white">
+                    Create
+                  </label>
+                </div>
+                <div class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="menu-24"
+                    value="24"
+                    name="SelectedMenu"
+                    class="menu-checkbox"
+                    data-type="Edit"
+                    data-parent-id="3"
+                  />
+                  <label for="menu-24" class="text-gray-700 dark:text-white">
+                    Edit
+                  </label>
+                </div>
+                <div class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="menu-25"
+                    value="25"
+                    name="SelectedMenu"
+                    class="menu-checkbox"
+                    data-type="Delete"
+                    data-parent-id="3"
+                  />
+                  <label for="menu-25" class="text-gray-700 dark:text-white">
+                    Delete
+                  </label>
+                </div>
+                <div class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="menu-26"
+                    value="26"
+                    name="SelectedMenu"
+                    class="menu-checkbox"
+                    data-type="Trash"
+                    data-parent-id="3"
+                  />
+                  <label for="menu-26" class="text-gray-700 dark:text-white">
+                    Trash
+                  </label>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- </div> -->
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        const readCheckboxes = document.querySelectorAll(
+          'input[data-action="check-all"]'
+        );
+
+        readCheckboxes.forEach((checkbox) => {
+          checkbox.addEventListener("click", function () {
+            const liElement = this.closest("li");
+            const checkboxes = liElement.querySelectorAll(
+              'input[type="checkbox"]'
+            );
+            checkboxes.forEach((cb) => {
+              cb.checked = this.checked;
+            });
+          });
+        });
+        const tabs = document.querySelectorAll(".tab-label");
+        const contents = document.querySelectorAll(".tab-content");
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            // remove initial active classlist
+            tabs.forEach((tabb) => tabb.classList.remove("active"));
+            contents.forEach((content) => content.classList.add("active"));
+
+            // add active classlist After click
+
+            tab.classList.add("active");
+            const target = tab.getAttribute("data-target");
+            document.getElementById(target).classList.add("active");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
