@@ -6,6 +6,7 @@ document.addEventListener("click", function (event) {
     dropdown.style.display = "none";
   }
 });
+
 window.tagComponent = (container, title, tagsArray, addNewTag) => {
   const tag_name_eng = crypto.randomUUID();
   const tag_name_mm = crypto.randomUUID();
@@ -31,6 +32,7 @@ window.tagComponent = (container, title, tagsArray, addNewTag) => {
     tagsContainer.classList.add("tags");
 
     const input = createInput(selectedTags, tagsContainer, tagsDropdown);
+    const hiddenInput = createhiddenInput(tag_name_eng, tag_name_mm);
     const addButton = createAddButton();
     const model_wrapper = createModelBox(
       selectedTags,
@@ -57,6 +59,7 @@ window.tagComponent = (container, title, tagsArray, addNewTag) => {
     });
 
     inputWrapper.appendChild(input);
+    inputWrapper.appendChild(hiddenInput);
     inputWrapper.appendChild(addButton);
     container.appendChild(label);
     container.appendChild(model_wrapper);
@@ -76,6 +79,15 @@ window.tagComponent = (container, title, tagsArray, addNewTag) => {
     });
 
     return input;
+  }
+
+  function createhiddenInput(tag_name_eng, tag_name_mm) {
+    const hiddenInput = document.createElement("input");
+    hiddenInput.type = "hidden";
+    hiddenInput.id = tag_name_eng;
+    hiddenInput.name = tag_name_eng;
+    hiddenInput.value = "";
+    return hiddenInput;
   }
 
   render();
