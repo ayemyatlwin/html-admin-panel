@@ -31,17 +31,24 @@ window.tagComponent = (container, title, tagsArray, addNewTag) => {
     const tagsContainer = document.createElement("div");
     tagsContainer.classList.add("tags");
 
-    const input = createInput(selectedTags, tagsContainer, tagsDropdown);
-    const hiddenInput = createhiddenInput(tag_name_eng, tag_name_mm);
+    const hiddenInput = createhiddenInput(container);
+    const input = createInput(
+      selectedTags,
+      tagsContainer,
+      tagsDropdown,
+      hiddenInput
+    );
     const addButton = createAddButton();
     const model_wrapper = createModelBox(
+      container,
       selectedTags,
       tagsContainer,
       tagsDropdown,
       addNewTag,
       tagsArray,
       tag_name_eng,
-      tag_name_mm
+      tag_name_mm,
+      hiddenInput
     );
 
     addButton.addEventListener("click", () => {
@@ -67,29 +74,38 @@ window.tagComponent = (container, title, tagsArray, addNewTag) => {
     container.appendChild(tagsDropdown);
     container.appendChild(tagsContainer);
   }
-  function createInput(selectedTags, tagsContainer, tagsDropdown) {
+  function createInput(selectedTags, tagsContainer, tagsDropdown, hiddenInput) {
     const input = document.createElement("input");
     input.type = "text";
     input.placeholder = "Type to search...";
     input.classList.add("tags-input", "py-4");
     input.addEventListener("focus", (event) => {
       event.stopPropagation();
-      renderDropdown(tagsArray, tagsDropdown, tagsContainer, selectedTags);
+      renderDropdown(
+        tagsArray,
+        tagsDropdown,
+        tagsContainer,
+        selectedTags,
+        hiddenInput
+      );
       tagsDropdown.style.display = "flex";
     });
 
     return input;
   }
 
-  function createhiddenInput(tag_name_eng, tag_name_mm) {
+  function createhiddenInput(container) {
     const hiddenInput = document.createElement("input");
     hiddenInput.type = "hidden";
-    hiddenInput.id = tag_name_eng;
-    hiddenInput.name = tag_name_eng;
+    const dataName = container.getAttribute("data-name");
+    console.log("dataName", dataName);
+    if (dataName) {
+      hiddenInput.name = dataName;
+    }
     hiddenInput.value = "";
+
     return hiddenInput;
   }
-
   render();
 };
 
@@ -97,12 +113,14 @@ function renderDropdown(
   filteredTags,
   tagsDropdown,
   tagsContainer,
-  selectedTags
+  selectedTags,
+  hiddenInput
 ) {
   tagsDropdown.innerHTML = "";
   filteredTags.forEach((tag) => {
     const item = document.createElement("li");
     item.textContent = tag.name;
+    item.setAttribute("data-id", tag.id);
     const isSelected = selectedTags.some(
       (selectedTag) => selectedTag.id === tag.id
     );
@@ -113,6 +131,9 @@ function renderDropdown(
     }
     item.addEventListener("click", () => {
       selectedTags.push(tag);
+      hiddenInput.value = item.dataset.id;
+      console.log("hiddenInput.value", hiddenInput.value);
+      console.log("hiddenInput.name", hiddenInput.name);
       if (selectedTags.includes(tag)) {
         item.classList.add("disabled");
       }
@@ -169,13 +190,15 @@ function createAddButton() {
 }
 
 function createModelBox(
+  container,
   selectedTags,
   tagsContainer,
   tagsDropdown,
   addNewTag,
   tagsArray,
   tag_name_eng,
-  tag_name_mm
+  tag_name_mm,
+  hiddenInput
 ) {
   console.log("tag_name", tag_name_eng, tag_name_mm);
   const model_container = document.createElement("div");
@@ -289,12 +312,17 @@ function createModelBox(
   savebutton.addEventListener("click", () => {
     const newTag = document.getElementById(tag_name_eng).value.trim();
     const newTagMM = document.getElementById(tag_name_mm).value.trim();
-    console.log("newTag", newTag);
     const addedTag = addNewTag(newTag, newTagMM);
     console.log(addedTag);
     tagsArray.push(addedTag);
     selectedTags.push(addedTag);
     renderTags(tagsContainer, selectedTags);
+
+    const dataName = container.getAttribute("data-name");
+    hiddenInput.value = addedTag.id;
+    hiddenInput.name = dataName;
+    console.log("hiddenInput.name", hiddenInput.name);
+    console.log("hiddenInput.value", hiddenInput.value);
 
     model_wrapper.style.display = "none";
     tagsDropdown.style.display = "none";
