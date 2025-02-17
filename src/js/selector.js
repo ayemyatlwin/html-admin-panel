@@ -60,6 +60,7 @@ window.tagComponent = (container, title, tagsArray, addNewTag) => {
       if (e.target.classList.contains("remove-btn")) {
         const index = e.target.dataset.index;
         selectedTags.splice(index, 1);
+        updateHiddenInput(selectedTags, hiddenInput);
         renderTags(tagsContainer, selectedTags);
       }
       tagsDropdown.style.display = "none";
@@ -74,6 +75,7 @@ window.tagComponent = (container, title, tagsArray, addNewTag) => {
     container.appendChild(tagsDropdown);
     container.appendChild(tagsContainer);
   }
+
   function createInput(selectedTags, tagsContainer, tagsDropdown, hiddenInput) {
     const input = document.createElement("input");
     input.type = "text";
@@ -108,6 +110,10 @@ window.tagComponent = (container, title, tagsArray, addNewTag) => {
   }
   render();
 };
+function updateHiddenInput(selectedTags, hiddenInput) {
+  const selectedId = selectedTags.map((tag) => tag.id);
+  hiddenInput.value = selectedId.join(",");
+}
 
 function renderDropdown(
   filteredTags,
@@ -131,13 +137,16 @@ function renderDropdown(
     }
     item.addEventListener("click", () => {
       selectedTags.push(tag);
-      hiddenInput.value = item.dataset.id;
+
+      // hiddenInput.value = item.dataset.id;
       console.log("hiddenInput.value", hiddenInput.value);
       console.log("hiddenInput.name", hiddenInput.name);
       if (selectedTags.includes(tag)) {
         item.classList.add("disabled");
       }
+      updateHiddenInput(selectedTags, hiddenInput);
       renderTags(tagsContainer, selectedTags);
+
       tagsDropdown.style.display = "none";
     });
     tagsDropdown.appendChild(item);
@@ -312,17 +321,20 @@ function createModelBox(
   savebutton.addEventListener("click", () => {
     const newTag = document.getElementById(tag_name_eng).value.trim();
     const newTagMM = document.getElementById(tag_name_mm).value.trim();
+    if (!newTag || !newTagMM) return;
     const addedTag = addNewTag(newTag, newTagMM);
     console.log(addedTag);
     tagsArray.push(addedTag);
     selectedTags.push(addedTag);
+    updateHiddenInput(selectedTags, hiddenInput);
     renderTags(tagsContainer, selectedTags);
 
     const dataName = container.getAttribute("data-name");
-    hiddenInput.value = addedTag.id;
+    // hiddenInput.value = addedTag.id;
     hiddenInput.name = dataName;
-    console.log("hiddenInput.name", hiddenInput.name);
+
     console.log("hiddenInput.value", hiddenInput.value);
+    console.log("hiddenInput.name", hiddenInput.name);
 
     model_wrapper.style.display = "none";
     tagsDropdown.style.display = "none";
@@ -330,6 +342,7 @@ function createModelBox(
     document.getElementById(tag_name_eng).value = "";
     document.getElementById(tag_name_mm).value = "";
   });
+
   modelbutton.appendChild(savebutton);
   wrapper.appendChild(modelbutton);
 
