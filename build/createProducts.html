@@ -12,6 +12,7 @@
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <link rel="stylesheet" href="src/css/style.css" />
     <script type="text/javascript">
       function productIconUpload(event) {
         const featurePreviewContainer = document.getElementById(
@@ -1895,14 +1896,22 @@
                         class="relative mb-4 mt-20 flex flex-1 flex-col gap-10"
                       >
                         <div>
-                          <div class="relative" id="tags-component1"></div>
+                          <div
+                            class="relative"
+                            data-name="TagOne"
+                            data-value="12,13,14"
+                            id="tags-component1"
+                          ></div>
                         </div>
                         <div>
-                          <div class="relative" id="tags-component2"></div>
+                          <div
+                            class="relative"
+                            data-name="TagTwo"
+                            data-value="1,2,3"
+                            id="tags-component2"
+                          ></div>
                         </div>
                       </div>
-                      <!-- <div id="tags-component3"></div>
-                      <div id="tags-component4"></div> -->
                     </form>
                   </div>
                 </div>
@@ -1948,32 +1957,49 @@
         },
         {
           id: 13,
-          name: "Text two",
+          name: "Text Two",
           name_mm: "Text two",
+        },
+        {
+          id: 14,
+          name: "Text Three",
+          name_mm: "Text Three",
+        },
+        {
+          id: 15,
+          name: "Text Four",
+          name_mm: "Text Four",
+        },
+        {
+          id: 16,
+          name: "Text Five",
+          name_mm: "Text Five",
         },
       ];
 
-      function addNewTag(name_en, name_mm) {
+      function addNewTag(name_en, name_mm, callback) {
         //call add tag
-        return {
-          id: 12, //new id
-          name: name_en,
-          name_mm: name_mm,
-        };
+        setTimeout(() => {
+          callback({
+            id: Math.floor(Math.random() * 100), //new id
+            name: name_en,
+            name_mm: name_mm,
+          });
+        }, 1500);
       }
 
       document.addEventListener("DOMContentLoaded", function () {
         tagComponent(
           document.getElementById("tags-component1"),
-          "Tags",
           array2,
-          addNewTag
+          addNewTag,
+          false
         );
         tagComponent(
           document.getElementById("tags-component2"),
-          "Tags",
           array1,
-          addNewTag
+          addNewTag,
+          true
         );
       });
 

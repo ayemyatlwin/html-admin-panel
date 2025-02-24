@@ -4,6 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("./selector.css");
+
 @layer base {
   body {
     @apply relative z-1 bg-whiten font-satoshi text-base font-normal text-body;
@@ -215,4 +217,3 @@ span.flatpickr-weekday,
 [x-cloak] {
   display: none !important;
 }
-

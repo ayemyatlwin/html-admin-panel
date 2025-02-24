@@ -17,7 +17,6 @@ window.tagComponent = (
   addNewTag,
   checkAddButton = true
 ) => {
-  console.log("tagsArray", tagsArray);
   const tag_name_eng = crypto.randomUUID();
   const tag_name_mm = crypto.randomUUID();
   let selectedTags = []; // Maintain independent state for each component
@@ -104,6 +103,11 @@ window.tagComponent = (
       renderDropdown();
     });
 
+    input.addEventListener("input", (event) => {
+      const filteredItems = event.target.value.toLowerCase();
+      renderDropdown(filteredItems);
+    });
+
     return input;
   }
 
@@ -120,7 +124,12 @@ window.tagComponent = (
     return hiddenInput;
   }
 
-  function renderDropdown() {
+  function updateHiddenInput() {
+    const selectedId = selectedTags.map((selectedTag) => selectedTag.id);
+    hiddenInput.value = selectedId.join(",");
+  }
+
+  function renderDropdown(filteredItems = "") {
     const dropdown = document.querySelectorAll(".tags-dropdown");
     //remove active class
     if (dropdown) {
@@ -132,10 +141,12 @@ window.tagComponent = (
     tagsDropdown.innerHTML = "";
     //add class active
     tagsDropdown.classList.add("active");
-    //style with border
-    tagsDropdown.style.border = "1px solid #032A5F";
 
-    tagsArray.forEach((tag) => {
+    const filteredTags = tagsArray.filter((tag) =>
+      tag.name.toLowerCase().includes(filteredItems)
+    );
+
+    filteredTags.forEach((tag) => {
       const item = document.createElement("li");
       item.textContent = tag.name;
 
@@ -151,15 +162,11 @@ window.tagComponent = (
           updateHiddenInput();
           renderTags();
           tagsDropdown.innerHTML = "";
+          input.value = "";
         });
       }
       tagsDropdown.appendChild(item);
     });
-  }
-
-  function updateHiddenInput() {
-    const selectedId = selectedTags.map((selectedTag) => selectedTag.id);
-    hiddenInput.value = selectedId.join(",");
   }
 
   function renderTags() {
@@ -380,181 +387,4 @@ window.tagComponent = (
   }
 
   render();
-};
-
-// function addTag(tag, tagsContainer, selectedTags, tag_name_eng, tag_name_mm) {
-//   if (!selectedTags.includes(tag)) {
-//     selectedTags.push(tag);
-//     renderTags(tagsContainer, selectedTags, []);
-//     document.getElementById(tag_name_eng).value = "";
-//     document.getElementById(tag_name_mm).value = "";
-//   }
-//   tagsDropdown.style.display = "none";
-// }
-
-const style = document.createElement("style");
-style.innerHTML = `
-  .tags {
-    display: flex;
-    position: absolute;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 3px;
-  }
-
-  .tags .tag {
-    display: flex;
-    align-items: center;
-    background-color: #007bff;
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 16px;
-    font-size: 14px;
-  }
-
-  .tags .tag .remove-btn {
-    margin-left: 8px;
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
-  }
-
-      .tags-input {
-    flex-grow: 1;
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-    font-size: 14px;
-    width: 100%;
-    border: 1px solid rgb(226, 232, 240);
-    border-radius: 0.5rem;
-  }
-    .tags-dropdown {
-    display:none;
-    // position:absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    max-width:970px;
-    max-height: 150px;
-    overflow-y: auto;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 4px;
-    z-index: 1 !important;
-  }
-
-  .tags-dropdown.active {
-     display:flex 
-}
-
-  .tags-dropdown li {
-    padding: 8px;
-    cursor: pointer;
-  }
-
-  .tags-dropdown li:hover {
-    background: #007bff;
-    color: #fff;
-  }
-    .tags-dropdown .disabled {
-  color: #dddddd !important;
-  pointer-events: none;
-}
-
-  .title_label{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #032A5F;
-    font-size: 20px;
-    font-weight: bolder;
-    margin-bottom: 8px;
-  }
-
-.models{
- display: flex;
- justify-content: center;
- flex-direction: column;
- align-items: center;
- padding-top: 16px;
- gap: 16px;
-}    
- "w-full",
-    "rounded-lg",
-    "border",
-    "border-stroke",
-    "bg-transparent",
-    "py-2",
-    "px-4",
-    "mt-2",
-    "outline-none",
-    "focus:border-primary",
-    "focus-visible:shadow-none"
-
-.btn{
- width: full;
- 
-}
-.input_one {
-  width: 100%; /* w-full */
-  border-radius: 8px; /* rounded-lg (8px) */
-  border: 1px solid var(--stroke-color); /* border & border-stroke */
-  background-color: transparent; /* bg-transparent */
-  padding-top: 8px; /* py-2 (8px top & bottom padding) */
-  padding-bottom: 8px;
-  padding-left: 16px; /* px-4 (16px left & right padding) */
-  padding-right: 16px;
-  margin-top: 8px; /* mt-2 (8px margin top) */
-  outline: none; /* outline-none */
-}
-
-.input_one:focus {
-  border-color: var(--primary-color); /* focus:border-primary */
-}
-
-.input_one:focus-visible {
-  box-shadow: none; /* focus-visible:shadow-none */
-}
-
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6); 
-  display: flex; 
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; 
-}
-
-.modal > div {
-  background: #fff; 
-  padding: 20px;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 28rem; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  position: relative;
-}
-  .wrapper {
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    padding: 6px;
-    width: 100%;
-    max-width: 28rem;
-    max-height: 100vh;
-    gap: 16px;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-`;
-document.head.appendChild(style);
+};t
