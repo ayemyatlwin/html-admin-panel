@@ -1,12 +1,15 @@
 document.addEventListener("click", function (event) {
-  if (!event.target.closest(".tags-input")) {
+  if (!event.target.closest(".selector-input")) {
     console.log("Clicked outside .tag-input");
-    const dropdown = document.querySelectorAll(".tags-dropdown.active");
+    const dropdowns = document.querySelector(".tags-dropdown.active");
     //remove active class
-    if (dropdown) {
-      dropdown.forEach((ele) => {
-        ele.classList.remove("active");
-      });
+    // if (dropdowns) {
+    //   dropdowns.forEach((ele) => {
+    //     dropdowns.classList.remove("active");
+    //   });
+    // }
+    if (dropdowns) {
+      dropdowns.classList.remove("active");
     }
   }
 });
@@ -72,18 +75,6 @@ window.tagComponent = (
       inputWrapper.appendChild(addButton);
       container.appendChild(model_wrapper);
     }
-
-    // tagsContainer.addEventListener("click", (e) => {
-    //   if (e.target.classList.contains("remove-btn")) {
-    //     const tagId = e.target.dataset.id;
-    //     selectedTags = selectedTags.filter((tag) => tag.id !== parseInt(tagId));
-    //     initialTags = initialTags.filter((tag) => tag.id !== parseInt(tagId));
-    //     updateHiddenInput(hiddenInput);
-    //     renderTags(tagsContainer, selectedTags, initialTags);
-    //   }
-    //   tagsDropdown.style.display = "none";
-    // });
-
     inputWrapper.appendChild(hiddenInput);
     container.appendChild(tagsDropdown);
     container.appendChild(tagsContainer);
@@ -98,8 +89,7 @@ window.tagComponent = (
     input.placeholder = "Type to search...";
     input.classList.add("tags-input", "py-4");
     input.addEventListener("focus", (event) => {
-      input.classList.add("active");
-      event.stopPropagation();
+      input.parentElement.classList.add("active");
       renderDropdown();
     });
 
@@ -130,10 +120,10 @@ window.tagComponent = (
   }
 
   function renderDropdown(filteredItems = "") {
-    const dropdown = document.querySelectorAll(".tags-dropdown");
+    const dropdowns = document.querySelectorAll(".tags-dropdown");
     //remove active class
-    if (dropdown) {
-      dropdown.forEach((ele) => {
+    if (dropdowns) {
+      dropdowns.forEach((ele) => {
         ele.classList.remove("active");
       });
     }
@@ -161,8 +151,9 @@ window.tagComponent = (
           selectedTags.push(tag);
           updateHiddenInput();
           renderTags();
-          tagsDropdown.innerHTML = "";
+          // tagsDropdown.innerHTML = "";
           input.value = "";
+          tagsDropdown.classList.remove("active");
         });
       }
       tagsDropdown.appendChild(item);
@@ -350,7 +341,6 @@ window.tagComponent = (
       if (!newTag || !newTagMM) return;
       addNewTag(newTag, newTagMM, addCreatedTag);
 
-      console.log("model_wrapper", model_wrapper);
       model_wrapper.style.display = "none";
       tagsDropdown.style.display = "none";
 
@@ -387,4 +377,4 @@ window.tagComponent = (
   }
 
   render();
-};t
+};
