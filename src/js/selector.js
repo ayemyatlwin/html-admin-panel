@@ -2,12 +2,6 @@ document.addEventListener("click", function (event) {
   if (!event.target.closest(".selector-input")) {
     console.log("Clicked outside .tag-input");
     const dropdowns = document.querySelector(".tags-dropdown.active");
-    //remove active class
-    // if (dropdowns) {
-    //   dropdowns.forEach((ele) => {
-    //     dropdowns.classList.remove("active");
-    //   });
-    // }
     if (dropdowns) {
       dropdowns.classList.remove("active");
     }
@@ -22,7 +16,7 @@ window.tagComponent = (
 ) => {
   const tag_name_eng = crypto.randomUUID();
   const tag_name_mm = crypto.randomUUID();
-  let selectedTags = []; // Maintain independent state for each component
+  let selectedTags = [];
   let initialTags = [];
   const tagsContainer = document.createElement("div");
   const hiddenInput = createhiddenInput(container);
@@ -69,8 +63,6 @@ window.tagComponent = (
     container.appendChild(inputWrapper);
     inputWrapper.appendChild(input);
 
-    //checkClickOutside();
-
     if (checkAddButton) {
       inputWrapper.appendChild(addButton);
       container.appendChild(model_wrapper);
@@ -88,7 +80,7 @@ window.tagComponent = (
     input.type = "text";
     input.placeholder = "Type to search...";
     input.classList.add("tags-input", "py-4");
-    input.addEventListener("focus", (event) => {
+    input.addEventListener("focus", () => {
       input.parentElement.classList.add("active");
       renderDropdown();
     });
@@ -151,7 +143,6 @@ window.tagComponent = (
           selectedTags.push(tag);
           updateHiddenInput();
           renderTags();
-          // tagsDropdown.innerHTML = "";
           input.value = "";
           tagsDropdown.classList.remove("active");
         });
@@ -171,6 +162,7 @@ window.tagComponent = (
 
       const removeBtn = document.createElement("button");
       removeBtn.classList.add("remove-btn");
+
       removeBtn.setAttribute("data-id", tag.id);
       removeBtn.textContent = "×";
 
@@ -335,14 +327,13 @@ window.tagComponent = (
     savebutton.style.color = "white";
     savebutton.style.width = "200px";
     savebutton.addEventListener("click", () => {
-      console.log("save button clicked");
       const newTag = document.getElementById(tag_name_eng).value.trim();
       const newTagMM = document.getElementById(tag_name_mm).value.trim();
-      if (!newTag || !newTagMM) return;
+      // if (!newTag && !newTagMM) return;
       addNewTag(newTag, newTagMM, addCreatedTag);
 
       model_wrapper.style.display = "none";
-      tagsDropdown.style.display = "none";
+      tagsDropdown.classList.remove("active");
 
       document.getElementById(tag_name_eng).value = "";
       document.getElementById(tag_name_mm).value = "";

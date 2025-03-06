@@ -518,25 +518,18 @@
                       </div>
 
                       <div
-                        class="relative mb-4 mt-20 flex flex-1 flex-col gap-10"
-                      >
-                        <div>
-                          <div
-                            class="selector-input relative"
-                            data-name="TagOne"
-                            data-value="12,13,14"
-                            id="tags-component1"
-                          ></div>
-                        </div>
-                        <div>
-                          <div
-                            class="selector-input relative"
-                            data-name="TagTwo"
-                            data-value="1,2,3"
-                            id="tags-component2"
-                          ></div>
-                        </div>
-                      </div>
+                        class="selector-input relative"
+                        data-name="TagTwo"
+                        data-value="1,2,3"
+                        id="tags-component2"
+                      ></div>
+
+                      <div
+                        class="selector-input relative"
+                        data-name="TagOne"
+                        data-value="12,13,14"
+                        id="tags-component1"
+                      ></div>
                     </form>
                   </div>
                 </div>
@@ -615,16 +608,17 @@
 
       document.addEventListener("DOMContentLoaded", function () {
         tagComponent(
-          document.getElementById("tags-component1"),
-          array2,
-          addNewTag,
-          false
-        );
-        tagComponent(
           document.getElementById("tags-component2"),
           array1,
           addNewTag,
           true
+        );
+
+        tagComponent(
+          document.getElementById("tags-component1"),
+          array2,
+          addNewTag,
+          false
         );
       });
 
