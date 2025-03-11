@@ -1,6 +1,5 @@
 document.addEventListener("click", function (event) {
   if (!event.target.closest(".selector-input")) {
-    console.log("Clicked outside .tag-input");
     const dropdowns = document.querySelector(".tags-dropdown.active");
     if (dropdowns) {
       dropdowns.classList.remove("active");
@@ -42,8 +41,8 @@ window.tagComponent = (
     model_wrapper = createModelBox();
 
     addButton.addEventListener("click", () => {
-      //tagsDropdown.style.display = "none";
       model_wrapper.style.display = "flex";
+      tagsDropdown.classList.remove("active");
     });
   }
 

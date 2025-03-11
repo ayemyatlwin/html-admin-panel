@@ -11,6 +11,7 @@ import chart03 from "./components/chart-03";
 import chart04 from "./components/chart-04";
 import map01 from "./components/map-01";
 import selector from "./selector.js";
+import sidebar from "./sidebar.js";
 
 Alpine.plugin(persist);
 window.Alpine = Alpine;
@@ -70,5 +71,3 @@ function autoInitializeEditors() {
 }
 
 document.addEventListener("DOMContentLoaded", autoInitializeEditors);
-
-

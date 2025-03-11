@@ -181,9 +181,8 @@
     <div class="flex h-screen overflow-hidden">
       <!-- ===== Sidebar Start ===== -->
       <aside
-  :class="sidebarToggle ? 'translate-x-0' : '-translate-x-full'"
-  @click.outside="sidebarToggle = false"
-  class="absolute left-0 top-0 z-9999 flex h-screen w-65 flex-col overflow-y-hidden bg-white drop-shadow-lg duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0"
+  class="absolute left-0 top-0 z-9999 flex h-screen w-65 -translate-x-full flex-col overflow-y-hidden bg-white drop-shadow-lg duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0"
+  :class="{ '!translate-x-0': sidebarToggle }"
 >
   <!-- SIDEBAR HEADER -->
   <div class="flex items-center justify-between gap-2 px-4 py-5.5 lg:py-6.5">
@@ -191,10 +190,7 @@
       <img alt="Logo" src="src/images/logo/logo.png" />
     </a>
 
-    <button
-      @click.stop="sidebarToggle = !sidebarToggle"
-      class="block lg:hidden"
-    >
+    <button @click.stop="sidebarToggle = !sidebarToggle" class="block">
       <svg
         class="fill-current"
         fill="none"
@@ -224,13 +220,11 @@
       <div>
         <h3 class="mb-4 ml-4 text-sm font-extrabold text-primary">MENU</h3>
 
-        <ul class="mb-6 flex flex-col gap-1.5">
+        <ul id="menu" class="mb-6 flex flex-col gap-1.5 py-2">
           <!-- Menu Item Dashboard -->
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'dashboard') && (page === 'dashboard') }"
-              @click="selected = (selected === 'dashboard' ? '':'dashboard')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="/index.html"
             >
               <svg
@@ -264,9 +258,7 @@
           </li>
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Settings') && (page === 'settings') }"
-              @click="selected = (selected === 'Settings' ? '':'Settings')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="settings.html"
             >
               <svg
@@ -306,9 +298,7 @@
           <!-- Menu Item Dashboard -->
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'member') && (page === 'member') }"
-              @click="selected = (selected === 'member' ? '':'member')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="/member.html"
             >
               <svg
@@ -335,9 +325,7 @@
           <!-- Menu Item Users -->
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Users') || (page === 'createUser' || page === 'user-list') }"
-              @click.prevent="selected = (selected === 'Users' ? '':'Users')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
             >
               <svg
@@ -360,7 +348,6 @@
 
               Users
               <svg
-                :class="{ 'rotate-180': (selected === 'Users') }"
                 class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 fill="none"
                 height="20"
@@ -378,31 +365,25 @@
             </a>
 
             <!-- Dropdown Menu Start -->
-            <div
-              :class="(selected === 'Users') ? 'block' :'hidden'"
-              class="translate transform overflow-hidden"
-            >
+            <div class="dropdown translate transform overflow-hidden">
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
-                    :class="page === 'createUser' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createUser.html"
                     >Create User</a
                   >
                 </li>
                 <li>
                   <a
-                    :class="page === 'user-list' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="user-list.html"
                     >User List</a
                   >
                 </li>
                 <li>
                   <a
-                    :class="page === 'role' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="form_tab_permission.html"
                     >Role</a
                   >
@@ -413,9 +394,7 @@
           </li>
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'News') || (page === 'createNews' || page === 'news-list') }"
-              @click.prevent="selected = (selected === 'News' ? '':'News')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
             >
               <svg
@@ -450,7 +429,6 @@
 
               News
               <svg
-                :class="{ 'rotate-180': (selected === 'News') }"
                 class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 fill="none"
                 height="20"
@@ -468,23 +446,18 @@
             </a>
 
             <!-- Dropdown Menu Start -->
-            <div
-              :class="(selected === 'News') ? 'block' :'hidden'"
-              class="translate transform overflow-hidden"
-            >
+            <div class="dropdown translate transform overflow-hidden">
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
-                    :class="page === 'createNews' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createNews.html"
                     >Create News</a
                   >
                 </li>
                 <li>
                   <a
-                    :class="page === 'news-list' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="news-list.html"
                     >News List</a
                   >
@@ -495,9 +468,7 @@
           </li>
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Announcements') || (page === 'createAnnouncement' || page === 'announcement-list') }"
-              @click.prevent="selected = (selected === 'Announcements' ? '':'Announcements')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
             >
               <svg
@@ -519,7 +490,6 @@
               </svg>
               Announcements
               <svg
-                :class="{ 'rotate-180': (selected === 'Announcements') }"
                 class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 fill="none"
                 height="20"
@@ -537,23 +507,18 @@
             </a>
 
             <!-- Dropdown Menu Start -->
-            <div
-              :class="(selected === 'Announcements') ? 'block' :'hidden'"
-              class="translate transform overflow-hidden"
-            >
+            <div class="dropdown translate transform overflow-hidden">
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
-                    :class="page === 'createAnnouncement' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createAnnouncement.html"
                     >Create Announcements</a
                   >
                 </li>
                 <li>
                   <a
-                    :class="page === 'announcement-list' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="announcement-list.html"
                     >Announcements List</a
                   >
@@ -564,9 +529,7 @@
           </li>
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Faqs') || (page === 'createFaq' || page === 'faq-list') }"
-              @click.prevent="selected = (selected === 'Faqs' ? '':'Faqs')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
             >
               <svg
@@ -588,7 +551,6 @@
               </svg>
               FAQs
               <svg
-                :class="{ 'rotate-180': (selected === 'Faqs') }"
                 class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 fill="none"
                 height="20"
@@ -606,23 +568,18 @@
             </a>
 
             <!-- Dropdown Menu Start -->
-            <div
-              :class="(selected === 'Faqs') ? 'block' :'hidden'"
-              class="translate transform overflow-hidden"
-            >
+            <div class="dropdown translate transform overflow-hidden">
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
-                    :class="page === 'createFaq' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createFaq.html"
                     >Create FAQ</a
                   >
                 </li>
                 <li>
                   <a
-                    :class="page === 'faq-list' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="faq-list.html"
                     >FAQ List</a
                   >
@@ -633,9 +590,7 @@
           </li>
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Notifications') || (page === 'createNotifications' || page === 'notifications-list') }"
-              @click.prevent="selected = (selected === 'Notifications' ? '':'Notifications')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
             >
               <svg
@@ -657,7 +612,6 @@
               </svg>
               Notifications
               <svg
-                :class="{ 'rotate-180': (selected === 'Notifications') }"
                 class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 fill="none"
                 height="20"
@@ -675,23 +629,18 @@
             </a>
 
             <!-- Dropdown Menu Start -->
-            <div
-              :class="(selected === 'Notifications') ? 'block' :'hidden'"
-              class="translate transform overflow-hidden"
-            >
+            <div class="dropdown translate transform overflow-hidden">
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
-                    :class="page === 'createNotifications' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createNotifications.html"
                     >Create Notification</a
                   >
                 </li>
                 <li>
                   <a
-                    :class="page === 'notifications-list' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="notifications-list.html"
                     >Notification List</a
                   >
@@ -702,9 +651,7 @@
           </li>
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Event') || (page === 'createEvent' || page === 'event-list') }"
-              @click.prevent="selected = (selected === 'Event' ? '':'Event')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
             >
               <svg
@@ -735,7 +682,6 @@
               </svg>
               Events
               <svg
-                :class="{ 'rotate-180': (selected === 'Event') }"
                 class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 fill="none"
                 height="20"
@@ -754,14 +700,10 @@
 
             <!-- Dropdown Menu Start -->
 
-            <div
-              :class="(selected === 'Event') ? 'block' :'hidden'"
-              class="translate transform overflow-hidden"
-            >
-              <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
+            <div class="dropdown translate transform overflow-hidden">
+              <ul class="sub-link mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
-                    :class="page === 'createEvent' && '!text-secondary'"
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createEvent.html"
                     >Create Event</a
@@ -769,8 +711,7 @@
                 </li>
                 <li>
                   <a
-                    :class="page === 'event-list' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="event-list.html"
                     >Event List</a
                   >
@@ -781,9 +722,8 @@
           </li>
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Campaign') || (page === 'createCampaign' || page === 'campaign-list') }"
-              @click.prevent="selected = (selected === 'Campaign' ? '':'Campaign')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              x
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
             >
               <svg
@@ -805,7 +745,6 @@
               </svg>
               Campaigns
               <svg
-                :class="{ 'rotate-180': (selected === 'Campaign') }"
                 class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 fill="none"
                 height="20"
@@ -823,23 +762,18 @@
             </a>
 
             <!-- Dropdown Menu Start -->
-            <div
-              :class="(selected === 'Campaign') ? 'block' :'hidden'"
-              class="translate transform overflow-hidden"
-            >
+            <div class="dropdown translate transform overflow-hidden">
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
-                    :class="page === 'createCampaign' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createCampaign.html"
                     >Create Campaign</a
                   >
                 </li>
                 <li>
                   <a
-                    :class="page === 'campaign-list' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="campaign-list.html"
                     >Campaign List</a
                   >
@@ -850,9 +784,7 @@
           </li>
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Branch') || (page === 'createBranch' || page === 'campaign-list') }"
-              @click.prevent="selected = (selected === 'Branch' ? '':'Branch')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
             >
               <svg
@@ -875,7 +807,6 @@
               </svg>
               Branches
               <svg
-                :class="{ 'rotate-180': (selected === 'Branch') }"
                 class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 fill="none"
                 height="20"
@@ -893,23 +824,18 @@
             </a>
 
             <!-- Dropdown Menu Start -->
-            <div
-              :class="(selected === 'Branch') ? 'block' :'hidden'"
-              class="translate transform overflow-hidden"
-            >
+            <div class="dropdown translate transform overflow-hidden">
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
-                    :class="page === 'createBranch' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createBranch.html"
                     >Create Branch</a
                   >
                 </li>
                 <li>
                   <a
-                    :class="page === 'branch-list' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="branch-list.html"
                     >Branch List</a
                   >
@@ -920,9 +846,7 @@
           </li>
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'MasterData') || (page === 'createMasterData' || page === 'master-data-list') }"
-              @click.prevent="selected = (selected === 'MasterData' ? '':'MasterData')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
             >
               <svg
@@ -944,7 +868,6 @@
               </svg>
               Master Data
               <svg
-                :class="{ 'rotate-180': (selected === 'MasterData') }"
                 class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 fill="none"
                 height="20"
@@ -962,61 +885,29 @@
             </a>
 
             <!-- Dropdown Menu Start -->
-            <div
-              :class="(selected === 'MasterData') ? 'block' :'hidden'"
-              class="translate transform overflow-hidden"
-            >
+            <div class="dropdown translate transform overflow-hidden">
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
-                    :class="page === 'createMasterData' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createMasterData.html"
                     >Create Master Data</a
                   >
                 </li>
                 <li>
                   <a
-                    :class="page === 'master-data-list' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="master-data-list.html"
                     >Master Data List</a
                   >
                 </li>
-                <!-- <li>
-                                                                                                  <svg
-                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                    class="svg-icon"
-                                                                                                    style="
-                                                                                                      width: 1em;
-                                                                                                      height: 1em;
-                                                                                                      vertical-align: middle;
-                                                                                                      fill: currentColor;
-                                                                                                      overflow: hidden;
-                                                                                                    "
-                                                                                                    viewBox="0 0 1024 1024"
-                                                                                                    version="1.1"
-                                                                                                  >
-                                                                                                    <path
-                                                                                                      d="M770.133333 917.333333H275.2C228.266667 917.333333 192 881.066667 192 834.133333s36.266667-83.2 83.2-83.2H810.666667c12.8 0 21.333333 8.533333 21.333333 21.333334v83.2c0 34.133333-27.733333 61.866667-61.866667 61.866666z m-494.933333-123.733333c-21.333333 0-40.533333 17.066667-40.533333 40.533333s17.066667 40.533333 40.533333 40.533334h494.933333c10.666667 0 19.2-8.533333 19.2-19.2v-61.866667H275.2z"
-                                                                                                    />
-                                                                                                    <path
-                                                                                                      d="M330.666667 789.333333c-12.8 0-21.333333-8.533333-21.333334-21.333333V138.666667c0-12.8 8.533333-21.333333 21.333334-21.333334s21.333333 8.533333 21.333333 21.333334V768c0 12.8-8.533333 21.333333-21.333333 21.333333zM454.4 501.333333l-14.933333 51.2h-46.933334l59.733334-196.266666H512l61.866667 196.266666h-46.933334l-14.933333-51.2h-57.6z m51.2-34.133333l-12.8-42.666667c-4.266667-10.666667-6.4-25.6-10.666667-38.4-2.133333 10.666667-6.4 25.6-8.533333 38.4l-12.8 42.666667h44.8zM680.533333 550.4l-2.133333-14.933333c-8.533333 10.666667-23.466667 17.066667-40.533333 17.066666-29.866667 0-46.933333-21.333333-46.933334-42.666666 0-36.266667 34.133333-55.466667 83.2-55.466667v-2.133333c0-8.533333-4.266667-19.2-25.6-19.2-14.933333 0-29.866667 4.266667-38.4 10.666666l-8.533333-27.733333c10.666667-6.4 29.866667-12.8 55.466667-12.8 46.933333 0 61.866667 27.733333 61.866666 61.866667v49.066666c0 12.8 0 25.6 2.133334 34.133334h-40.533334z m-6.4-66.133333c-23.466667 0-40.533333 6.4-40.533333 23.466666 0 10.666667 8.533333 17.066667 17.066667 17.066667 10.666667 0 19.2-6.4 23.466666-17.066667v-23.466666z"
-                                                                                                    />
-                                                                                                    <path
-                                                                                                      d="M768 917.333333H277.333333c-12.8 0-21.333333-8.533333-21.333333-21.333333s8.533333-21.333333 21.333333-21.333333h490.666667c10.666667 0 21.333333-8.533333 21.333333-19.2V168.533333c0-10.666667-8.533333-19.2-21.333333-19.2H275.2c-21.333333 0-40.533333 17.066667-40.533333 40.533334v644.266666c0 12.8-8.533333 21.333333-21.333334 21.333334s-21.333333-8.533333-21.333333-21.333334V189.866667C192 142.933333 228.266667 106.666667 275.2 106.666667H768c36.266667 0 64 27.733333 64 61.866666V853.333333c0 36.266667-27.733333 64-64 64z"
-                                                                                                    />
-                                                                                                  </svg>
-                                                                                                </li> -->
               </ul>
             </div>
             <!-- Dropdown Menu End -->
           </li>
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Dictionary') || (page === 'createDictionary' || page === 'dictionary-list') }"
-              @click.prevent="selected = (selected === 'Dictionary' ? '':'Dictionary')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
             >
               <svg
@@ -1050,7 +941,6 @@
               </svg>
               Dictionary
               <svg
-                :class="{ 'rotate-180': (selected === 'Dictionary') }"
                 class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 fill="none"
                 height="20"
@@ -1068,23 +958,18 @@
             </a>
 
             <!-- Dropdown Menu Start -->
-            <div
-              :class="(selected === 'Dictionary') ? 'block' :'hidden'"
-              class="translate transform overflow-hidden"
-            >
+            <div class="dropdown translate transform overflow-hidden">
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
-                    :class="page === 'createDictionary' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createDictionary.html"
                     >Create Dictionary</a
                   >
                 </li>
                 <li>
                   <a
-                    :class="page === 'dictionary-list' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="dictionary-list.html"
                     >Dictionary List</a
                   >
@@ -1095,9 +980,7 @@
           </li>
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Advertising') || (page === 'createAdvertising' || page === 'advertising-list') }"
-              @click.prevent="selected = (selected === 'Advertising' ? '':'Advertising')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
             >
               <svg
@@ -1128,7 +1011,6 @@
               </svg>
               Advertising
               <svg
-                :class="{ 'rotate-180': (selected === 'Advertising') }"
                 class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 fill="none"
                 height="20"
@@ -1146,23 +1028,18 @@
             </a>
 
             <!-- Dropdown Menu Start -->
-            <div
-              :class="(selected === 'Advertising') ? 'block' :'hidden'"
-              class="translate transform overflow-hidden"
-            >
+            <div class="dropdown translate transform overflow-hidden">
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
-                    :class="page === 'createAdvertising' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createAdvertising.html"
                     >Create Advertising</a
                   >
                 </li>
                 <li>
                   <a
-                    :class="page === 'advertising-list' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="advertising-list.html"
                     >Advertising List</a
                   >
@@ -1173,9 +1050,7 @@
           </li>
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Product') || (page === 'createProducts' || page === 'product-list') }"
-              @click.prevent="selected = (selected === 'Product' ? '':'Product')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
             >
               <svg
@@ -1197,7 +1072,6 @@
               </svg>
               Products
               <svg
-                :class="{ 'rotate-180': (selected === 'Product') }"
                 class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 fill="none"
                 height="20"
@@ -1215,23 +1089,18 @@
             </a>
 
             <!-- Dropdown Menu Start -->
-            <div
-              :class="(selected === 'Product') ? 'block' :'hidden'"
-              class="translate transform overflow-hidden"
-            >
+            <div class="dropdown translate transform overflow-hidden">
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
-                    :class="page === 'createProducts' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createProducts.html"
                     >Create Products</a
                   >
                 </li>
                 <li>
                   <a
-                    :class="page === 'product-list' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="product-list.html"
                     >Product List</a
                   >
@@ -1243,9 +1112,7 @@
 
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'product-inquiry') && (page === 'product-inquiry') }"
-              @click="selected = (selected === 'product-inquiry' ? '':'product-inquiry')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="product-inquiry.html"
             >
               <svg
@@ -1277,9 +1144,7 @@
 
           <li>
             <a
-              :class="{ 'bg-menuHover dark:bg-meta-4': (selected === 'Policies') || (page === 'createPolicies' || page === 'Policies-list') }"
-              @click.prevent="selected = (selected === 'Policies' ? '':'Policies')"
-              class="group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
+              class="menu-link group relative flex items-center gap-2.5 rounded-sm px-2 py-2 font-medium text-primary duration-300 ease-in-out hover:bg-menuHover dark:hover:bg-meta-4"
               href="#"
             >
               <svg
@@ -1304,7 +1169,6 @@
               </svg>
               Policies
               <svg
-                :class="{ 'rotate-180': (selected === 'Policies') }"
                 class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
                 fill="none"
                 height="20"
@@ -1322,23 +1186,18 @@
             </a>
 
             <!-- Dropdown Menu Start -->
-            <div
-              :class="(selected === 'Policies') ? 'block' :'hidden'"
-              class="translate transform overflow-hidden"
-            >
+            <div class="dropdown transform overflow-hidden">
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
-                    :class="page === 'createPolicies' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="createPolicies.html"
                     >Create Policies</a
                   >
                 </li>
                 <li>
                   <a
-                    :class="page === 'policies-list' && '!text-secondary'"
-                    class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
+                    class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
                     href="policies-list.html"
                     >Policies List</a
                   >
@@ -1364,6 +1223,7 @@
         <!-- ===== Header Start ===== -->
         <header
   class="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none"
+  x-data="{ dropdownOpen: false }"
 >
   <div
     class="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 lg:justify-end 2xl:px-11"
@@ -1371,8 +1231,8 @@
     <div class="flex items-center gap-2 sm:gap-4 lg:hidden">
       <!-- Hamburger Toggle BTN -->
       <button
+        @click="sidebarToggle = !sidebarToggle"
         class="z-99999 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm dark:border-strokedark dark:bg-boxdark lg:hidden"
-        @click.stop="sidebarToggle = !sidebarToggle"
       >
         <span class="relative block h-5.5 w-5.5 cursor-pointer">
           <span class="du-block absolute right-0 h-full w-full">
