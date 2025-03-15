@@ -42,7 +42,10 @@
       <img alt="Logo" src="src/images/logo/logo.png" />
     </a>
 
-    <button @click.stop="sidebarToggle = !sidebarToggle" class="block">
+    <button
+      @click.stop="sidebarToggle = !sidebarToggle"
+      class="block lg:hidden"
+    >
       <svg
         class="fill-current"
         fill="none"

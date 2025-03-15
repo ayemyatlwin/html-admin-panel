@@ -10,6 +10,10 @@ import chart02 from "./components/chart-02";
 import chart03 from "./components/chart-03";
 import chart04 from "./components/chart-04";
 import map01 from "./components/map-01";
+import chart05 from "./components/chart-05.js";
+import chartTotalMember from "./components/chart-totalmember.js";
+import chartTotalPolicyCustomer from "./components/chart-totalPolicyCustomer.js";
+
 import selector from "./selector.js";
 import sidebar from "./sidebar.js";
 
@@ -57,7 +61,12 @@ document.addEventListener("DOMContentLoaded", () => {
   chart02();
   chart03();
   chart04();
+  chart05();
   map01();
+  chartTotalMember();
+  chartTotalPolicyCustomer();
+  selector();
+  sidebar();
 });
 function autoInitializeEditors() {
   document.querySelectorAll("[data-editor-id]").forEach((editor) => {

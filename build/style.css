@@ -2264,6 +2264,9 @@ body{
 .stroke-current{
   stroke: currentColor;
 }
+.stroke-primary{
+  stroke: #032a5f;
+}
 .object-cover{
   -o-object-fit: cover;
      object-fit: cover;
