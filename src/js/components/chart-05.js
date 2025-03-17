@@ -2,22 +2,18 @@ import ApexCharts from "apexcharts";
 
 // ===== chartTwo
 const chart05 = () => {
-  const chartTwoOptions = {
+  const chartFiveOptions = {
     series: [
       {
-        name: "Total Views",
+        name: "Self-Binding Policies",
         data: [44, 55, 41, 67, 22, 43, 65, 30, 50, 60, 70, 80], // Example data for Total Views
       },
       {
-        name: "Total Profit",
+        name: "Admin Assisted Binding Policies",
         data: [13, 23, 20, 8, 13, 27, 15, 20, 25, 30, 35, 40], // Example data for Total Profit
       },
-      {
-        name: "Total Users",
-        data: [10, 15, 12, 18, 20, 22, 25, 30, 35, 40, 45, 50], // Example data for Total Users
-      },
     ],
-    colors: ["#1A56DB", "#60A5FA", "#BFDBFE"],
+    colors: ["#1A56DB", "#60A5FA"],
     chart: {
       type: "bar",
       height: 335,
@@ -72,6 +68,21 @@ const chart05 = () => {
         "Dec",
       ],
     },
+    yaxis: {
+      tickAmount: 6, // Number of ticks on the y-axis
+      min: 0, // Minimum value on the y-axis
+      max: 120, // Maximum value on the y-axis
+      labels: {
+        formatter: function (value) {
+          // Customize y-axis labels to show specific values
+          const ticks = [0, 20, 40, 60, 80, 100, 120];
+          if (ticks.includes(value)) {
+            return value;
+          }
+          return ""; // Hide other labels
+        },
+      },
+    },
     legend: {
       position: "top",
       horizontalAlign: "left",
@@ -88,14 +99,14 @@ const chart05 = () => {
     },
   };
 
-  const chartSelector = document.querySelectorAll("#chartTwo");
+  const chartSelector = document.querySelectorAll("#chartFive");
 
   if (chartSelector.length) {
-    const chartTwo = new ApexCharts(
+    const chartFive = new ApexCharts(
       document.querySelector("#chartFive"),
-      chartTwoOptions
+      chartFiveOptions
     );
-    chartTwo.render();
+    chartFive.render();
   }
 };
 
