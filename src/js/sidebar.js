@@ -1,6 +1,8 @@
-document.addEventListener("DOMContentLoaded", function () {
+ export default function sidebar () {
+
+  document.addEventListener("DOMContentLoaded", function () {
   const menuItems = document.querySelectorAll("#menu > li");
-  const currentURL = window.location.href.split(/[?#]/)[0];
+  const currentURL = window.location.href;
 
   menuItems.forEach((menuItem) => {
     const dropdown = menuItem.querySelector(".dropdown");
@@ -11,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       let isActive = false;
 
       dropdownLinks.forEach((link) => {
-        const linkURL = new URL(link.href, window.location.origin).pathname;
+        const linkURL = new URL(link.href, window.location.origin);
         if (currentURL.includes(linkURL)) {
           isActive = true;
           link.classList.add("!text-secondary");
@@ -58,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     } else {
       const link = menuItem.querySelector(".menu-link");
-      const linkURL = new URL(link.href, window.location.origin).pathname;
+      const linkURL = new URL(link.href, window.location.origin);
       if (currentURL.includes(linkURL)) {
         link.classList.add("!text-secondary");
         link.classList.add("bg-menuHover", "dark:bg-meta-4");
@@ -66,3 +68,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+ }

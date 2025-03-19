@@ -7,6 +7,8 @@
     <title>Create Products | GGI Nippon Life</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="./js/selector.js" type="module"></script> -->
+
     <link
       href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css"
       rel="stylesheet"
@@ -1104,14 +1106,14 @@
                 <li>
                   <a
                     class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
-                    href="createProducts.html"
+                    href="createProducts.html?type=product"
                     >Create Products</a
                   >
                 </li>
                 <li>
                   <a
                     class="sub-link group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-primary duration-300 ease-in-out hover:text-secondary"
-                    href="product-list.html"
+                    href="createProducts.html?type=feature"
                     >Product List</a
                   >
                 </li>
@@ -1845,6 +1847,7 @@
       }
 
       document.addEventListener("DOMContentLoaded", function () {
+        
         tagComponent(
           document.getElementById("tags-component2"),
           array1,

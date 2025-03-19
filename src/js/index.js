@@ -5,21 +5,14 @@ import "../css/style.css";
 import Alpine from "alpinejs";
 import persist from "@alpinejs/persist";
 import flatpickr from "flatpickr";
-import chart01 from "./components/chart-01";
-import chart02 from "./components/chart-02";
-import chart03 from "./components/chart-03";
-import chart04 from "./components/chart-04";
-import map01 from "./components/map-01";
-import chart05 from "./components/chart-05.js";
-import chartTotalMember from "./components/chart-totalmember.js";
-import chartTotalPolicyCustomer from "./components/chart-totalPolicyCustomer.js";
-
 import selector from "./selector.js";
 import sidebar from "./sidebar.js";
 
 Alpine.plugin(persist);
 window.Alpine = Alpine;
 Alpine.start();
+selector();
+sidebar();
 
 // Init flatpickr
 flatpickr(".datepicker", {
@@ -56,18 +49,7 @@ flatpickr(".form-datepicker", {
 });
 
 // Document Loaded
-document.addEventListener("DOMContentLoaded", () => {
-  chart01();
-  chart02();
-  chart03();
-  chart04();
-  chart05();
-  map01();
-  chartTotalMember();
-  chartTotalPolicyCustomer();
-  selector();
-  sidebar();
-});
+document.addEventListener("DOMContentLoaded", () => {});
 function autoInitializeEditors() {
   document.querySelectorAll("[data-editor-id]").forEach((editor) => {
     const editorId = editor.getAttribute("data-editor-id");
