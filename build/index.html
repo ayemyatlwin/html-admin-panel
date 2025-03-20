@@ -2071,59 +2071,21 @@
         },
       },
     },
-    yaxis: {
-      // title: {
-      //   text: "Total Policy Customers",
-      //   style: {
-      //     fontSize: "12px",
-      //     fontFamily: "Satoshi, sans-serif",
-      //   },
-      // },
-      labels: {
-        style: {
-          fontSize: "12px",
-          fontFamily: "Satoshi, sans-serif",
-          padding: "10px", // Add padding to y-axis labels
-        },
-      },
-    },
     legend: {
-      show: true,
       position: "top",
       horizontalAlign: "left",
-      fontFamily: "Satoshi, sans-serif",
+      fontFamily: "Satoshi",
+      fontWeight: 500,
+      fontSize: "14px",
+
       markers: {
         radius: 99,
-      },
-      itemMargin: {
-        horizontal: 20, // Add horizontal spacing between legend items
-        vertical: 10, // Add vertical spacing between legend items
-      },
-      offsetY: 10, // Add vertical spacing between the legend and the chart
-    },
-    grid: {
-      yaxis: {
-        lines: {
-          show: false,
-        },
       },
     },
     fill: {
       opacity: 1,
     },
-    tooltip: {
-      enabled: true,
-      style: {
-        fontSize: "12px",
-        fontFamily: "Satoshi, sans-serif",
-        padding: "10px", // Add padding inside the tooltip
-      },
-      y: {
-        formatter: function (val) {
-          return val;
-        },
-      },
-    },
+    
   };
 
   var chartPolicyCustomer = new ApexCharts(document.querySelector("#chartTotalPolicyCustomer"), chartTotalPolicyCustomerOptions);
@@ -2194,21 +2156,14 @@
         "Nov",
         "Dec",
       ],
-    },
-    yaxis: {
-      tickAmount: 6, // Number of ticks on the y-axis
-      min: 0, // Minimum value on the y-axis
-      max: 120, // Maximum value on the y-axis
       labels: {
-        formatter: function (value) {
-          // Customize y-axis labels to show specific values
-          const ticks = [0, 20, 40, 60, 80, 100, 120];
-          if (ticks.includes(value)) {
-            return value;
-          }
-          return ""; // Hide other labels
+        style: {
+          fontSize: "12px",
+          fontFamily: "Satoshi, sans-serif",
+          padding: "10px", // Add padding to x-axis labels
         },
       },
+
     },
     legend: {
       position: "top",

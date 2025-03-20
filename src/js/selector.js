@@ -14,8 +14,8 @@ export default function selector() {
     addNewTag,
     checkAddButton = true
   ) => {
-    const tag_name_eng = crypto.randomUUID();
-    const tag_name_mm = crypto.randomUUID();
+    const tag_name_eng = 1;
+    const tag_name_mm = 1;
     let selectedTags = [];
     let initialTags = [];
     const tagsContainer = document.createElement("div");
