@@ -2095,11 +2095,11 @@
     series: [
       {
         name: "Self-Binding Policies",
-        data: [44, 55, 41, 67, 22, 43, 65, 30, 50, 60, 70, 80], // Example data for Total Views
+        data: [1, 10, 30, 67, 22, 43, 65, 30, 50, 60, 70, 80], // Example data for Total Views
       },
       {
         name: "Admin Assisted Binding Policies",
-        data: [13, 23, 20, 8, 13, 27, 15, 20, 25, 30, 35, 40], // Example data for Total Profit
+        data: [5, 20, 50, 8, 13, 27, 15, 20, 25, 30, 35, 40], // Example data for Total Profit
       },
     ],
     colors: ["#1A56DB", "#60A5FA"],
@@ -2185,7 +2185,7 @@
       intersect: false,
       y: {
         formatter: function (val) {
-          return val;
+          return  Math.round(val);
         },
       },
     },
